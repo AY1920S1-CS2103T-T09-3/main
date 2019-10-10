@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 3 - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>ClerkPro - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 3 - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>ClerkPro - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>T09-3</code>      Since: <code>Sep 2019</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -13,20 +13,15 @@
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.9. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#queue">3.1. Queue</a></li>
+<li><a href="#patient-management">3.2. Patient Management</a></li>
+<li><a href="#on-duty-doctors-management">3.3. On-Duty Doctors Management</a></li>
+<li><a href="#appointment-management">3.4. Appointment Management</a></li>
+<li><a href="#inventory-commands-v2-0">3.5. Inventory commands (v2.0)</a></li>
+<li><a href="#user-accounts-v2-0">3.6. User Accounts (v2.0)</a></li>
+<li><a href="#general-commands">3.7. General commands</a></li>
 </ul>
 </li>
-<li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -34,7 +29,7 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook Level 3 (AB3) is for those who <strong>prefer to use a desktop app for managing contacts</strong>. More importantly, AB3 is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>This program is targeted at clerks working in small clinics. It is designed for those who prefer to work with a Command Line Interface (CLI). It allows clerks to manage queues, set appointments and manage the inventory. Typing fast allows you to complete your tasks much faster than GUI apps.</p>
 </div>
 </div>
 </div>
@@ -47,7 +42,7 @@
 <p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/se-edu/addressbook-level3/releases">here</a>.</p>
+<p>Download the latest <code>clerkPro.jar</code> <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/releases">here</a>.</p>
 </li>
 <li>
 <p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
@@ -72,7 +67,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : lists all contacts</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><strong><code>add</code></strong><code>i/001A n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
 </li>
 <li>
 <p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
@@ -101,7 +96,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>&lt;UPPER_CASE&gt;</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
 </li>
 <li>
 <p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
@@ -110,257 +105,244 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters can be in any order e.g. if the command specifies <code>n/&lt;NAME&gt; p/&lt;PHONE_NUMBER&gt;</code>, <code>p/&lt;PHONE_NUMBER&gt; n/&lt;NAME&gt;</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
+<h3 id="queue"><a class="link" href="#queue">3.1. Queue</a></h3>
+<div class="sect3">
+<h4 id="add-a-patient-to-the-queue-code-enqueue-code"><a class="link" href="#add-a-patient-to-the-queue-code-enqueue-code">3.1.1. Add a patient to the queue: <code>enqueue</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>help</code></p>
+<p>Adds a patient to the queue<br>
+Format: <code>enqueue &lt;PATIENT_REFERENCE_ID&gt;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="remove-a-patient-from-the-queue-code-dequeue-code"><a class="link" href="#remove-a-patient-from-the-queue-code-dequeue-code">3.1.2. Remove a patient from the queue: <code>dequeue</code></a></h4>
+<div class="paragraph">
+<p>Removes a patient from the queue based on their queue position<br>
+Format: <code>dequeue &lt;QUEUE_NUMBER&gt;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="assign-next-patient-to-an-available-doctor-code-next-code"><a class="link" href="#assign-next-patient-to-an-available-doctor-code-next-code">3.1.3. Assign next patient to an available doctor : <code>next</code></a></h4>
+<div class="paragraph">
+<p>Assigns next patient to an available doctor based on the room number.<br>
+Format: <code>next &lt;ROOM_ID&gt;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="doctor-takes-a-break-code-break-code"><a class="link" href="#doctor-takes-a-break-code-break-code">3.1.4. Doctor takes a break: <code>break</code></a></h4>
+<div class="paragraph">
+<p>Avoids directing patients to a given Doctor based on the room number.<br>
+Format: <code>break &lt;ROOM_NUMBER&gt;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="doctor-resumes-his-her-duty-code-resume-code"><a class="link" href="#doctor-resumes-his-her-duty-code-resume-code">3.1.5. Doctor resumes his/her duty: <code>resume</code></a></h4>
+<div class="paragraph">
+<p>Allows patients to be directed to a given Doctor based on the room number.<br>
+Format: <code>resume &lt;ROOM_NUMBER&gt;</code></p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
+<h3 id="patient-management"><a class="link" href="#patient-management">3.2. Patient Management</a></h3>
+<div class="sect3">
+<h4 id="searches-patient-by-arguments-code-patient-code"><a class="link" href="#searches-patient-by-arguments-code-patient-code">3.2.1. Searches patient by arguments: <code>patient</code></a></h4>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+<p>Finds patients whose reference ids, names or phone numbers containing any of the given keywords.<br>
+If search keywords are empty, all registered patients will be displayed.<br>
+Note: Requires at least 4 characters to search by a reference id or phone numbers.<br>
+Format: <code>patient [&lt;PATIENT_REFERENCE_ID | PATIENT_NAME | PHONE_NUM&gt;]</code></p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A person can have any number of tags (including 0)
-</td>
-</tr>
-</table>
 </div>
+<div class="sect3">
+<h4 id="registers-a-new-patient-code-register-code"><a class="link" href="#registers-a-new-patient-code-register-code">3.2.2. Registers a new patient: <code>register</code></a></h4>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Registers a new patient<br>
+Format:  <code>register -name|-n &lt;PATIENT_NAME&gt; -id|-i &lt;PATIENT_REFERENCE_ID&gt; -phone|-p &lt;PHONE_NUM&gt; [-email|-e &lt;EMAIL&gt;] [-address|-a &lt;ADDRESS&gt;] [-remark|-r &lt;REMARK&gt;]</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
-</li>
-<li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
-</li>
-</ul>
+</div>
+<div class="sect3">
+<h4 id="updates-patients-profiles-code-update-code"><a class="link" href="#updates-patients-profiles-code-update-code">3.2.3. Updates patients’ profiles: <code>update</code></a></h4>
+<div class="paragraph">
+<p>If user is in the patients listing screen,
+Updates any change for patients’ profiles<br>
+Format: <code>update &lt;ENTRY_ID&gt; [-name|-n &lt;PATIENT_NAME&gt;] [-ic|-i &lt;PATIENT_IC&gt;] [-hp &lt;PHONE_NUM&gt;] [-email|-e &lt;EMAIL&gt;] [-address|-a &lt;ADDRESS&gt;] [-remark|-r &lt;REMARK&gt;]</code></p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
+<h3 id="on-duty-doctors-management"><a class="link" href="#on-duty-doctors-management">3.3. On-Duty Doctors Management</a></h3>
+<div class="sect3">
+<h4 id="views-doctors-code-doctors-code"><a class="link" href="#views-doctors-code-doctors-code">3.3.1. Views doctors: <code>doctors</code></a></h4>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
+<p>Finds doctors whose names contains any of the given keywords.<br>
+If search keywords are empty, all registered doctors will be displayed.<br>
+Format: <code>doctors [&lt;DOCTOR_NAME&gt;]</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="register-a-new-doctor-code-newdoctor-code"><a class="link" href="#register-a-new-doctor-code-newdoctor-code">3.3.2. Register a new doctor: <code>newdoctor</code></a></h4>
+<div class="paragraph">
+<p>Registers a new doctor.<br>
+Format: <code>newdoctor -name|-n &lt;DOCTOR_NAME&gt; [-hp &lt;PHONE_NUM&gt;]<br>
+ [-email|-e &lt;EMAIL&gt;] [-remark|-r &lt;REMARK&gt;]</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="update-a-doctor-s-profile-code-update-code"><a class="link" href="#update-a-doctor-s-profile-code-update-code">3.3.3. Update a doctor&#8217;s profile: <code>update</code></a></h4>
+<div class="paragraph">
+<p>If user is in the doctors listing screen, updates any change for doctor’s profiles.<br>
+Format: <code>updatedoctor &lt;ENTRY_ID&gt; [-name|-n &lt;DOCTOR_NAME&gt;]+
+[-ic|-i &lt;DOCTOR_IC&gt;] [-hp &lt;PHONE_NUM&gt;] [-email|-e &lt;EMAIL&gt;] [-address|-a &lt;ADDRESS&gt;]<br>
+[-remark|-r &lt;REMARK&gt;]</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="unregister-a-doctor-s-profile-code-resign-code"><a class="link" href="#unregister-a-doctor-s-profile-code-resign-code">3.3.4. Unregister a doctor&#8217;s profile: <code>resign</code></a></h4>
+<div class="paragraph">
+<p>If user is in the doctors listing screen, removes a doctor’s profile.<br>
+Format: <code>resign &lt;ENTRY_ID&gt;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="updates-a-doctor-s-profiles-code-onduty-code"><a class="link" href="#updates-a-doctor-s-profiles-code-onduty-code">3.3.5. Updates a doctor&#8217;s profiles: <code>onduty</code></a></h4>
+<div class="paragraph">
+<p>Marks the doctor as on-duty and stationed in the given room number.<br>
+Patients can be directed to the specified doctor.<br>
+Format: <code>onduty -d &lt;DOCTOR_ENTRY_INDEX&gt; -r &lt;ROOM_NUMBER&gt;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="updates-doctor-s-profiles-code-offduty-code"><a class="link" href="#updates-doctor-s-profiles-code-offduty-code">3.3.6. Updates doctor&#8217;s profiles: <code>offduty</code></a></h4>
+<div class="paragraph">
+<p>Marks the doctor as off-duty. Patients can not be directed to the specified doctor.<br>
+Format: <code>offduty &lt;ROOM_NUMBER&gt;</code></p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
+<h3 id="appointment-management"><a class="link" href="#appointment-management">3.4. Appointment Management</a></h3>
+<div class="sect3">
+<h4 id="displays-all-appointments-code-appointments-code"><a class="link" href="#displays-all-appointments-code-appointments-code">3.4.1. Displays all appointments: <code>appointments</code></a></h4>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
-</li>
-<li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
-</li>
-</ul>
+<p>Displays a sorted list of upcoming appointments whose appointment is within<br>
+If search keywords are empty, only upcoming appointments within the next 7 days will be displayed.<br>
+Format: <code>appointments [-patient|-p &lt;PATIENT_NAME | PATIENT_IC&gt;] [-start|-s &lt;START_DATE&gt;] [-end|-e &lt;END_DATE&gt;]</code></p>
 </div>
 </div>
-</div>
+<div class="sect3">
+<h4 id="cancels-an-appointment-code-cancel-code"><a class="link" href="#cancels-an-appointment-code-cancel-code">3.4.2. Cancels an appointment: <code>cancel</code></a></h4>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Cancels the specified appointment.<br>
+Format: <code>cancel &lt;ENTRY_ID&gt;</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
-</li>
-<li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
-</li>
-</ul>
+</div>
+<div class="sect3">
+<h4 id="changes-the-appointment-date-code-change-code"><a class="link" href="#changes-the-appointment-date-code-change-code">3.4.3. Changes the appointment date: <code>change</code></a></h4>
+<div class="paragraph">
+<p>Changes and updates to a new appointment detail in the appointment listing screen<br>
+Format: <code>change &lt;ENTRY_ID&gt; [-id|-i &lt;PATIENT_IC&gt;] [-start|-s &lt;START_DATE&gt;] [-end|-e &lt;END_DATE&gt;]</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="shows-the-empty-slots-code-slot-code"><a class="link" href="#shows-the-empty-slots-code-slot-code">3.4.4. Shows the empty slots: <code>slot</code></a></h4>
+<div class="paragraph">
+<p>List all the available empty slots for patients to make appointments<br>
+Format: <code>slot -start|-s &lt;START_DATE&gt; -end|-e &lt;END_DATE&gt;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="displays-patients-who-have-missed-their-appointments-and-have-yet-to-be-notified-code-missed-code"><a class="link" href="#displays-patients-who-have-missed-their-appointments-and-have-yet-to-be-notified-code-missed-code">3.4.5. Displays patients who have missed their appointments and have yet to be notified: <code>missed</code></a></h4>
+<div class="paragraph">
+<p>Displays all patients who have missed their appointments that are not yet settled.<br>
+Format: <code>missed [-date &lt;DATETIME&gt;]</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sets-missed-appointments-as-settled-notified-code-settle-code"><a class="link" href="#sets-missed-appointments-as-settled-notified-code-settle-code">3.4.6. Sets missed appointments as settled/notified: <code>settle</code></a></h4>
+<div class="paragraph">
+<p>Settles the missed appointments for respective patients.<br>
+Format: <code>settle &lt;ENTRY_ID&gt;</code></p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></h3>
+<h3 id="inventory-commands-v2-0"><a class="link" href="#inventory-commands-v2-0">3.5. Inventory commands (v2.0)</a></h3>
+<div class="sect3">
+<h4 id="views-the-inventory-code-inventory-code"><a class="link" href="#views-the-inventory-code-inventory-code">3.5.1. Views the inventory: <code>inventory</code></a></h4>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
-</li>
-</ul>
+<p>Displays the medicine inventory<br>
+Format: <code>inventory</code></p>
 </div>
 </div>
-</div>
+<div class="sect3">
+<h4 id="views-the-inventory-code-prescription-code"><a class="link" href="#views-the-inventory-code-prescription-code">3.5.2. Views the inventory: <code>prescription</code></a></h4>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Displays the prescription. A prescription is a list of medications prescribed by the doctor.<br>
+Format: <code>prescription [-id] &lt;PRESCRIPTION_ID&gt;</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
-</li>
-<li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
+<h3 id="user-accounts-v2-0"><a class="link" href="#user-accounts-v2-0">3.6. User Accounts (v2.0)</a></h3>
+<div class="sect3">
+<h4 id="login-code-login-code"><a class="link" href="#login-code-login-code">3.6.1. Login: <code>login</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed person list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
+<p>Login with your username and password. The user will then be prompted to enter their password.<br>
+Format: <code>login &lt;USER_NAME&gt;</code></p>
 </div>
 </div>
-</div>
+<div class="sect3">
+<h4 id="logout-code-logout-code"><a class="link" href="#logout-code-logout-code">3.6.2. Logout: <code>logout</code></a></h4>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Logout from your account<br>
+Format: <code>logout</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="general-commands"><a class="link" href="#general-commands">3.7. General commands</a></h3>
+<div class="sect3">
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.7.1. Viewing help: <code>help</code></a></h4>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
+<p>Lists all the useful commands<br>
+Format: <code>help</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></h3>
+<div class="sect3">
+<h4 id="exits-program-code-exit-code"><a class="link" href="#exits-program-code-exit-code">3.7.2. Exits program: <code>exit</code></a></h4>
 <div class="paragraph">
-<p>Exits the program.<br>
+<p>Exits the program<br>
 Format: <code>exit</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.9. Saving the data</a></h3>
+<div class="sect3">
+<h4 id="undo-action-code-undo-code"><a class="link" href="#undo-action-code-undo-code">3.7.3. Undo action: <code>undo</code></a></h4>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
+<p>Undo an action<br>
+Format: <code>undo</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<div class="sect3">
+<h4 id="creates-updates-or-removes-an-alias-command-code-alias-code"><a class="link" href="#creates-updates-or-removes-an-alias-command-code-alias-code">3.7.4. Creates, updates or removes an alias command: <code>alias</code></a></h4>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>Tags an alias name to a reserved command. More specifically,
+one of the following will happen depending on the parameters of the function.
+Please note that the user can not remap a reserved command.
+A new alias command is created if the alias does not exist.
+Remaps an existing alias command to a reserved command if the alias exist.
+If the reserved command is not specified, the alias is unregistered if it exists.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<p>Format: <code>alias &lt;Alias_Name&gt; [&lt;Reserved_Command&gt;]</code></p>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
-</li>
-<li>
-<p><strong>Clear</strong> : <code>clear</code></p>
-</li>
-<li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
-</li>
-<li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
-</li>
-<li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>list</code></p>
-</li>
-<li>
-<p><strong>Help</strong> : <code>help</code></p>
-</li>
-</ul>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-08-21 09:18:27 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-10 13:40:15 UTC</div></div></div></body></html>
