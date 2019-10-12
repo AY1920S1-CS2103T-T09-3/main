@@ -1068,6 +1068,117 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </li>
 </ul>
 </div>
+<h3 id="use-case-editing-information-in-gui-uc6" class="discrete">Use case: Editing Information in GUI (UC6)</h3>
+<div class="paragraph">
+<p><strong>Actor:</strong> Clerk</p>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Information is edited after change is completed in GUI.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>MSS:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Clerk selects the tabs of information (e.g Patients, Appointments) that requires modification.</p>
+</li>
+<li>
+<p>Clerk selects an item in the list of information.</p>
+</li>
+<li>
+<p>Clerk selects an attribute of the item.</p>
+</li>
+<li>
+<p>Clerk modifies the attribute.</p>
+</li>
+<li>
+<p>Clerk completes the modificatigit on.</p>
+</li>
+<li>
+<p>ClerkPro stores the change and displays the new information.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<h3 id="use-case-autocompleter-uc7" class="discrete">Use case: AutoCompleter (UC7)</h3>
+<div class="paragraph">
+<p><strong>Actor:</strong> Clerk</p>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Display suggestions of commands available from whatever has been typed.</p>
+</li>
+<li>
+<p>Autofill of commands selected from AutoCompleter into Command Box.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>MSS:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Clerk types "a" into the Command Box.</p>
+</li>
+<li>
+<p>ClerkPro shows suggestions of commands available for "a".</p>
+</li>
+<li>
+<p>Clerk selects a command from AutoCompleter.</p>
+</li>
+<li>
+<p>ClerkPro auto-fills the selected command into Command Box.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<h3 id="use-case-history-uc8" class="discrete">Use case: History (UC8)</h3>
+<div class="paragraph">
+<p><strong>Actor:</strong> Clerk</p>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Autofill of commands while traversing History.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>MSS:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If AutoCompleter is not suggesting, Clerk can traverse history commands.</p>
+</li>
+<li>
+<p>While traversing, the command box is auto-filled with the history command.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
 </div>
@@ -1266,4 +1377,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-11 09:47:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-12 13:45:05 UTC</div></div></div></body></html>
