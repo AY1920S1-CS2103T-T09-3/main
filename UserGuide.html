@@ -131,7 +131,7 @@ Format: <code>dequeue &lt;QUEUE_NUMBER&gt;</code></p>
 <h4 id="assign-next-patient-to-an-available-doctor-code-next-code"><a class="link" href="#assign-next-patient-to-an-available-doctor-code-next-code">3.1.3. Assign next patient to an available doctor : <code>next</code></a></h4>
 <div class="paragraph">
 <p>Assigns next patient to an available doctor based on the room number.<br>
-Format: <code>next &lt;ROOM_ID&gt;</code></p>
+Format: <code>next &lt;ROOM_NUMBER&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -145,7 +145,21 @@ Format: <code>break &lt;ROOM_NUMBER&gt;</code></p>
 <h4 id="doctor-resumes-his-her-duty-code-resume-code"><a class="link" href="#doctor-resumes-his-her-duty-code-resume-code">3.1.5. Doctor resumes his/her duty: <code>resume</code></a></h4>
 <div class="paragraph">
 <p>Allows patients to be directed to a given Doctor based on the room number.<br>
-Format: <code>resume &lt;ROOM_NUMBER&gt;</code></p>
+Format: `resume &lt;ROOM_NUMBER&gt;</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-a-new-room-code-addroom-code"><a class="link" href="#add-a-new-room-code-addroom-code">3.1.6. Add a new room: <code>addRoom</code></a></h4>
+<div class="paragraph">
+<p>Adds a new room with a doctor to the list.<br>
+Format: <code>addRoom &lt;DOCTOR_REFERENCE_ID&gt;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="removes-a-room-code-removeroom-code"><a class="link" href="#removes-a-room-code-removeroom-code">3.1.7. Removes a room: <code>removeRoom</code></a></h4>
+<div class="paragraph">
+<p>Removes a room in the list.<br>
+Format: <code>removeRoom &lt;ROOM_NUMBER&gt;</code></p>
 </div>
 </div>
 </div>
@@ -367,4 +381,4 @@ If the reserved command is not specified, the alias is unregistered if it exists
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 13:49:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 13:50:50 UTC</div></div></div></body></html>
