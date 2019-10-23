@@ -947,17 +947,89 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </li>
 </ul>
 </div>
-<h3 id="use-case-change-appointment-date-uc3" class="discrete">Use case: Change appointment date (UC3)</h3>
+<h3 id="use-case-add-new-appointment-for-a-patient-uc3" class="discrete">Use case: Add new appointment for a patient (UC3)</h3>
+<div class="paragraph">
+<p>Pre-condition: Patient exists in the system</p>
+</div>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Patient calls to change appointment date</p>
+<p>Patient wants to have a new appointment</p>
 </li>
 <li>
-<p>User checks whether the current appointment can be postponed.</p>
+<p>User wants to add this appointments for patient</p>
+</li>
+<li>
+<p>ClerkPro adds this appointment</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. User inputs invalid format</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. ClerkPro requests for correct input format<br></p>
+</li>
+<li>
+<p>2a2. User inputs correct format<br></p>
+<div class="paragraph">
+<p>Steps 2a1-2a2 are repeated until the appointment has the correct format<br></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Use case resumes at step 2</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2b. User inputs a appointment which is conflicted with other appointments</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. User ask patient to make provide a new appointment date <br></p>
+</li>
+<li>
+<p>2b2. patient give a new appointment date<br></p>
+<div class="paragraph">
+<p>Steps 2b1-2b2 are repeated until the appointment is not conflicted</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-change-appointment-date-uc4" class="discrete">Use case: Change appointment date (UC4)</h3>
+<div class="paragraph">
+<p>Pre-condition: Patient’s appointment exists</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User checks whether the current appointment can be changed.</p>
 </li>
 <li>
 <p>User checks and updates appointment&#8217;s appointment time slots.</p>
@@ -976,40 +1048,80 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p>2a. Current appointment date is invalid<br></p>
-<div class="paragraph">
-<p>Use case ends</p>
-</div>
+<p>3a. Current appointment date is invalid format<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1. ClerkPro requests for correct input format<br></p>
 </li>
 <li>
-<p>3a. Appointment date is taken</p>
+<p>3a2. User inputs correct format<br></p>
 <div class="paragraph">
-<p>Use case ends</p>
+<p>Steps 2a1-2a2 are repeated until the appointment has the correct format<br></p>
 </div>
 </li>
 </ul>
 </div>
-<h3 id="use-case-set-next-appointment-uc4" class="discrete">Use case: Set next appointment (UC4)</h3>
+</li>
+<li>
+<p>3b. Appointment date is conflict with other appointments<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>3b1. User ask patient to make a new appointment <br></p>
+</li>
+<li>
+<p>3b2. patient change appointment to another date<br></p>
+<div class="paragraph">
+<p>Steps 3b1-3b2 are repeated until the appointment is not conflicted</p>
+</div>
+<div class="paragraph">
+<p>Use case resumes at step 3</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-find-patients-appointment-uc5" class="discrete">Use case: Find patients appointment (UC5)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Patient wants to set next appointment</p>
+<p>User requests to find patient&#8217;s appointment list</p>
 </li>
 <li>
-<p>User requests to set the patient&#8217;s appointment date</p>
-</li>
-<li>
-<p>ClerkPro changes the patient&#8217;s appointment date</p>
+<p>System retrieve and display patient&#8217;s appointments</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
-<h3 id="use-case-indicate-that-a-doctor-is-on-duty-and-able-to-tend-to-patients-uc5" class="discrete">Use case: Indicate that a doctor is on-duty and able to tend to patients (UC5)</h3>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. patient is not exist<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>System displays an error message "No such patient"</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+<h3 id="use-case-indicate-that-a-doctor-is-on-duty-and-able-to-tend-to-patients-uc6" class="discrete">Use case: Indicate that a doctor is on-duty and able to tend to patients (UC6)</h3>
 <div class="paragraph">
 <p>Pre-condition: Details of the doctor is already registered in system.</p>
 </div>
@@ -1069,7 +1181,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </li>
 </ul>
 </div>
-<h3 id="use-case-editing-information-in-gui-uc6" class="discrete">Use case: Editing Information in GUI (UC6)</h3>
+<h3 id="use-case-editing-information-in-gui-u7" class="discrete">Use case: Editing Information in GUI (U7)</h3>
 <div class="paragraph">
 <p><strong>Actor:</strong> Clerk</p>
 </div>
@@ -1111,7 +1223,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
-<h3 id="use-case-autocompleter-uc7" class="discrete">Use case: AutoCompleter (UC7)</h3>
+<h3 id="use-case-autocompleter-uc8" class="discrete">Use case: AutoCompleter (UC8)</h3>
 <div class="paragraph">
 <p><strong>Actor:</strong> Clerk</p>
 </div>
@@ -1150,7 +1262,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
-<h3 id="use-case-history-uc8" class="discrete">Use case: History (UC8)</h3>
+<h3 id="use-case-history-uc9" class="discrete">Use case: History (UC9)</h3>
 <div class="paragraph">
 <p><strong>Actor:</strong> Clerk</p>
 </div>
@@ -1378,4 +1490,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 08:51:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 09:37:30 UTC</div></div></div></body></html>
