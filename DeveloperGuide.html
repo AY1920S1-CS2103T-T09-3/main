@@ -1,16 +1,16 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>ClerkPro - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>ClerkPro - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>ClerkPro - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>ClerkPro - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>T09-3</code>      Since: <code>Sep 2019</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team T09-3</code>      Since: <code>Sep 2019</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#quick-start">2. Quick Start</a>
+<li><a href="#setting-up">1. Setting up</a></li>
+<li><a href="#design">2. Design</a>
 <ul class="sectlevel2">
 <li><a href="#Design-Architecture">2.1. Architecture</a></li>
 <li><a href="#Design-Ui">2.2. UI component</a></li>
@@ -23,12 +23,11 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#autocomplete">3.3. AutoComplete</a></li>
-<li><a href="#queue-feature">3.4. Queue feature</a></li>
-<li><a href="#appointment-feature">3.5. Appointment feature</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
+<li><a href="#autocomplete">3.2. AutoComplete</a></li>
+<li><a href="#queue-feature">3.3. Queue feature</a></li>
+<li><a href="#appointment-feature">3.4. Appointment feature</a></li>
+<li><a href="#logging">3.5. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -36,38 +35,34 @@
 <li><a href="#dev-ops">6. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases">Appendix C: Use Cases</a></li>
-<li><a href="#features">7. Features</a>
-<ul class="sectlevel3">
-<li><a href="#add-a-patient-to-the-queue-code-enqueue-code">7.1. Add a patient to the queue: <code>enqueue</code></a></li>
-<li><a href="#remove-a-patient-from-the-queue-code-dequeue-code">7.2. Remove a patient from the queue: <code>dequeue</code></a></li>
-<li><a href="#assign-next-patient-to-an-available-doctor-code-next-code">7.3. Assign next patient to an available doctor : <code>next</code></a></li>
-<li><a href="#doctor-takes-a-break-code-break-code">7.4. Doctor takes a break: <code>break</code></a></li>
-<li><a href="#doctor-resumes-his-her-duty-code-resume-code">7.5. Doctor resumes his/her duty: <code>resume</code></a></li>
-<li><a href="#add-a-new-room-code-addroom-code">7.6. Add a new room: <code>addRoom</code></a></li>
-<li><a href="#removes-a-room-code-removeroom-code">7.7. Removes a room: <code>removeRoom</code></a></li>
-<li><a href="#patient-management">7.8. Patient Management</a></li>
-<li><a href="#on-duty-doctors-management">7.9. On-Duty Doctors Management</a></li>
-<li><a href="#use-case-cancel-patient-s-appointment-uc6">7.10. Use case: cancel patient&#8217;s appointment (UC6)</a></li>
-<li><a href="#appointment-management">7.11. Appointment Management</a></li>
-<li><a href="#inventory-commands-v2-0">7.12. Inventory commands (v2.0)</a></li>
-<li><a href="#user-accounts-v2-0">7.13. User Accounts (v2.0)</a></li>
-<li><a href="#general-commands">7.14. General commands</a></li>
+<li><a href="#use-cases">Appendix C: Use Cases</a>
+<ul class="sectlevel2">
+<li><a href="#use-case-cancel-patient-s-appointment-uc9">C.1. Use case: cancel patient&#8217;s appointment (UC9)</a></li>
+</ul>
+</li>
+<li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
+<li><a href="#glossary">Appendix E: Glossary</a></li>
+<li><a href="#product-survey">Appendix F: Product Survey</a></li>
+<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
+<ul class="sectlevel2">
+<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
+<li><a href="#deleting-a-person">G.2. Deleting a person</a></li>
+<li><a href="#saving-data">G.3. Saving data</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect1">
-<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
+<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This program is targeted at clerks working in small clinics. It is designed for those who prefer to work with a Command Line Interface (CLI). It allows clerks to manage queues, set appointments and manage the inventory. Typing fast allows you to complete your tasks much faster than GUI apps.</p>
+<p>Refer to the guide <a href="SettingUp.html">here</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
+<h2 id="design"><a class="link" href="#design">2. Design</a></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
@@ -87,14 +82,14 @@
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/docs/diagrams/">diagrams</a> folder.
+The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/">diagrams</a> folder.
 Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how to create and edit diagrams.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -156,7 +151,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
-<div class="title">Figure 2. Class Diagram of the Logic Component (todo: Update diagram)</div>
+<div class="title">Figure 2. Class Diagram of the Logic Component</div>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
@@ -181,13 +176,13 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 4. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -213,7 +208,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/AY1920S1-CS2103T-T09-3/main/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -222,34 +217,9 @@ The following class plays an important role at the architecture level:</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>A <code>Command</code> object can be classified as one of two types, a reversible command and a Non-Actionable command.</p>
-</li>
-<li>
-<p>Reversible command refers to any action which modifies the data in the system&#8217;s model.</p>
-</li>
-<li>
-<p>Conversely, a Non-Actionable command only reads data from the system&#8217;s model without modifying it.</p>
-</li>
-</ul>
-</div>
 </li>
 <li>
 <p>The command execution can affect the <code>Model</code> (e.g. adding a person).</p>
-<div class="ulist">
-<ul>
-<li>
-<p>If the user intends to execute a reversible command, an ActionPair command is created and pushed into an undo stack.
-The ActionPair command contains a pairing of of the action itself and its inverse.
-(e.g. Pairing 'add person A' and 'delete person A' command).</p>
-</li>
-<li>
-<p>If the user intends to execute a Non-Actionable command, the command will be directly executed.</p>
-</li>
-</ul>
-</div>
 </li>
 <li>
 <p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
@@ -260,19 +230,13 @@ The ActionPair command contains a pairing of of the action itself and its invers
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>next 1</code> and <code>enqueue 001A</code> API call.</p>
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/EnqueueSequenceDiagram.png" alt="EnqueueSequenceDiagram">
+<img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
 </div>
-<div class="title">Figure 6. Interactions inside the Logic Component for the <code>enqueue 001A</code> Command</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/NextSequenceDiagram.png" alt="NextSequenceDiagram">
-</div>
-<div class="title">Figure 7. Interactions inside the Logic Component for the <code>next 1</code> Command</div>
+<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -281,7 +245,40 @@ The ActionPair command contains a pairing of of the action itself and its invers
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The lifeline for <code>DeleteCommandParser</code> and <code>NextCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+The lifeline for <code>DeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/EnqueueSequenceDiagram.png" alt="EnqueueSequenceDiagram">
+</div>
+<div class="title">Figure 7. Interactions inside the Logic Component for the <code>enqueue 001A</code> Command</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/NextSequenceDiagram.png" alt="NextSequenceDiagram">
+</div>
+<div class="title">Figure 8. Interactions inside the Logic Component for the <code>next 1</code> Command</div>
+</div>
+<div class="paragraph">
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("cancelappt 1")</code> API call.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CancelAppointmentSequenceDiagram.png" alt="CancelAppointmentSequenceDiagram">
+</div>
+<div class="title">Figure 9. Interactions Inside the Logic Component for the <code>cancelappt 1</code> Command</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifeline for <code>CancelAppCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </td>
 </tr>
 </table>
@@ -291,15 +288,13 @@ The lifeline for <code>DeleteCommandParser</code> and <code>NextCommandParser</c
 <h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/ModelOverviewClassDiagramV2.png" alt="ModelOverviewClassDiagramV2">
+<img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
 </div>
-<div class="title">Figure 8. Structure of the Model Component</div>
+<div class="title">Figure 10. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
 </div>
-<div class="sect3">
-<h4 id="overall-model-component"><a class="link" href="#overall-model-component">2.4.1. Overall Model component</a></h4>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
 </div>
@@ -309,30 +304,29 @@ The lifeline for <code>DeleteCommandParser</code> and <code>NextCommandParser</c
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>consists of 3 sub-components: Queue Manager, Address Book and Appointment Book.</p>
+<p>stores the Address Book data.</p>
 </li>
 <li>
-<p>stores the details of patients and staff in an Address Book.</p>
-</li>
-<li>
-<p>stores the Appointment details of patients and staff in an Appointment Book.</p>
-</li>
-<li>
-<p>improve code reusability, we can reuse the <code>Person</code> class to derive classes which can represent patients or staff doctors.</p>
-</li>
-<li>
-<p>likewise, we can reuse the <code>Event</code> class to derive classes which can represent patient&#8217;s appointments and staff duty shifts.</p>
-</li>
-<li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> and <code>ObservableList&lt;Event&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
 </li>
-<li>
-<p>stores a unique list of <code>Tags</code> in the <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object.</p>
-</li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
+<br>
+<span class="image"><img src="images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram"></span>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>The <code>QueueManager</code>,</p>
@@ -343,22 +337,28 @@ The lifeline for <code>DeleteCommandParser</code> and <code>NextCommandParser</c
 <p>stores a <code>QueueList</code> object that represents the queue.</p>
 </li>
 <li>
-<p>stores a <code>UniqueElementList&lt;Room&gt;</code> which represents a list of consultation rooms where staff doctors are stationed.</p>
+<p>stores a <code>UniqueElementList&lt;Room&gt;</code> which contains the list of rooms.</p>
+</li>
+<li>
+<p>does not depend on any of the other three components.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<div class="title">Structure of the QueueManager Component</div>
+<p><span class="image"><img src="images/QueueManagerClassDiagram.png" alt="QueueManagerClassDiagram"></span></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/StorageClassDiagramV2.png" alt="StorageClassDiagramV2">
+<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
 </div>
-<div class="title">Figure 9. Structure of the Storage Component</div>
+<div class="title">Figure 11. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -369,16 +369,7 @@ The lifeline for <code>DeleteCommandParser</code> and <code>NextCommandParser</c
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save and read data of the Address Book in json format.</p>
-</li>
-<li>
-<p>can save and read data of the Appointment Book data in json format.</p>
-</li>
-<li>
-<p>able to reuse <code>JsonAddressBookStorage</code> to store the details of doctors and patients.</p>
-</li>
-<li>
-<p>able to reuse <code>JsonAppointmentBookStorage</code> to store the details of staff duty shifts and patient&#8217;s appointments.</p>
+<p>can save the Address Book data in json format and read it back.</p>
 </li>
 </ul>
 </div>
@@ -612,11 +603,10 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
-
+<h3 id="autocomplete"><a class="link" href="#autocomplete">3.2. AutoComplete</a></h3>
+<div class="paragraph">
+<p>We are using Prefix Tree which is known as a Trie for AutoComplete. This gives us a worst case time complexity of O(m), where m is length of the search string. While the space complexity is O(bm), where b is number of unique alphabets used, m is length of longest word stored.</p>
 </div>
-<div class="sect2">
-<h3 id="autocomplete"><a class="link" href="#autocomplete">3.3. AutoComplete</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/AutoCompleteSequenceDiagram.png" alt="AutoCompleteSequenceDiagram">
@@ -624,7 +614,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="queue-feature"><a class="link" href="#queue-feature">3.4. Queue feature</a></h3>
+<h3 id="queue-feature"><a class="link" href="#queue-feature">3.3. Queue feature</a></h3>
 <div class="paragraph">
 <p>The queue feature allows the user to enqueue and dequeue a patient from the queue.</p>
 </div>
@@ -639,7 +629,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </ul>
 </div>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The queue will be displayed in a list.</p>
 </div>
@@ -674,7 +664,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="appointment-feature"><a class="link" href="#appointment-feature">3.5. Appointment feature</a></h3>
+<h3 id="appointment-feature"><a class="link" href="#appointment-feature">3.4. Appointment feature</a></h3>
 <div class="paragraph">
 <p>The Appointment feature provides users the ability to manage appointments for patients. It can help patients to add, change, delete appointments. It also help user to find the missed appointments and settle each missing appointment.</p>
 </div>
@@ -689,7 +679,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </ul>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The Appointment feature contains multiple operations to indirectly manipulate the UniqueAppointmentList. The implemented operations include:</p>
 </div>
@@ -725,13 +715,13 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/changeAppointmentActivityDiagram.png" alt="changeAppointmentActivityDiagram">
+<img src="images/ChangeAppointmentActivityDiagram.png" alt="ChangeAppointmentActivityDiagram">
 </div>
-<div class="title">Figure 10. Interactions Inside the Logic Component when a user executes a <code>changeappt</code> command</div>
+<div class="title">Figure 12. Interactions Inside the Logic Component when a user executes a <code>changeappt</code> command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-addappt-code-command"><a class="link" href="#code-addappt-code-command">3.5.2. <code>addappt</code> Command</a></h4>
+<h4 id="code-addappt-code-command"><a class="link" href="#code-addappt-code-command">3.4.2. <code>addappt</code> Command</a></h4>
 <div class="paragraph">
 <p>The addappt command behaves similarly to the add command used for Patient and Doctor. The command takes in the parameters required to construct ReferenceId, DateTime and Status. The image below shows how the Appointment object is constructed.</p>
 </div>
@@ -742,11 +732,11 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="content">
 <img src="images/AddAppointmentActivityDiagram.png" alt="AddAppointmentActivityDiagram">
 </div>
-<div class="title">Figure 11. Interactions Inside the Logic Component when a user executes a <code>addappt</code> command</div>
+<div class="title">Figure 13. Interactions Inside the Logic Component when a user executes a <code>addappt</code> command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.5.3. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.4.3. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-store-timing-fields"><a class="link" href="#aspect-how-to-store-timing-fields">Aspect:  How to store Timing fields</a></h5>
 <div class="ulist">
@@ -813,14 +803,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -851,7 +841,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1161,36 +1151,19 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <ul>
 <li>
 <p>2a1. System requests for correct input format.<br></p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
-</li>
-<li>
-<p>Some example commands you can try:</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
 </div>
 </li>
 </ul>
 </div>
 </li>
-<li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
-</li>
-<li>
-<p><strong><code>add</code></strong><code>i/001A n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
-</li>
-<li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
-</li>
-<li>
-<p><strong><code>exit</code></strong> : exits the app</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Refer to <a href="#features">Section 7, &#8220;Features&#8221;</a> for details of each command.</p>
+</ul>
+</div>
+<h3 id="use-case-remove-person-from-queue-uc2" class="discrete">Use case: Remove person from queue (UC2)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1204,42 +1177,20 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 </ol>
 </div>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="features"><a class="link" href="#features">7. Features</a></h2>
-<div class="sectionbody">
-<div class="exampleblock">
-<div class="content">
 <div class="paragraph">
-<p><strong>Command Format</strong></p>
+<p>Use case ends.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Words in <code>&lt;UPPER_CASE&gt;</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
-</li>
-<li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
-</li>
-<li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
-</li>
-<li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/&lt;NAME&gt; p/&lt;PHONE_NUMBER&gt;</code>, <code>p/&lt;PHONE_NUMBER&gt; n/&lt;NAME&gt;</code> is also acceptable.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
 </div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Person is not in queue</p>
+<div class="paragraph">
+<p>Use case ends.</p>
 </div>
-</div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p>3a. The given index is invalid.</p>
 <div class="ulist none">
@@ -1404,12 +1355,13 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 </ul>
 </div>
-<h3 id="use-case-add-new-appointments-for-a-patient-uc3" class="discrete">Use case: Add new appointments for a patient (UC3)</h3>
+<h3 id="use-case-change-appointment-date-uc6" class="discrete">Use case: Change appointment date (UC6)</h3>
 <div class="paragraph">
 <p>Pre-condition: Patient exists in the system</p>
 </div>
-<div class="sect3">
-<h4 id="add-a-patient-to-the-queue-code-enqueue-code"><a class="link" href="#add-a-patient-to-the-queue-code-enqueue-code">7.1. Add a patient to the queue: <code>enqueue</code></a></h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1423,131 +1375,162 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 </ol>
 </div>
-</div>
-<div class="sect3">
-<h4 id="remove-a-patient-from-the-queue-code-dequeue-code"><a class="link" href="#remove-a-patient-from-the-queue-code-dequeue-code">7.2. Remove a patient from the queue: <code>dequeue</code></a></h4>
 <div class="paragraph">
-<p>Removes a patient from the queue based on their queue position<br>
-Format: <code>dequeue &lt;QUEUE_NUMBER&gt;</code></p>
+<p>Use case ends.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="assign-next-patient-to-an-available-doctor-code-next-code"><a class="link" href="#assign-next-patient-to-an-available-doctor-code-next-code">7.3. Assign next patient to an available doctor : <code>next</code></a></h4>
 <div class="paragraph">
-<p>Assigns next patient to an available doctor based on the room number.<br>
-Format: <code>next &lt;ROOM_NUMBER&gt;</code></p>
+<p><strong>Extensions</strong></p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="doctor-takes-a-break-code-break-code"><a class="link" href="#doctor-takes-a-break-code-break-code">7.4. Doctor takes a break: <code>break</code></a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. User inputs invalid format</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. ClerkPro requests for correct input format<br></p>
+</li>
+<li>
+<p>2a2. User inputs correct format<br></p>
 <div class="paragraph">
-<p>Avoids directing patients to a given Doctor based on the room number.<br>
-Format: <code>break &lt;ROOM_NUMBER&gt;</code></p>
+<p>Steps 2a1-2a2 are repeated until the appointment has the correct format<br></p>
 </div>
+</li>
+</ul>
 </div>
-<div class="sect3">
-<h4 id="doctor-resumes-his-her-duty-code-resume-code"><a class="link" href="#doctor-resumes-his-her-duty-code-resume-code">7.5. Doctor resumes his/her duty: <code>resume</code></a></h4>
+</li>
+</ul>
+</div>
 <div class="paragraph">
-<p>Allows patients to be directed to a given Doctor based on the room number.<br>
-Format: `resume &lt;ROOM_NUMBER&gt;</p>
+<p>Use case resumes at step 2</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="add-a-new-room-code-addroom-code"><a class="link" href="#add-a-new-room-code-addroom-code">7.6. Add a new room: <code>addRoom</code></a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>2b. User inputs a appointment which is conflicted with other appointments</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. User ask patient to make provide a new appointment date <br></p>
+</li>
+<li>
+<p>2b2. patient give a new appointment date<br></p>
 <div class="paragraph">
-<p>Adds a new room with a doctor to the list.<br>
-Format: <code>addRoom &lt;DOCTOR_REFERENCE_ID&gt;</code></p>
+<p>Steps 2b1-2b2 are repeated until the appointment is not conflicted</p>
 </div>
+</li>
+</ul>
 </div>
-<div class="sect3">
-<h4 id="removes-a-room-code-removeroom-code"><a class="link" href="#removes-a-room-code-removeroom-code">7.7. Removes a room: <code>removeRoom</code></a></h4>
 <div class="paragraph">
-<p>Removes a room in the list.<br>
-Format: <code>removeRoom &lt;ROOM_NUMBER&gt;</code></p>
+<p>Use case resumes at step 2.</p>
 </div>
-<h3 id="use-case-change-appointment-date-uc4" class="discrete">Use case: Change appointment date (UC4)</h3>
+</li>
+</ul>
+</div>
+<h3 id="use-case-change-appointment-date-uc7" class="discrete">Use case: Change appointment date (UC7)</h3>
 <div class="paragraph">
 <p>Pre-condition: Patient’s appointment exists and Application is displaying the patient&#8217;s list of appointments</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="patient-management"><a class="link" href="#patient-management">7.8. Patient Management</a></h3>
-<div class="sect3">
-<h4 id="searches-patient-by-arguments-code-patient-code"><a class="link" href="#searches-patient-by-arguments-code-patient-code">7.8.1. Searches patient by arguments: <code>patient</code></a></h4>
 <div class="paragraph">
-<p>Finds patients whose reference ids, names or phone numbers containing any of the given keywords.<br>
-If search keywords are empty, all registered patients will be displayed.<br>
-Note: Requires at least 4 characters to search by a reference id or phone numbers.<br>
-Format: <code>patient [&lt;PATIENT_REFERENCE_ID | PATIENT_NAME | PHONE_NUM&gt;]</code></p>
+<p><strong>MSS</strong></p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User checks whether the current appointment can be changed.</p>
+</li>
+<li>
+<p>User checks and updates appointment&#8217;s appointment time slots.</p>
+</li>
+<li>
+<p>ClerkPro updates the appointment date of the patient.</p>
+</li>
+</ol>
 </div>
-<div class="sect3">
-<h4 id="registers-a-new-patient-code-register-code"><a class="link" href="#registers-a-new-patient-code-register-code">7.8.2. Registers a new patient: <code>register</code></a></h4>
 <div class="paragraph">
-<p>Registers a new patient<br>
-Format:  <code>register  i/&lt;PATIENT_REFERENCE_ID&gt; n/&lt;PATIENT_NAME&gt; [p/&lt;PHONE_NUM&gt;]
- [e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;] [t/Allergies]&#8230;&#8203;</code></p>
+<p>Use case ends.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="unregisters-an-existing-patient-code-unregister-code"><a class="link" href="#unregisters-an-existing-patient-code-unregister-code">7.8.3. Unregisters an existing patient: <code>unregister</code></a></h4>
 <div class="paragraph">
-<p>If user is in the patients listing screen,
-Unregisters an existing patient<br>
-Format:  <code>unregister &lt;ENTRY_ID&gt;</code></p>
+<p><strong>Extensions</strong></p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="updates-patients-profiles-code-update-code"><a class="link" href="#updates-patients-profiles-code-update-code">7.8.4. Updates patients’ profiles: <code>update</code></a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>3a. Current appointment date is invalid format<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1. ClerkPro requests for correct input format<br></p>
+</li>
+<li>
+<p>3a2. User inputs correct format<br></p>
 <div class="paragraph">
-<p>If user is in the patients listing screen,
-Updates any change for patients’ profiles<br>
-Format: <code>update &lt;ENTRY_ID&gt; [n/&lt;PATIENT_NAME&gt;] [i/&lt;PATIENT_REFERENCE_ID&gt;] [p/&lt;PHONE_NUM&gt;]
- [e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;] [t/Allergies]&#8230;&#8203;</code></p>
+<p>Steps 2a1-2a2 are repeated until the appointment has the correct format<br></p>
 </div>
+</li>
+</ul>
 </div>
+</li>
+<li>
+<p>3b. Appointment date is conflict with other appointments<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>3b1. User ask patient to make a new appointment <br></p>
+</li>
+<li>
+<p>3b2. patient change appointment to another date<br></p>
+<div class="paragraph">
+<p>Steps 3b1-3b2 are repeated until the appointment is not conflicted</p>
 </div>
-<div class="sect2">
-<h3 id="on-duty-doctors-management"><a class="link" href="#on-duty-doctors-management">7.9. On-Duty Doctors Management</a></h3>
+<div class="paragraph">
+<p>Use case resumes at step 3</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <h3 id="use-case-find-patients-appointment-uc8" class="discrete">Use case: Find patients appointment (UC8)</h3>
 <div class="paragraph">
-<p>Finds doctors whose names contains any of the given keywords.<br>
-If search keywords are empty, all registered doctors will be displayed.<br>
-Format: <code>doctors [&lt;DOCTOR_NAME&gt;]</code></p>
+<p><strong>MSS</strong></p>
 </div>
-<div class="sect3">
-<h4 id="register-a-new-doctor-code-newdoctor-code"><a class="link" href="#register-a-new-doctor-code-newdoctor-code">7.9.1. Register a new doctor: <code>newdoctor</code></a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find patient&#8217;s appointment list</p>
+</li>
+<li>
+<p>System retrieve and display patient&#8217;s appointments</p>
+</li>
+</ol>
+</div>
 <div class="paragraph">
-<p>Registers a new doctor.<br>
-If the Staff reference identifier is not specified, a unique identifier will be assigned by the system.
-Format: <code>newdoctor n/&lt;STAFF_NAME&gt; [i/&lt;STAFF_REFERENCE_ID&gt;] [p/&lt;PHONE_NUM&gt;] [e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;]</code></p>
+<p>Use case ends.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="update-a-doctor-s-profile-code-update-code"><a class="link" href="#update-a-doctor-s-profile-code-update-code">7.9.2. Update a doctor&#8217;s profile: <code>update</code></a></h4>
 <div class="paragraph">
-<p>If user is in the doctors listing screen, updates any change for doctor’s profiles.<br>
-Format: <code>updatedoctor &lt;ENTRY_ID&gt; [n/&lt;STAFF_NAME&gt;]
-[i/&lt;STAFF_REFERENCE_ID&gt;] [p/&lt;PHONE_NUM&gt;] [e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;]</code></p>
+<p><strong>Extensions</strong></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. patient is not exist<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>System displays an error message "No such patient"</p>
+</li>
+</ul>
 </div>
-<div class="sect3">
-<h4 id="unregister-a-doctor-s-profile-code-resign-code"><a class="link" href="#unregister-a-doctor-s-profile-code-resign-code">7.9.3. Unregister a doctor&#8217;s profile: <code>resign</code></a></h4>
+</li>
+</ul>
+</div>
 <div class="paragraph">
-<p>If user is in the doctors listing screen, removes a doctor’s profile.<br>
-Format: <code>resigndoctor &lt;ENTRY_ID&gt;</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="updates-a-doctor-s-profiles-code-onduty-code"><a class="link" href="#updates-a-doctor-s-profiles-code-onduty-code">7.9.4. Updates a doctor&#8217;s profiles: <code>onduty</code></a></h4>
-<h3 id="use-case-indicate-that-a-doctor-is-on-duty-and-able-to-tend-to-patients-uc9" class="discrete">Use case: Indicate that a doctor is on-duty and able to tend to patients (UC9)</h3>
-<div class="paragraph">
-<p>Pre-condition: Details of the doctor is already registered in system.</p>
-</div>
-</div>
+<p>Use case ends</p>
 </div>
 <div class="sect2">
-<h3 id="use-case-cancel-patient-s-appointment-uc6"><a class="link" href="#use-case-cancel-patient-s-appointment-uc6">7.10. Use case: cancel patient&#8217;s appointment (UC6)</a></h3>
+<h3 id="use-case-cancel-patient-s-appointment-uc9"><a class="link" href="#use-case-cancel-patient-s-appointment-uc9">C.1. Use case: cancel patient&#8217;s appointment (UC9)</a></h3>
 <div class="paragraph">
 <p>Pre-condition: Patient’s record exists</p>
 </div>
@@ -1596,157 +1579,332 @@ Format: <code>resigndoctor &lt;ENTRY_ID&gt;</code></p>
 <div class="paragraph">
 <p>Use case ends</p>
 </div>
-<h3 id="use-case-indicate-that-a-doctor-is-on-duty-and-able-to-tend-to-patients-uc6" class="discrete">Use case: Indicate that a doctor is on-duty and able to tend to patients (UC6)</h3>
+<h3 id="use-case-indicate-that-a-doctor-is-on-duty-and-able-to-tend-to-patients-uc10" class="discrete">Use case: Indicate that a doctor is on-duty and able to tend to patients (UC10)</h3>
 <div class="paragraph">
 <p>Pre-condition: Details of the doctor is already registered in system.</p>
 </div>
-<div class="sect3">
-<h4 id="updates-doctor-s-profiles-code-offduty-code"><a class="link" href="#updates-doctor-s-profiles-code-offduty-code">7.10.1. Updates doctor&#8217;s profiles: <code>offduty</code></a></h4>
 <div class="paragraph">
-<p>Marks the doctor as off-duty. Patients can not be directed to the specified doctor.<br>
-Format: <code>offduty &lt;ROOM_NUMBER&gt;</code></p>
+<p><strong>MSS</strong></p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User finds the doctor using either his/her name or staff id.</p>
+</li>
+<li>
+<p>User assigns the on-duty doctor to a consultation room.</p>
+</li>
+<li>
+<p>System updates the ui to display the available consultation rooms and doctors.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Consultation room has already been taken.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message. Informing the user that the room has already been assigned to another doctor.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. Doctor has already been assigned to a consultation room.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System shows an error message. Informing the user that the doctor has already been assigned to a room.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use case ends.</p>
+</li>
+</ul>
+</div>
+<h3 id="use-case-autocompleter-uc11" class="discrete">Use case: AutoCompleter (UC11)</h3>
+<div class="paragraph">
+<p><strong>Actor:</strong> Clerk</p>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Display suggestions of commands available from whatever has been typed.</p>
+</li>
+<li>
+<p>Autofill of commands selected from AutoCompleter into Command Box.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>MSS:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Clerk types "a" into the Command Box.</p>
+</li>
+<li>
+<p>ClerkPro shows suggestions of commands available for "a".</p>
+</li>
+<li>
+<p>Clerk selects a command from AutoCompleter.</p>
+</li>
+<li>
+<p>ClerkPro auto-fills the selected command into Command Box.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<h3 id="use-case-history-uc12" class="discrete">Use case: History (UC12)</h3>
+<div class="paragraph">
+<p><strong>Actor:</strong> Clerk</p>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Autofill of commands while traversing History.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>MSS:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If AutoCompleter is not suggesting, Clerk can traverse history commands.</p>
+</li>
+<li>
+<p>While traversing, the command box is auto-filled with the history command.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<div class="paragraph">
+<p><em>{More to be added}</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
+</li>
+<li>
+<p>Should be able to hold up to 10000 persons and 10000 events without a noticeable sluggishness in performance for typical usage.</p>
+</li>
+<li>
+<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
+</li>
+<li>
+<p>No internet required.</p>
+</li>
+<li>
+<p>System allows user to undo incorrect or accidental destructive actions</p>
+</li>
+<li>
+<p>App can be downloaded and run via a jar file</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>{More to be added}</em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
+<dd>
+<p>Windows, Linux, Unix, OS-X</p>
+</dd>
+<dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
+<dd>
+<p>A contact detail that is not meant to be shared with others</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Product Name</strong></p>
+</div>
+<div class="paragraph">
+<p>Author: &#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Given below are instructions to test the app manually.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These instructions only provide a starting point for testers to work on; testers are expected to do more <em>exploratory</em> testing.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initial launch</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Download the jar file and copy into an empty folder</p>
+</li>
+<li>
+<p>Double-click the jar file<br>
+Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Saving window preferences</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
+</li>
+<li>
+<p>Re-launch the app by double-clicking the jar file.<br>
+Expected: The most recent window size and location is retained.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="appointment-management"><a class="link" href="#appointment-management">7.11. Appointment Management</a></h3>
-<div class="sect3">
-<h4 id="adds-all-appointments-code-addappt-code"><a class="link" href="#adds-all-appointments-code-addappt-code">7.11.1. Adds all appointments: <code>addappt</code></a></h4>
+<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">G.2. Deleting a person</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a person while all persons are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+</li>
+<li>
+<p>Test case: <code>delete 1</code><br>
+Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>delete 0</code><br>
+Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
 <div class="paragraph">
-<p>Adds a new appointment for a patient<br>
-If optional field for recursive is empty, then only add the event that is given. Otherwise recursive appointments will be added.<br>
-Format: <code>appointments [i/REFERENCE_ID] [rec/recursively] [num/recursiveTimes] str/&lt;START_DATE&gt; end/&lt;END_DATE&gt;</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="displays-all-appointments-code-appointments-code"><a class="link" href="#displays-all-appointments-code-appointments-code">7.11.2. Displays all appointments: <code>appointments</code></a></h4>
-<div class="paragraph">
-<p>Displays a sorted list of upcoming appointments whose appointment is within<br>
-If search keywords are empty, all upcoming appointments will be displayed.<br>
-Format: <code>appointments [p/&lt;PATIENT_NAME | PATIENT_IC&gt;] [s/&lt;START_DATE&gt;] [e/&lt;END_DATE&gt;]</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="cancels-an-appointment-code-cancel-code"><a class="link" href="#cancels-an-appointment-code-cancel-code">7.11.3. Cancels an appointment: <code>cancel</code></a></h4>
-<div class="paragraph">
-<p>Cancels the specified appointment.<br>
-Format: <code>cancelappt &lt;ENTRY_ID&gt;</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="changes-the-appointment-date-code-change-code"><a class="link" href="#changes-the-appointment-date-code-change-code">7.11.4. Changes the appointment date: <code>change</code></a></h4>
-<div class="paragraph">
-<p>Changes and updates to a new appointment detail in the appointment listing screen<br>
-Format: <code>changeappt &lt;ENTRY_ID&gt; [i/&lt;PATIENT_IC&gt;] [s/&lt;START_DATE_TIME&gt;] [e/&lt;END_DATE_TIME&gt;]</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="shows-the-empty-slots-code-slot-code"><a class="link" href="#shows-the-empty-slots-code-slot-code">7.11.5. Shows the empty slots: <code>slot</code></a></h4>
-<div class="paragraph">
-<p>List all the available empty slots for patients to make appointments<br>
-Format: <code>slot s/&lt;START_DATE&gt; e/&lt;END_DATE&gt;</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="displays-patients-who-have-missed-their-appointments-and-have-yet-to-be-notified-code-missed-code"><a class="link" href="#displays-patients-who-have-missed-their-appointments-and-have-yet-to-be-notified-code-missed-code">7.11.6. Displays patients who have missed their appointments and have yet to be notified: <code>missed</code></a></h4>
-<div class="paragraph">
-<p>Displays all appointments that are missed and not yet settled.<br>
-Format: <code>missappt</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="sets-missed-appointments-as-settled-notified-code-settle-code"><a class="link" href="#sets-missed-appointments-as-settled-notified-code-settle-code">7.11.7. Sets missed appointments as settled/notified: <code>settle</code></a></h4>
-<div class="paragraph">
-<p>Settles the missed appointments for respective patients.<br>
-Format: <code>settle &lt;ENTRY_ID&gt;</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="changes-the-max-number-of-concurrent-consultation-code-maxconcurrentappt-code-v2-0"><a class="link" href="#changes-the-max-number-of-concurrent-consultation-code-maxconcurrentappt-code-v2-0">7.11.8. Changes the max number of concurrent consultation: <code>maxconcurrentappt</code> (v2.0)</a></h4>
-<div class="paragraph">
-<p>Changes the maximum number of concurrent patient appointments<br>
-Format: <code>maxconcurrentappt &lt;TOTAL_NUMBER_OF_CONCURRENT_APPOINTMENTS&gt;</code></p>
-</div>
+<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="inventory-commands-v2-0"><a class="link" href="#inventory-commands-v2-0">7.12. Inventory commands (v2.0)</a></h3>
-<div class="sect3">
-<h4 id="views-the-inventory-code-inventory-code"><a class="link" href="#views-the-inventory-code-inventory-code">7.12.1. Views the inventory: <code>inventory</code></a></h4>
-<div class="paragraph">
-<p>Displays the medicine inventory<br>
-Format: <code>inventory</code></p>
+<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dealing with missing/corrupted data files</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+</li>
+</ol>
 </div>
-</div>
-<div class="sect3">
-<h4 id="views-the-inventory-code-prescription-code"><a class="link" href="#views-the-inventory-code-prescription-code">7.12.2. Views the inventory: <code>prescription</code></a></h4>
-<div class="paragraph">
-<p>Displays the prescription. A prescription is a list of medications prescribed by the doctor.<br>
-Format: <code>prescription &lt;PRESCRIPTION_ID | PRESCRIPTION_NAME&gt;</code></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="user-accounts-v2-0"><a class="link" href="#user-accounts-v2-0">7.13. User Accounts (v2.0)</a></h3>
-<div class="sect3">
-<h4 id="login-code-login-code"><a class="link" href="#login-code-login-code">7.13.1. Login: <code>login</code></a></h4>
-<div class="paragraph">
-<p>Login with your username and password. The user will then be prompted to enter their password.<br>
-Format: <code>login &lt;USER_NAME&gt;</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="logout-code-logout-code"><a class="link" href="#logout-code-logout-code">7.13.2. Logout: <code>logout</code></a></h4>
-<div class="paragraph">
-<p>Logout from your account<br>
-Format: <code>logout</code></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="general-commands"><a class="link" href="#general-commands">7.14. General commands</a></h3>
-<div class="sect3">
-<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">7.14.1. Viewing help: <code>help</code></a></h4>
-<div class="paragraph">
-<p>Lists all the useful commands<br>
-Format: <code>help</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="exits-program-code-exit-code"><a class="link" href="#exits-program-code-exit-code">7.14.2. Exits program: <code>exit</code></a></h4>
-<div class="paragraph">
-<p>Exits the program<br>
-Format: <code>exit</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="undo-action-code-undo-code"><a class="link" href="#undo-action-code-undo-code">7.14.3. Undo action: <code>undo</code></a></h4>
-<div class="paragraph">
-<p>Undo a destructive action<br>
-Format: <code>undo</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="redo-action-code-redo-code"><a class="link" href="#redo-action-code-redo-code">7.14.4. Redo action: <code>redo</code></a></h4>
-<div class="paragraph">
-<p>Redo a destructive action<br>
-Format: <code>redo</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="creates-updates-or-removes-an-alias-command-code-alias-code"><a class="link" href="#creates-updates-or-removes-an-alias-command-code-alias-code">7.14.5. Creates, updates or removes an alias command: <code>alias</code></a></h4>
-<div class="paragraph">
-<p>Tags an alias name to a reserved command. More specifically,
-one of the following will happen depending on the parameters of the function.
-Please note that the user can not remap a reserved command.
-A new alias command is created if the alias does not exist.
-Remaps an existing alias command to a reserved command if the alias exist.
-If the reserved command is not specified, the alias is unregistered if it exists.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Format: <code>alias &lt;Alias_Name&gt; [&lt;Reserved_Command&gt;]</code></p>
+<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 16:06:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 23:56:43 UTC</div></div></div></body></html>
