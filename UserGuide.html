@@ -22,6 +22,7 @@
 <li><a href="#general-commands">3.7. General commands</a></li>
 </ul>
 </li>
+<li><a href="#commands-summary">4. Commands Summary</a></li>
 </ul>
 </div>
 </div>
@@ -344,4 +345,155 @@ Format: <code>redo</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 08:38:34 UTC</div></div></div></body></html>
+</div>
+<div class="sect1">
+<h2 id="commands-summary"><a class="link" href="#commands-summary">4. Commands Summary</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Queue Management</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>enqueue: <code>enqueue &lt;PATIENT_REFERENCE_ID&gt;</code></p>
+</li>
+<li>
+<p>dequeue: <code>dequeue &lt;QUEUE_NUMBER&gt;</code></p>
+</li>
+<li>
+<p>next: <code>next &lt;ROOM_NUMBER&gt;</code></p>
+</li>
+<li>
+<p>break: <code>break &lt;ROOM_NUMBER&gt;</code></p>
+</li>
+<li>
+<p>resume: <code>resume &lt;ROOM_NUMBER&gt;</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Patient Management</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>patient: <code>patient [&lt;PATIENT_REFERENCE_ID | PATIENT_NAME | PHONE_NUM&gt;]</code></p>
+</li>
+<li>
+<p>register: <code>register  i/&lt;PATIENT_REFERENCE_ID&gt; n/&lt;PATIENT_NAME&gt; [p/&lt;PHONE_NUM&gt;]
+[e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;] [t/Allergies]&#8230;&#8203;</code></p>
+</li>
+<li>
+<p>unregister: <code>unregister &lt;ENTRY_ID&gt;</code></p>
+</li>
+<li>
+<p>update: <code>update &lt;ENTRY_ID&gt; [n/&lt;PATIENT_NAME&gt;] [i/&lt;PATIENT_REFERENCE_ID&gt;] [p/&lt;PHONE_NUM&gt;]
+[e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;] [t/Allergies]&#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>On-Duty Doctors Management</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>doctors: <code>doctors [&lt;DOCTOR_NAME&gt;]</code></p>
+</li>
+<li>
+<p>newdoctor: <code>newdoctor n/&lt;STAFF_NAME&gt; [i/&lt;STAFF_REFERENCE_ID&gt;] [p/&lt;PHONE_NUM&gt;] [e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;]</code></p>
+</li>
+<li>
+<p>updatedoctor: <code>updatedoctor &lt;ENTRY_ID&gt; [n/&lt;STAFF_NAME&gt;]
+[i/&lt;STAFF_REFERENCE_ID&gt;] [p/&lt;PHONE_NUM&gt;] [e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;]</code></p>
+</li>
+<li>
+<p>resigndoctor: <code>resigndoctor &lt;ENTRY_ID&gt;</code></p>
+</li>
+<li>
+<p>onduty: <code>onduty &lt;ROOM_NUMBER&gt;</code></p>
+</li>
+<li>
+<p>offduty: <code>offduty &lt;ENTRY_ID&gt;</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Appointment Management</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>appointments: <code>appointments [p/&lt;PATIENT_NAME | PATIENT_IC&gt;] [s/&lt;START_DATE&gt;] [e/&lt;END_DATE&gt;]</code></p>
+</li>
+<li>
+<p>cancelappt: <code>cancelappt &lt;ENTRY_ID&gt;</code></p>
+</li>
+<li>
+<p>changeappt: <code>changeappt &lt;ENTRY_ID&gt; [i/&lt;PATIENT_IC&gt;] [s/&lt;START_DATE_TIME&gt;] [e/&lt;END_DATE_TIME&gt;]</code></p>
+</li>
+<li>
+<p>slot: <code>slot s/&lt;START_DATE&gt; e/&lt;END_DATE&gt;</code></p>
+</li>
+<li>
+<p>missappt: <code>missappt</code></p>
+</li>
+<li>
+<p>settle: <code>settle &lt;ENTRY_ID&gt;</code></p>
+</li>
+<li>
+<p>maxconcurrentappt: <code>maxconcurrentappt &lt;TOTAL_NUMBER_OF_CONCURRENT_APPOINTMENTS&gt;</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Inventory commands (v2.0)</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>inventory: <code>inventory</code></p>
+</li>
+<li>
+<p>prescription: <code>prescription &lt;PRESCRIPTION_ID | PRESCRIPTION_NAME&gt;</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>User Accounts (v2.0)</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>login: <code>login &lt;USER_NAME&gt;</code></p>
+</li>
+<li>
+<p>logout: <code>logout</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>General Commands</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>help: <code>help</code></p>
+</li>
+<li>
+<p>exit: <code>exit</code></p>
+</li>
+<li>
+<p>undo: <code>undo</code></p>
+</li>
+<li>
+<p>redo: <code>redo</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 08:39:46 UTC</div></div></div></body></html>
