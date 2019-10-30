@@ -269,27 +269,6 @@ The ActionPair command contains a pairing of of the action itself and its invers
 </div>
 <div class="title">Figure 7. Interactions inside the Logic Component for the <code>next 1</code> Command</div>
 </div>
-<div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("cancelappt 1")</code> API call.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/CancelAppointmentSequenceDiagram.png" alt="CancelAppointmentSequenceDiagram">
-</div>
-<div class="title">Figure 8. Interactions Inside the Logic Component for the <code>cancelappt 1</code> Command</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>DeleteCommandParser</code> and <code>NextCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
@@ -297,7 +276,7 @@ The lifeline for <code>DeleteCommandParser</code> and <code>NextCommandParser</c
 <div class="content">
 <img src="images/ModelOverviewClassDiagramV2.png" alt="ModelOverviewClassDiagramV2">
 </div>
-<div class="title">Figure 9. Structure of the Model Component</div>
+<div class="title">Figure 8. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
@@ -359,7 +338,7 @@ The lifeline for <code>DeleteCommandParser</code> and <code>NextCommandParser</c
 <div class="content">
 <img src="images/StorageClassDiagramV2.png" alt="StorageClassDiagramV2">
 </div>
-<div class="title">Figure 10. Structure of the Storage Component</div>
+<div class="title">Figure 9. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -679,15 +658,15 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="sect2">
 <h3 id="appointment-feature"><a class="link" href="#appointment-feature">3.4. Appointment feature</a></h3>
 <div class="paragraph">
-<p>The Appointment feature provides users the ability to manage appointments for patients. It can help patients to add, change, delete appointments. It also help user to find the missed appointments and settle each missing appointment.</p>
+<p>The Appointment feature provides users the ability to manage appointments for patients. It can help patients to add, change, delete appointments. It also helps user to find the missed appointments and settles each missing appointment efficiently.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. <code>addappt i/001A rec/m num/2 str/01/11/19 1800 end/01/11/19 1830</code> - allows the user to create two monthly appointments to patient whose referenceId is 001A.</p>
+<p>e.g. <code>addappt i/001A str/01/11/19 1800 rec/m num/2</code> - allows the user to create two monthly appointments to patient whose referenceId is 001A.</p>
 </li>
 <li>
-<p>e.g. <code>changeappt 1 str/02/11/19 1800 end/02/11/19 1830</code> - allows the user to change a patient&#8217;s first appointment timing to be the input timing if there is no conflict.</p>
+<p>e.g. <code>changeappt 1 str/02/11/19 1800</code> - allows the user to change a patient&#8217;s first appointment timing to be the input timing if there is no conflict.</p>
 </li>
 </ul>
 </div>
@@ -697,13 +676,16 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>The Appointment feature contains multiple operations to indirectly manipulate the UniqueAppointmentList. The implemented operations include:</p>
 </div>
 <div class="paragraph">
-<p><code>addappt</code> Command - Adds appointments to the appointment schedule.</p>
+<p><code>addappt</code> Command - Adds a appointment or recursive appointments to a patient.</p>
 </div>
 <div class="paragraph">
-<p><code>appointments</code> Command - Lists all upcoming appointment schedule or lists a patient&#8217;s upcoming appointments.</p>
+<p><code>ackappt</code> Command - Acknowledges a appointment once the patient reaches.</p>
 </div>
 <div class="paragraph">
-<p><code>changeappt</code> Command - change a current appointment to a different timing.</p>
+<p><code>appointments</code> Command - Lists all upcoming appointment schedule or lists a specific patient&#8217;s upcoming appointments.</p>
+</div>
+<div class="paragraph">
+<p><code>changeappt</code> Command - Change a current appointment&#8217;s timing to a different timing.</p>
 </div>
 <div class="paragraph">
 <p><code>cancelappt</code> Command - Cancels appointments found within the appointment schedule.</p>
@@ -712,31 +694,28 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p><code>missappt</code> Command - Lists all missing appointment.</p>
 </div>
 <div class="paragraph">
-<p><code>settleappt</code> Command - settle a missing appointment when user contact with patient.</p>
+<p><code>settleappt</code> Command - Settles a missing appointment when user contact with patient.</p>
 </div>
 <div class="paragraph">
-<p><code>ackappt</code> Command - acknowledge a appointment once the patient reaches.</p>
-</div>
-<div class="paragraph">
-<p>Each Appointment object consists of a ReferenceId, DateTime, Status.The UniqueAppointmentList contains 0 or more Appointments.</p>
-</div>
-<div class="paragraph">
-<p>The current implementation of Appointment will do check with patient object by the unique referenceId. If it exists within the Model#UniquePatientList, then constructing the Appointment object. This ensures that the Patient is registered before making an appointment.</p>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a ChangeAppointment command:</p>
+<p>The class diagram below illustrates the interactions between the Appointment class and associated classes.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ChangeAppointmentActivityDiagram.png" alt="ChangeAppointmentActivityDiagram">
+<img src="images/AppointmentClassDiagram.png" alt="AppointmentClassDiagram">
 </div>
-<div class="title">Figure 11. Interactions Inside the Logic Component when a user executes a <code>changeappt</code> command</div>
+<div class="title">Figure 10. Appointment class diagram</div>
+</div>
+<div class="paragraph">
+<p>Each Appointment object consists of a PatientId, Timing, Status. Timing class has 2 DateTime object as they indicates the starting and ending time of the appointment. The UniqueAppointmentList contains 0 or more Appointments.</p>
+</div>
+<div class="paragraph">
+<p>The current implementation of Appointment will do check with patient object by the unique referenceId and it will also check timing with doctors' dutyRoster. If the referenceId exists within the Model#UniquePatientList and the timing is valid, then constructing the Appointment object. This ensures that the patient is registered and the appointment&#8217;s timing is valid before making an appointment.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="code-addappt-code-command"><a class="link" href="#code-addappt-code-command">3.4.2. <code>addappt</code> Command</a></h4>
 <div class="paragraph">
-<p>The addappt command behaves similarly to the add command used for Patient and Doctor. The command takes in the parameters required to construct ReferenceId, DateTime and Status. The image below shows how the Appointment object is constructed.</p>
+<p>The addAppointment command behaves similarly to the add command used for Patient and Doctor. The command takes in the parameters required to construct ReferenceId, DateTime and Status. The image below shows how the Appointment object is constructed.</p>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a AddAppointment command:</p>
@@ -745,11 +724,77 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="content">
 <img src="images/AddAppointmentActivityDiagram.png" alt="AddAppointmentActivityDiagram">
 </div>
-<div class="title">Figure 12. Interactions Inside the Logic Component when a user executes a <code>addappt</code> command</div>
+<div class="title">Figure 11. Interactions Inside the Logic Component when a user executes a <code>addappt</code> command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.4.3. Design Considerations</a></h4>
+<h4 id="code-ackappt-code-command"><a class="link" href="#code-ackappt-code-command">3.4.3. <code>ackappt</code> command</a></h4>
+<div class="paragraph">
+<p>The ackAppointment command will mark the patient&#8217;s the most upcoming appointment as Acknowledge when the patient is reaching and it will updateUniqueAppointmentList to display the rest appointments that are belong to the patient.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-appointments-code-command"><a class="link" href="#code-appointments-code-command">3.4.4. <code>appointments</code> Command</a></h4>
+<div class="paragraph">
+<p>The appointments command works in two different cases for different purpose.</p>
+</div>
+<div class="paragraph">
+<p>Case 1: <code>appointments patientId</code></p>
+</div>
+<div class="paragraph">
+<p>The appointments command searches for appointments that were belong to the patient that was entered by the user. The filtered appointments are found in ModelManager. The list is instantiated by filtering the UniqueAppointmentList using EventContainsKeywordPredicate which is created from the patientId argument supplied by the user.</p>
+</div>
+<div class="paragraph">
+<p>Case 2: <code>appointments</code></p>
+</div>
+<div class="paragraph">
+<p>The appointments behaves similarly to appointments with the exception that it does not take in any arguments. Instead, it automatically executes with the predicate EventContainsApprovedStatusPredicate. updateFilteredAppointmentList() is called and the entire list of upcoming appointments is shown to the user.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-changeappt-code-command"><a class="link" href="#code-changeappt-code-command">3.4.5. <code>changeappt</code> Command</a></h4>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a ChangeAppointment command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ChangeAppointmentActivityDiagram.png" alt="ChangeAppointmentActivityDiagram">
+</div>
+<div class="title">Figure 12. Interactions Inside the Logic Component when a user executes a <code>changeappt</code> command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-cancelappt-code-command"><a class="link" href="#code-cancelappt-code-command">3.4.6. <code>cancelappt</code> Command</a></h4>
+<div class="paragraph">
+<p><code>cancelappt</code> simply takes in the index of the target appointment to cancel according to the displayed appointment list.</p>
+</div>
+<div class="paragraph">
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("cancelappt 1")</code> API call.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CancelAppointmentSequenceDiagram.png" alt="CancelAppointmentSequenceDiagram">
+</div>
+<div class="title">Figure 13. Interactions Inside the Logic Component for the <code>cancelappt 1</code> Command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-missappt-code-command"><a class="link" href="#code-missappt-code-command">3.4.7. <code>missappt</code> Command</a></h4>
+<div class="paragraph">
+<p>The missAppointment command searches for appointments that patients did not come. The filtered appointments are found in ModelManager. The list is instantiated by filtering the UniqueAppointmentList using EventsMissedPredicate which checks all APPROVED-Status appointments' ending times with current time.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-settleappt-code-command"><a class="link" href="#code-settleappt-code-command">3.4.8. <code>settleappt</code> Command</a></h4>
+<div class="paragraph">
+<p>The settleAppointment command helps users to record if they settled missing appointments. It allows users make any missing appointment to be SETTLE once users have settled it. it will updateUniqueAppointmentList to display the rest missing appointments.</p>
+</div>
+<div class="paragraph">
+<p>In future implementations, i.e. v2.0, the valid timing slot will be given after checking with doctor&#8217;s dutyRoster and Model#UniqueAppointmentList. This ensures users can easily make appointments for patients.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.4.9. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-store-timing-fields"><a class="link" href="#aspect-how-to-store-timing-fields">Aspect:  How to store Timing fields</a></h5>
 <div class="ulist">
@@ -775,7 +820,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>Pros: Makes it easier to implement.</p>
 </li>
 <li>
-<p>Cons: Requires additional code to convert into Date class when carrying out calculating methods.</p>
+<p>Cons: Requires additional code to convert into DateTIme class when carrying out calculating methods.</p>
 </li>
 </ul>
 </div>
@@ -804,6 +849,9 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p><strong>Alternative 2:</strong> Keeps the onscreen clutter at a minimum and stays in line with the CLI concept.</p>
 <div class="ulist">
 <ul>
+<li>
+<p>Pros: Makes it easier to implement.</p>
+</li>
 <li>
 <p>Cons: Increases difficulty in freely accessing appointments.</p>
 </li>
@@ -1368,7 +1416,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </li>
 </ul>
 </div>
-<h3 id="use-case-change-appointment-date-uc6" class="discrete">Use case: Change appointment date (UC6)</h3>
+<h3 id="use-case-add-new-a-appointment-uc6" class="discrete">Use case: Add new a appointment (UC6)</h3>
 <div class="paragraph">
 <p>Pre-condition: Patient exists in the system</p>
 </div>
@@ -1378,10 +1426,10 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Patient wants to have new appointments</p>
+<p>Patient wants to have a new appointment</p>
 </li>
 <li>
-<p>User wants to add appointments for patient</p>
+<p>User wants to add a appointments for the patient</p>
 </li>
 <li>
 <p>ClerkPro adds this appointment</p>
@@ -1420,11 +1468,11 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p>2b. User inputs a appointment which is conflicted with other appointments</p>
+<p>2b. User inputs a appointment which is conflicted with other appointments and the appointment cannot be assigned to a doctor as all doctors has other appointments with other patients at that time.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>2b1. User ask patient to make provide a new appointment date <br></p>
+<p>2b1. User ask patient to make provide a new appointment timing <br></p>
 </li>
 <li>
 <p>2b2. patient give a new appointment date<br></p>
@@ -1450,10 +1498,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User checks whether the current appointment can be changed.</p>
-</li>
-<li>
-<p>User checks and updates appointment&#8217;s appointment time slots.</p>
+<p>User provides a new time slots for a current apointment to change.</p>
 </li>
 <li>
 <p>ClerkPro updates the appointment date of the patient.</p>
@@ -1469,14 +1514,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p>3a. Current appointment date is invalid format<br></p>
+<p>2a. Current appointment date is invalid format<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p>3a1. ClerkPro requests for correct input format<br></p>
+<p>2a1. ClerkPro requests for correct input format<br></p>
 </li>
 <li>
-<p>3a2. User inputs correct format<br></p>
+<p>2a2. User inputs correct format<br></p>
 <div class="paragraph">
 <p>Steps 2a1-2a2 are repeated until the appointment has the correct format<br></p>
 </div>
@@ -1485,19 +1530,19 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </li>
 <li>
-<p>3b. Appointment date is conflict with other appointments<br></p>
+<p>2b. Appointment date is conflict with other appointments<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p>3b1. User ask patient to make a new appointment <br></p>
+<p>2b1. User ask patient to make a new appointment <br></p>
 </li>
 <li>
-<p>3b2. patient change appointment to another date<br></p>
+<p>2b2. patient change appointment to another date<br></p>
 <div class="paragraph">
-<p>Steps 3b1-3b2 are repeated until the appointment is not conflicted</p>
+<p>Steps 2b1-2b2 are repeated until the appointment is not conflicted</p>
 </div>
 <div class="paragraph">
-<p>Use case resumes at step 3</p>
+<p>Use case resumes at step 2</p>
 </div>
 </li>
 </ul>
@@ -1920,4 +1965,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 07:57:07 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 08:38:34 UTC</div></div></div></body></html>
