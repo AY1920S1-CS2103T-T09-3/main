@@ -166,15 +166,7 @@ Format:  <code>register  i/&lt;PATIENT_REFERENCE_ID&gt; n/&lt;PATIENT_NAME&gt; [
 </div>
 </div>
 <div class="sect3">
-<h4 id="unregisters-an-existing-patient-code-unregister-code"><a class="link" href="#unregisters-an-existing-patient-code-unregister-code">3.2.3. Unregisters an existing patient: <code>unregister</code></a></h4>
-<div class="paragraph">
-<p>If user is in the patients listing screen,
-Unregisters an existing patient<br>
-Format:  <code>unregister &lt;ENTRY_ID&gt;</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="updates-patients-profiles-code-update-code"><a class="link" href="#updates-patients-profiles-code-update-code">3.2.4. Updates patients’ profiles: <code>update</code></a></h4>
+<h4 id="updates-patients-profiles-code-update-code"><a class="link" href="#updates-patients-profiles-code-update-code">3.2.3. Updates patients’ profiles: <code>update</code></a></h4>
 <div class="paragraph">
 <p>If user is in the patients listing screen,
 Updates any change for patients’ profiles<br>
@@ -210,14 +202,7 @@ Format: <code>updatedoctor &lt;ENTRY_ID&gt; [n/&lt;STAFF_NAME&gt;]
 </div>
 </div>
 <div class="sect3">
-<h4 id="unregisters-a-doctor-s-profile-code-resign-code"><a class="link" href="#unregisters-a-doctor-s-profile-code-resign-code">3.3.4. Unregisters a doctor&#8217;s profile: <code>resign</code></a></h4>
-<div class="paragraph">
-<p>If user is in the doctors listing screen, removes a doctor’s profile.<br>
-Format: <code>resigndoctor &lt;ENTRY_ID&gt;</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="marks-the-doctor-as-on-duty-code-onduty-code"><a class="link" href="#marks-the-doctor-as-on-duty-code-onduty-code">3.3.5. Marks the doctor as on-duty: <code>onduty</code></a></h4>
+<h4 id="marks-the-doctor-as-on-duty-code-onduty-code"><a class="link" href="#marks-the-doctor-as-on-duty-code-onduty-code">3.3.4. Marks the doctor as on-duty: <code>onduty</code></a></h4>
 <div class="paragraph">
 <p>Marks the doctor as on-duty and stationed in the given room number.<br>
 Patients can be directed to the specified doctor.<br>
@@ -225,7 +210,7 @@ Format: <code>onduty &lt;ROOM_NUMBER&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="marks-the-doctor-as-off-duty-code-offduty-code"><a class="link" href="#marks-the-doctor-as-off-duty-code-offduty-code">3.3.6. Marks the doctor as off-duty: <code>offduty</code></a></h4>
+<h4 id="marks-the-doctor-as-off-duty-code-offduty-code"><a class="link" href="#marks-the-doctor-as-off-duty-code-offduty-code">3.3.5. Marks the doctor as off-duty: <code>offduty</code></a></h4>
 <div class="paragraph">
 <p>Marks the doctor as off-duty. Patients can not be directed to the specified doctor.<br>
 Format: <code>offduty &lt;ENTRY_ID&gt;</code></p>
@@ -357,20 +342,6 @@ Format: <code>undo</code></p>
 Format: <code>redo</code></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="creates-updates-or-removes-an-alias-command-code-alias-code"><a class="link" href="#creates-updates-or-removes-an-alias-command-code-alias-code">3.7.5. Creates, updates or removes an alias command: <code>alias</code></a></h4>
-<div class="paragraph">
-<p>Tags an alias name to a reserved command. More specifically,
-one of the following will happen depending on the parameters of the function.
-Please note that the user can not remap a reserved command.
-A new alias command is created if the alias does not exist.
-Remaps an existing alias command to a reserved command if the alias exist.
-If the reserved command is not specified, the alias is unregistered if it exists.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>alias &lt;Alias_Name&gt; [&lt;Reserved_Command&gt;]</code></p>
 </div>
 </div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 06:25:18 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 07:57:07 UTC</div></div></div></body></html>
