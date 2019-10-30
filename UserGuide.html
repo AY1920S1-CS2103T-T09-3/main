@@ -17,9 +17,10 @@
 <li><a href="#patient-management">3.2. Patient Management</a></li>
 <li><a href="#on-duty-doctors-management">3.3. On-Duty Doctors Management</a></li>
 <li><a href="#appointment-management">3.4. Appointment Management</a></li>
-<li><a href="#inventory-commands-v2-0">3.5. Inventory commands (v2.0)</a></li>
-<li><a href="#user-accounts-v2-0">3.6. User Accounts (v2.0)</a></li>
-<li><a href="#general-commands">3.7. General commands</a></li>
+<li><a href="#duty-shift-management">3.5. Duty-shift Management</a></li>
+<li><a href="#inventory-commands-v2-0">3.6. Inventory Commands (v2.0)</a></li>
+<li><a href="#user-accounts-v2-0">3.7. User Accounts (v2.0)</a></li>
+<li><a href="#general-commands">3.8. General Commands</a></li>
 </ul>
 </li>
 <li><a href="#commands-summary">4. Commands Summary</a></li>
@@ -30,7 +31,7 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This program is targeted at clerks working in small clinics. It is designed for those who prefer to work with a Command Line Interface (CLI). It allows clerks to manage queues, set appointments and manage the inventory. Typing fast allows you to complete your tasks much faster than GUI apps.</p>
+<p>This program is targeted at clerks working in small clinics. It is designed for those who prefer to work with a Command Line Interface (CLI). It allows clerks to manage appointments, staff&#8217;s duty roster, inventories and queues. Typing fast allows you to complete your tasks much faster than GUI apps.</p>
 </div>
 </div>
 </div>
@@ -65,13 +66,13 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>register</code></strong><code>i/001A n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : registers a patient named <code>John Doe</code>.</p>
+<p><code>register i/001A n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : registers a patient named <code>John Doe</code>.</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd patient shown in the current list</p>
+<p><code>enqueue 001A</code> : enqueues patient with reference id <code>001A</code> into the queue.</p>
 </li>
 <li>
-<p><strong><code>exit</code></strong> : exits the app</p>
+<p><strong><code>exit</code></strong> : exits the app.</p>
 </li>
 </ul>
 </div>
@@ -94,7 +95,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>&lt;UPPER_CASE&gt;</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>&lt;UPPER_CASE&gt;</code> are the parameters to be supplied by the user e.g. in <code>register n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>register n/John Doe</code>.</p>
 </li>
 <li>
 <p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
@@ -112,21 +113,32 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect2">
 <h3 id="queue-management"><a class="link" href="#queue-management">3.1. Queue Management</a></h3>
 <div class="sect3">
-<h4 id="add-a-patient-to-the-queue-code-enqueue-code"><a class="link" href="#add-a-patient-to-the-queue-code-enqueue-code">3.1.1. Add a patient to the queue: <code>enqueue</code></a></h4>
+<h4 id="adds-a-patient-to-the-queue-code-enqueue-code"><a class="link" href="#adds-a-patient-to-the-queue-code-enqueue-code">3.1.1. Adds a patient to the queue: <code>enqueue</code></a></h4>
 <div class="paragraph">
 <p>Adds a patient to the queue<br>
-Format: <code>enqueue &lt;PATIENT_REFERENCE_ID&gt;</code></p>
+Format: <code>enqueue &lt;PATIENT_REFERENCE_ID&gt;</code>
+Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add acc n/Hotel 81 a/Orchard /p67555312</code></p>
+</li>
+<li>
+<p><code>add acc n/Mandarin Oriental a/Ang Mo Kio</code></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="remove-a-patient-from-the-queue-code-dequeue-code"><a class="link" href="#remove-a-patient-from-the-queue-code-dequeue-code">3.1.2. Remove a patient from the queue: <code>dequeue</code></a></h4>
+<h4 id="removes-a-patient-from-the-queue-code-dequeue-code"><a class="link" href="#removes-a-patient-from-the-queue-code-dequeue-code">3.1.2. Removes a patient from the queue: <code>dequeue</code></a></h4>
 <div class="paragraph">
-<p>Removes a patient from the queue based on their queue position<br>
+<p>Removes a patient from the queue based on their queue position.<br>
 Format: <code>dequeue &lt;QUEUE_NUMBER&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="assign-next-patient-to-an-available-doctor-code-next-code"><a class="link" href="#assign-next-patient-to-an-available-doctor-code-next-code">3.1.3. Assign next patient to an available doctor : <code>next</code></a></h4>
+<h4 id="assigns-next-patient-to-an-available-doctor-code-next-code"><a class="link" href="#assigns-next-patient-to-an-available-doctor-code-next-code">3.1.3. Assigns next patient to an available doctor : <code>next</code></a></h4>
 <div class="paragraph">
 <p>Assigns next patient to an available doctor based on the room number.<br>
 Format: <code>next &lt;ROOM_NUMBER&gt;</code></p>
@@ -135,7 +147,7 @@ Format: <code>next &lt;ROOM_NUMBER&gt;</code></p>
 <div class="sect3">
 <h4 id="doctor-takes-a-break-code-break-code"><a class="link" href="#doctor-takes-a-break-code-break-code">3.1.4. Doctor takes a break: <code>break</code></a></h4>
 <div class="paragraph">
-<p>Avoids directing patients to a given Doctor based on the room number.<br>
+<p>Avoids directing patients to a given doctor based on the room number.<br>
 Format: <code>break &lt;ROOM_NUMBER&gt;</code></p>
 </div>
 </div>
@@ -152,7 +164,7 @@ Format: <code>resume &lt;ROOM_NUMBER&gt;</code></p>
 <div class="sect3">
 <h4 id="searches-patient-by-arguments-code-patient-code"><a class="link" href="#searches-patient-by-arguments-code-patient-code">3.2.1. Searches patient by arguments: <code>patient</code></a></h4>
 <div class="paragraph">
-<p>Finds patients whose reference ids, names or phone numbers containing any of the given keywords.<br>
+<p>Filters patients whose reference ids, names or phone numbers containing any of the given keywords.<br>
 If search keywords are empty, all registered patients will be displayed.<br>
 Note: Requires at least 4 characters to search by a reference id or phone numbers.<br>
 Format: <code>patient [&lt;PATIENT_REFERENCE_ID | PATIENT_NAME | PHONE_NUM&gt;]</code></p>
@@ -161,7 +173,7 @@ Format: <code>patient [&lt;PATIENT_REFERENCE_ID | PATIENT_NAME | PHONE_NUM&gt;]<
 <div class="sect3">
 <h4 id="registers-a-new-patient-code-register-code"><a class="link" href="#registers-a-new-patient-code-register-code">3.2.2. Registers a new patient: <code>register</code></a></h4>
 <div class="paragraph">
-<p>Registers a new patient<br>
+<p>Registers a new patient.<br>
 Format:  <code>register  i/&lt;PATIENT_REFERENCE_ID&gt; n/&lt;PATIENT_NAME&gt; [p/&lt;PHONE_NUM&gt;]
  [e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;] [t/Allergies]&#8230;&#8203;</code></p>
 </div>
@@ -169,8 +181,7 @@ Format:  <code>register  i/&lt;PATIENT_REFERENCE_ID&gt; n/&lt;PATIENT_NAME&gt; [
 <div class="sect3">
 <h4 id="updates-patients-profiles-code-update-code"><a class="link" href="#updates-patients-profiles-code-update-code">3.2.3. Updates patients’ profiles: <code>update</code></a></h4>
 <div class="paragraph">
-<p>If user is in the patients listing screen,
-Updates any change for patients’ profiles<br>
+<p>If user is in the patients listing screen, updates any change for patients’ profiles<br>
 Format: <code>update &lt;ENTRY_ID&gt; [n/&lt;PATIENT_NAME&gt;] [i/&lt;PATIENT_REFERENCE_ID&gt;] [p/&lt;PHONE_NUM&gt;]
  [e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;] [t/Allergies]&#8230;&#8203;</code></p>
 </div>
@@ -181,21 +192,21 @@ Format: <code>update &lt;ENTRY_ID&gt; [n/&lt;PATIENT_NAME&gt;] [i/&lt;PATIENT_RE
 <div class="sect3">
 <h4 id="views-doctors-code-doctors-code"><a class="link" href="#views-doctors-code-doctors-code">3.3.1. Views doctors: <code>doctors</code></a></h4>
 <div class="paragraph">
-<p>Finds doctors whose names contains any of the given keywords.<br>
+<p>Finds doctors whose names contain any of the given keywords.<br>
 If search keywords are empty, all registered doctors will be displayed.<br>
 Format: <code>doctors [&lt;DOCTOR_NAME&gt;]</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="register-a-new-doctor-code-newdoctor-code"><a class="link" href="#register-a-new-doctor-code-newdoctor-code">3.3.2. Register a new doctor: <code>newdoctor</code></a></h4>
+<h4 id="registers-a-new-doctor-code-newdoctor-code"><a class="link" href="#registers-a-new-doctor-code-newdoctor-code">3.3.2. Registers a new doctor: <code>newdoctor</code></a></h4>
 <div class="paragraph">
 <p>Registers a new doctor.<br>
-If the Staff reference identifier is not specified, a unique identifier will be assigned by the system.
+If the staff reference identifier is not specified, a unique identifier will be assigned by the system.
 Format: <code>newdoctor n/&lt;STAFF_NAME&gt; [i/&lt;STAFF_REFERENCE_ID&gt;] [p/&lt;PHONE_NUM&gt;] [e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;]</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="update-a-doctor-s-profile-code-update-code"><a class="link" href="#update-a-doctor-s-profile-code-update-code">3.3.3. Update a doctor&#8217;s profile: <code>update</code></a></h4>
+<h4 id="updates-a-doctor-s-profile-code-updatedoctor-code"><a class="link" href="#updates-a-doctor-s-profile-code-updatedoctor-code">3.3.3. Updates a doctor&#8217;s profile: <code>updatedoctor</code></a></h4>
 <div class="paragraph">
 <p>If user is in the doctors listing screen, updates any change for doctor’s profiles.<br>
 Format: <code>updatedoctor &lt;ENTRY_ID&gt; [n/&lt;STAFF_NAME&gt;]
@@ -205,15 +216,14 @@ Format: <code>updatedoctor &lt;ENTRY_ID&gt; [n/&lt;STAFF_NAME&gt;]
 <div class="sect3">
 <h4 id="marks-the-doctor-as-on-duty-code-onduty-code"><a class="link" href="#marks-the-doctor-as-on-duty-code-onduty-code">3.3.4. Marks the doctor as on-duty: <code>onduty</code></a></h4>
 <div class="paragraph">
-<p>Marks the doctor as on-duty and stationed in the given room number.<br>
-Patients can be directed to the specified doctor.<br>
-Format: <code>onduty &lt;ROOM_NUMBER&gt;</code></p>
+<p>Marks the doctor as on-duty and adds him/her to the list based on the index given.<br>
+Format: <code>onduty &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="marks-the-doctor-as-off-duty-code-offduty-code"><a class="link" href="#marks-the-doctor-as-off-duty-code-offduty-code">3.3.5. Marks the doctor as off-duty: <code>offduty</code></a></h4>
 <div class="paragraph">
-<p>Marks the doctor as off-duty. Patients can not be directed to the specified doctor.<br>
+<p>Marks the doctor as off-duty and removes him/her from the list based on the index given.<br>
 Format: <code>offduty &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
@@ -221,53 +231,52 @@ Format: <code>offduty &lt;ENTRY_ID&gt;</code></p>
 <div class="sect2">
 <h3 id="appointment-management"><a class="link" href="#appointment-management">3.4. Appointment Management</a></h3>
 <div class="sect3">
-<h4 id="adds-all-appointments-code-addappt-code"><a class="link" href="#adds-all-appointments-code-addappt-code">3.4.1. Adds all appointments: <code>addappt</code></a></h4>
+<h4 id="adds-an-appointment-code-addappt-code"><a class="link" href="#adds-an-appointment-code-addappt-code">3.4.1. Adds an appointment: <code>addappt</code></a></h4>
 <div class="paragraph">
 <p>Adds a new appointment for a patient<br>
-If optional field for recursive is empty, then only add the event that is given. Otherwise recursive appointments will be added.<br>
-Format: <code>appointments [i/REFERENCE_ID] [rec/recursively] [num/recursiveTimes] str/&lt;START_DATE&gt; end/&lt;END_DATE&gt;</code></p>
+Format: <code>addappt [i/REFERENCE_ID] str/&lt;START_TIMING&gt; [rec/REPEATEDLY] [num/RECURSIVE_TIMES]</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="displays-all-appointments-code-appointments-code"><a class="link" href="#displays-all-appointments-code-appointments-code">3.4.2. Displays all appointments: <code>appointments</code></a></h4>
+<h4 id="acknowledges-a-appointment-code-ackappt-code"><a class="link" href="#acknowledges-a-appointment-code-ackappt-code">3.4.2. Acknowledges a appointment: <code>ackappt</code></a></h4>
 <div class="paragraph">
-<p>Displays a sorted list of upcoming appointments whose appointment is within<br>
-If search keywords are empty, all upcoming appointments will be displayed.<br>
-Format: <code>appointments [p/&lt;PATIENT_NAME | PATIENT_IC&gt;] [s/&lt;START_DATE&gt;] [e/&lt;END_DATE&gt;]</code></p>
+<p>Acknowledges an existing appointment once the patient has arrived<br>
+Format: <code>ackappt [i/REFERENCE_ID]</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="cancels-an-appointment-code-cancel-code"><a class="link" href="#cancels-an-appointment-code-cancel-code">3.4.3. Cancels an appointment: <code>cancel</code></a></h4>
+<h4 id="displays-all-appointments-code-appointments-code"><a class="link" href="#displays-all-appointments-code-appointments-code">3.4.3. Displays all appointments: <code>appointments</code></a></h4>
+<div class="paragraph">
+<p>Displays a sorted list of upcoming appointments for the patient that is associated to the given <code>i/REFERENCE_ID</code><br>
+If no keywords are given, all upcoming appointments will be displayed.<br>
+Format: <code>appointments [i/REFERENCE_ID]</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cancels-an-appointment-code-cancelappt-code"><a class="link" href="#cancels-an-appointment-code-cancelappt-code">3.4.4. Cancels an appointment: <code>cancelappt</code></a></h4>
 <div class="paragraph">
 <p>Cancels the specified appointment.<br>
 Format: <code>cancelappt &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="changes-the-appointment-date-code-change-code"><a class="link" href="#changes-the-appointment-date-code-change-code">3.4.4. Changes the appointment date: <code>change</code></a></h4>
+<h4 id="changes-the-appointment-date-code-changeappt-code"><a class="link" href="#changes-the-appointment-date-code-changeappt-code">3.4.5. Changes the appointment date: <code>changeappt</code></a></h4>
 <div class="paragraph">
-<p>Changes and updates to a new appointment detail in the appointment listing screen<br>
-Format: <code>changeappt &lt;ENTRY_ID&gt; [i/&lt;PATIENT_IC&gt;] [s/&lt;START_DATE_TIME&gt;] [e/&lt;END_DATE_TIME&gt;]</code></p>
+<p>Changes the timing for an existing appointment.<br>
+Format: <code>changeappt &lt;ENTRY_ID&gt; [str/&lt;START_TIMING&gt;]</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="shows-the-empty-slots-code-slot-code"><a class="link" href="#shows-the-empty-slots-code-slot-code">3.4.5. Shows the empty slots: <code>slot</code></a></h4>
+<h4 id="displays-patients-who-have-missed-their-appointments-code-missappt-code"><a class="link" href="#displays-patients-who-have-missed-their-appointments-code-missappt-code">3.4.6. Displays patients who have missed their appointments: <code>missappt</code></a></h4>
 <div class="paragraph">
-<p>List all the available empty slots for patients to make appointments<br>
-Format: <code>slot s/&lt;START_DATE&gt; e/&lt;END_DATE&gt;</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="displays-patients-who-have-missed-their-appointments-and-have-yet-to-be-notified-code-missed-code"><a class="link" href="#displays-patients-who-have-missed-their-appointments-and-have-yet-to-be-notified-code-missed-code">3.4.6. Displays patients who have missed their appointments and have yet to be notified: <code>missed</code></a></h4>
-<div class="paragraph">
-<p>Displays all appointments that are missed and not yet settled.<br>
+<p>Displays all appointments that are missed.<br>
 Format: <code>missappt</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="sets-missed-appointments-as-settled-notified-code-settle-code"><a class="link" href="#sets-missed-appointments-as-settled-notified-code-settle-code">3.4.7. Sets missed appointments as settled/notified: <code>settle</code></a></h4>
 <div class="paragraph">
-<p>Settles the missed appointments for respective patients.<br>
+<p>Settles and removes the missed appointment based on the given index.<br>
 Format: <code>settle &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
@@ -278,18 +287,49 @@ Format: <code>settle &lt;ENTRY_ID&gt;</code></p>
 Format: <code>maxconcurrentappt &lt;TOTAL_NUMBER_OF_CONCURRENT_APPOINTMENTS&gt;</code></p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="shows-the-empty-slots-code-slot-code-v2-0"><a class="link" href="#shows-the-empty-slots-code-slot-code-v2-0">3.4.9. Shows the empty slots: <code>slot</code> (v2.0)</a></h4>
+<div class="paragraph">
+<p>List all the available empty slots for patients to make appointments<br>
+Format: <code>slot s/&lt;START_DATE&gt; e/&lt;END_DATE&gt;</code></p>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="inventory-commands-v2-0"><a class="link" href="#inventory-commands-v2-0">3.5. Inventory commands (v2.0)</a></h3>
+<h3 id="duty-shift-management"><a class="link" href="#duty-shift-management">3.5. Duty-shift Management</a></h3>
 <div class="sect3">
-<h4 id="views-the-inventory-code-inventory-code"><a class="link" href="#views-the-inventory-code-inventory-code">3.5.1. Views the inventory: <code>inventory</code></a></h4>
+<h4 id="adds-a-duty-shift-for-a-doctor-code-addshift-code"><a class="link" href="#adds-a-duty-shift-for-a-doctor-code-addshift-code">3.5.1. Adds a duty shift for a doctor: <code>addshift</code></a></h4>
 <div class="paragraph">
-<p>Displays the medicine inventory<br>
+<p>Adds a new duty shift for a doctor.<br>
+Format: <code>addshift [i/STAFF_REFERENCE_ID] str/&lt;START_TIMING&gt; [rec/REPEATEDLY] [num/REPEATED_TIMES]</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cancels-a-duty-shift-for-a-doctor-code-cancelshift-code"><a class="link" href="#cancels-a-duty-shift-for-a-doctor-code-cancelshift-code">3.5.2. Cancels a duty shift for a doctor: <code>cancelshift</code></a></h4>
+<div class="paragraph">
+<p>Cancels the specified duty shift for a doctor based on the given entry index.<br>
+Format: <code>cancelshift &lt;ENTRY_ID&gt;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changes-the-duty-shift-for-a-doctor-code-changeshift-code"><a class="link" href="#changes-the-duty-shift-for-a-doctor-code-changeshift-code">3.5.3. Changes the duty shift for a doctor: <code>changeshift</code></a></h4>
+<div class="paragraph">
+<p>Changes the timing of an existing duty shift based on the given entry index. <br>
+Format: <code>changeshift &lt;ENTRY_ID&gt; [str/&lt;START_TIMING&gt;]</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="inventory-commands-v2-0"><a class="link" href="#inventory-commands-v2-0">3.6. Inventory Commands (v2.0)</a></h3>
+<div class="sect3">
+<h4 id="views-the-inventory-code-inventory-code"><a class="link" href="#views-the-inventory-code-inventory-code">3.6.1. Views the inventory: <code>inventory</code></a></h4>
+<div class="paragraph">
+<p>Displays the medicine inventory.<br>
 Format: <code>inventory</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="views-the-inventory-code-prescription-code"><a class="link" href="#views-the-inventory-code-prescription-code">3.5.2. Views the inventory: <code>prescription</code></a></h4>
+<h4 id="views-the-inventory-code-prescription-code"><a class="link" href="#views-the-inventory-code-prescription-code">3.6.2. Views the inventory: <code>prescription</code></a></h4>
 <div class="paragraph">
 <p>Displays the prescription. A prescription is a list of medications prescribed by the doctor.<br>
 Format: <code>prescription &lt;PRESCRIPTION_ID | PRESCRIPTION_NAME&gt;</code></p>
@@ -297,16 +337,16 @@ Format: <code>prescription &lt;PRESCRIPTION_ID | PRESCRIPTION_NAME&gt;</code></p
 </div>
 </div>
 <div class="sect2">
-<h3 id="user-accounts-v2-0"><a class="link" href="#user-accounts-v2-0">3.6. User Accounts (v2.0)</a></h3>
+<h3 id="user-accounts-v2-0"><a class="link" href="#user-accounts-v2-0">3.7. User Accounts (v2.0)</a></h3>
 <div class="sect3">
-<h4 id="login-code-login-code"><a class="link" href="#login-code-login-code">3.6.1. Login: <code>login</code></a></h4>
+<h4 id="login-code-login-code"><a class="link" href="#login-code-login-code">3.7.1. Login: <code>login</code></a></h4>
 <div class="paragraph">
 <p>Login with your username and password. The user will then be prompted to enter their password.<br>
 Format: <code>login &lt;USER_NAME&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="logout-code-logout-code"><a class="link" href="#logout-code-logout-code">3.6.2. Logout: <code>logout</code></a></h4>
+<h4 id="logout-code-logout-code"><a class="link" href="#logout-code-logout-code">3.7.2. Logout: <code>logout</code></a></h4>
 <div class="paragraph">
 <p>Logout from your account<br>
 Format: <code>logout</code></p>
@@ -314,32 +354,32 @@ Format: <code>logout</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="general-commands"><a class="link" href="#general-commands">3.7. General commands</a></h3>
+<h3 id="general-commands"><a class="link" href="#general-commands">3.8. General Commands</a></h3>
 <div class="sect3">
-<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.7.1. Viewing help: <code>help</code></a></h4>
+<h4 id="views-help-code-help-code"><a class="link" href="#views-help-code-help-code">3.8.1. Views help: <code>help</code></a></h4>
 <div class="paragraph">
-<p>Lists all the useful commands<br>
+<p>Displays the help window.<br>
 Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exits-program-code-exit-code"><a class="link" href="#exits-program-code-exit-code">3.7.2. Exits program: <code>exit</code></a></h4>
+<h4 id="exits-program-code-exit-code"><a class="link" href="#exits-program-code-exit-code">3.8.2. Exits program: <code>exit</code></a></h4>
 <div class="paragraph">
-<p>Exits the program<br>
+<p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undo-action-code-undo-code"><a class="link" href="#undo-action-code-undo-code">3.7.3. Undo action: <code>undo</code></a></h4>
+<h4 id="undo-action-code-undo-code"><a class="link" href="#undo-action-code-undo-code">3.8.3. Undo action: <code>undo</code></a></h4>
 <div class="paragraph">
-<p>Undo a destructive action<br>
+<p>Undo an action.<br>
 Format: <code>undo</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="redo-action-code-redo-code"><a class="link" href="#redo-action-code-redo-code">3.7.4. Redo action: <code>redo</code></a></h4>
+<h4 id="redo-action-code-redo-code"><a class="link" href="#redo-action-code-redo-code">3.8.4. Redo action: <code>redo</code></a></h4>
 <div class="paragraph">
-<p>Redo a destructive action<br>
+<p>Redo an action.<br>
 Format: <code>redo</code></p>
 </div>
 </div>
@@ -425,16 +465,19 @@ Format: <code>redo</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>appointments: <code>appointments [p/&lt;PATIENT_NAME | PATIENT_IC&gt;] [s/&lt;START_DATE&gt;] [e/&lt;END_DATE&gt;]</code></p>
+<p>addappt: <code>appointments [p/&lt;PATIENT_NAME | PATIENT_IC&gt;] [rec/REPEATEDLY] [num/TIMES]</code></p>
+</li>
+<li>
+<p>ackappt: <code>appointments [p/&lt;PATIENT_NAME | PATIENT_IC&gt;]</code></p>
+</li>
+<li>
+<p>appointments: <code>appointments [p/&lt;PATIENT_NAME | PATIENT_IC&gt;]</code></p>
 </li>
 <li>
 <p>cancelappt: <code>cancelappt &lt;ENTRY_ID&gt;</code></p>
 </li>
 <li>
-<p>changeappt: <code>changeappt &lt;ENTRY_ID&gt; [i/&lt;PATIENT_IC&gt;] [s/&lt;START_DATE_TIME&gt;] [e/&lt;END_DATE_TIME&gt;]</code></p>
-</li>
-<li>
-<p>slot: <code>slot s/&lt;START_DATE&gt; e/&lt;END_DATE&gt;</code></p>
+<p>changeappt: <code>changeappt &lt;ENTRY_ID&gt; [str/&lt;START_TIMING&gt;]</code></p>
 </li>
 <li>
 <p>missappt: <code>missappt</code></p>
@@ -442,8 +485,21 @@ Format: <code>redo</code></p>
 <li>
 <p>settle: <code>settle &lt;ENTRY_ID&gt;</code></p>
 </li>
+</ul>
+</div>
+</li>
 <li>
-<p>maxconcurrentappt: <code>maxconcurrentappt &lt;TOTAL_NUMBER_OF_CONCURRENT_APPOINTMENTS&gt;</code></p>
+<p><strong>Duty-shift Management</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>addshift: <code>addshift [i/STAFF_REFERENCE_ID] str/&lt;START_TIMING&gt; [rec/REPEATEDLY] [num/REPEATED_TIMES]</code></p>
+</li>
+<li>
+<p>cancelshift: <code>cancelshift &lt;ENTRY_ID&gt;</code></p>
+</li>
+<li>
+<p>changeshift: <code>changeshift &lt;ENTRY_ID&gt; [str/&lt;START_TIMING&gt;]</code></p>
 </li>
 </ul>
 </div>
@@ -496,4 +552,4 @@ Format: <code>redo</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 09:24:03 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 14:00:46 UTC</div></div></div></body></html>
