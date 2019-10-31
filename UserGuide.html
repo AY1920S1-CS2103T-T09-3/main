@@ -61,6 +61,14 @@
 <p>You may navigate through the entire UI with <kbd>UP</kbd>, <kbd>DOWN</kbd>, <kbd>LEFT</kbd>, <kbd>RIGHT</kbd> and <kbd>TAB</kbd>.</p>
 </li>
 <li>
+<p>The figure below shows the layout.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/Layout.png" alt="Layout" width="790">
+</div>
+</div>
+</li>
+<li>
 <p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window. Alternatively, just press <kbd>F1</kbd>.</p>
 </li>
@@ -135,19 +143,8 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect3">
 <h4 id="adds-a-patient-to-the-queue-code-enqueue-code"><a class="link" href="#adds-a-patient-to-the-queue-code-enqueue-code">3.1.1. Adds a patient to the queue: <code>enqueue</code></a></h4>
 <div class="paragraph">
-<p>Adds a patient to the queue<br>
-Format: <code>enqueue &lt;PATIENT_REFERENCE_ID&gt;</code>
-Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add acc n/Hotel 81 a/Orchard /p67555312</code></p>
-</li>
-<li>
-<p><code>add acc n/Mandarin Oriental a/Ang Mo Kio</code></p>
-</li>
-</ul>
+<p>Adds a patient to the queue. Patient must be registered and appear in the patients tab.<br>
+Format: <code>enqueue &lt;PATIENT_REFERENCE_ID&gt;</code><br></p>
 </div>
 </div>
 <div class="sect3">
@@ -160,21 +157,21 @@ Format: <code>dequeue &lt;QUEUE_NUMBER&gt;</code></p>
 <div class="sect3">
 <h4 id="assigns-next-patient-to-an-available-doctor-code-next-code"><a class="link" href="#assigns-next-patient-to-an-available-doctor-code-next-code">3.1.3. Assigns next patient to an available doctor : <code>next</code></a></h4>
 <div class="paragraph">
-<p>Assigns next patient to an available doctor based on the room number.<br>
+<p>Assigns next patient to a doctor based on the room number given.<br>
 Format: <code>next &lt;ROOM_NUMBER&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="doctor-takes-a-break-code-break-code"><a class="link" href="#doctor-takes-a-break-code-break-code">3.1.4. Doctor takes a break: <code>break</code></a></h4>
 <div class="paragraph">
-<p>Avoids directing patients to a given doctor based on the room number.<br>
+<p>Avoids directing patients to a doctor based on the room number.<br>
 Format: <code>break &lt;ROOM_NUMBER&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="doctor-resumes-his-her-duty-code-resume-code"><a class="link" href="#doctor-resumes-his-her-duty-code-resume-code">3.1.5. Doctor resumes his/her duty: <code>resume</code></a></h4>
 <div class="paragraph">
-<p>Allows patients to be directed to a given Doctor based on the room number.<br>
+<p>Allows patients to be directed to a doctor based on the room number.<br>
 Format: <code>resume &lt;ROOM_NUMBER&gt;</code></p>
 </div>
 </div>
@@ -576,4 +573,4 @@ Format: <code>redo</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 05:16:14 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 05:23:28 UTC</div></div></div></body></html>
