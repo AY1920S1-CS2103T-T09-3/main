@@ -77,7 +77,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><code>register i/001A n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : registers a patient named <code>John Doe</code>.</p>
+<p><code>register -id 001A -name John Doe -phone 98765432 -email <a href="mailto:johnd@example.com">johnd@example.com</a> -address John street, block 123, #01-01</code> : registers a patient named <code>John Doe</code>.</p>
 </li>
 <li>
 <p><code>enqueue 001A</code> : enqueues patient with reference id <code>001A</code> into the queue.</p>
@@ -123,16 +123,16 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>&lt;UPPER_CASE&gt;</code> are the parameters to be supplied by the user e.g. in <code>register n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>register n/John Doe</code>.</p>
+<p>Words in <code>&lt;UPPER_CASE&gt;</code> are the parameters to be supplied by the user e.g. in <code>register -name NAME</code>, <code>NAME</code> is a parameter which can be used as <code>register -name John Doe</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>-name NAME [-tag TAG]</code> can be used as <code>-name John Doe -tag friend</code> or as <code>-name John Doe</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[-tag TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>-tag friend</code>, <code>-tag friend -tag family</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/&lt;NAME&gt; p/&lt;PHONE_NUMBER&gt;</code>, <code>p/&lt;PHONE_NUMBER&gt; n/&lt;NAME&gt;</code> is also acceptable.</p>
+<p>Parameters can be in any order e.g. if the command specifies <code>-name &lt;NAME&gt; -phone &lt;PHONE_NUMBER&gt;</code>, <code>-phone &lt;PHONE_NUMBER&gt; -name &lt;NAME&gt;</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
@@ -191,16 +191,16 @@ Format: <code>patient [&lt;PATIENT_REFERENCE_ID | PATIENT_NAME | PHONE_NUM&gt;]<
 <h4 id="registers-a-new-patient-code-register-code"><a class="link" href="#registers-a-new-patient-code-register-code">3.2.2. Registers a new patient: <code>register</code></a></h4>
 <div class="paragraph">
 <p>Registers a new patient.<br>
-Format:  <code>register  i/&lt;PATIENT_REFERENCE_ID&gt; n/&lt;PATIENT_NAME&gt; [p/&lt;PHONE_NUM&gt;]
- [e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;] [t/Allergies]&#8230;&#8203;</code></p>
+Format:  <code>register -id &lt;PATIENT_REFERENCE_ID&gt; -name &lt;PATIENT_NAME&gt; [-phone &lt;PHONE_NUM&gt;]
+ [-email &lt;EMAIL&gt;] [-address &lt;ADDRESS&gt;] -num [-tag Allergies]&#8230;&#8203;</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="updates-patients-profiles-code-update-code"><a class="link" href="#updates-patients-profiles-code-update-code">3.2.3. Updates patients’ profiles: <code>update</code></a></h4>
 <div class="paragraph">
 <p>If user is in the patients listing screen, updates any change for patients’ profiles<br>
-Format: <code>update &lt;ENTRY_ID&gt; [n/&lt;PATIENT_NAME&gt;] [i/&lt;PATIENT_REFERENCE_ID&gt;] [p/&lt;PHONE_NUM&gt;]
- [e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;] [t/Allergies]&#8230;&#8203;</code></p>
+Format: <code>update &lt;ENTRY_ID&gt; [-name &lt;PATIENT_NAME&gt;] [-id &lt;PATIENT_REFERENCE_ID&gt;] [-phone &lt;PHONE_NUM&gt;]
+ [-email &lt;EMAIL&gt;] [-address &lt;ADDRESS&gt;] -num [-tag Allergies]&#8230;&#8203;</code></p>
 </div>
 </div>
 </div>
@@ -219,15 +219,15 @@ Format: <code>doctors [&lt;DOCTOR_NAME&gt;]</code></p>
 <div class="paragraph">
 <p>Registers a new doctor.<br>
 If the staff reference identifier is not specified, a unique identifier will be assigned by the system.
-Format: <code>newdoctor n/&lt;STAFF_NAME&gt; [i/&lt;STAFF_REFERENCE_ID&gt;] [p/&lt;PHONE_NUM&gt;] [e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;]</code></p>
+Format: `newdoctor -name &lt;STAFF_NAME&gt; [-id &lt;STAFF_REFERENCE_ID&gt;] [-phone &lt;PHONE_NUM&gt;] [-email &lt;EMAIL&gt;] [-address &lt;ADDRESS&gt;]-num `</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="updates-a-doctor-s-profile-code-updatedoctor-code"><a class="link" href="#updates-a-doctor-s-profile-code-updatedoctor-code">3.3.3. Updates a doctor&#8217;s profile: <code>updatedoctor</code></a></h4>
 <div class="paragraph">
 <p>If user is in the doctors listing screen, updates any change for doctor’s profiles.<br>
-Format: <code>updatedoctor &lt;ENTRY_ID&gt; [n/&lt;STAFF_NAME&gt;]
-[i/&lt;STAFF_REFERENCE_ID&gt;] [p/&lt;PHONE_NUM&gt;] [e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;]</code></p>
+Format: `updatedoctor &lt;ENTRY_ID&gt; [-name &lt;STAFF_NAME&gt;]
+[-id &lt;STAFF_REFERENCE_ID&gt;] [-phone &lt;PHONE_NUM&gt;] [-email &lt;EMAIL&gt;] [-address &lt;ADDRESS&gt;]-num `</p>
 </div>
 </div>
 <div class="sect3">
@@ -250,40 +250,34 @@ Format: <code>offduty &lt;ENTRY_ID&gt;</code></p>
 <div class="sect3">
 <h4 id="adds-an-appointment-code-addappt-code"><a class="link" href="#adds-an-appointment-code-addappt-code">3.4.1. Adds an appointment: <code>addappt</code></a></h4>
 <div class="paragraph">
-<p>Adds a new appointment for a patient<br>
-If no optional fields <code>[rec/REPEATEDLY]</code> and <code>[num/RECURSIVE_TIMES]</code> are present, only one event will be added. Otherwise repeated appointments will be added.<br>
-The field <code>rec/REPEATEDLY</code> can be <code>rec/w</code>, <code>rec/m</code>, or <code>rec/y</code>.They represent to add weekly, monthly, yearly repeat appointment respectively.</p>
+<p>Adds a new appointment for a patient<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>addappt [i/REFERENCE_ID] str/&lt;START_TIMING&gt; [rec/REPEATEDLY] [num/REPEATED_TIMES]</code></p>
+<p>If no optional fields <code>[-rec REPEATEDLY]</code> and <code>[-num RECURSIVE_TIMES]</code> are present, only one event will be added. Otherwise repeated appointments will be added.<br></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>If no optional fields <code>[-end &lt;END_TIMING&gt;]</code> is present, default endTiming is 30 mins after startTiming. Otherwise endTiming will be <code>[-end &lt;END_TIMING&gt;]</code>.<br></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>addappt i/001A str/01/12/19 0900</code></p>
-</li>
-<li>
-<p><code>addappt i/001A str/02/12/19 0900 rec/m num/2</code></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>The field <code>-rec REPEATEDLY</code> can be <code>-rec w</code>, <code>-rec m</code>, or <code>-rec y</code>.They represent to add weekly, monthly, yearly repeat appointment respectively.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addappt -id &lt;REFERENCE_ID&gt; -start &lt;START_TIMING&gt; [-end &lt;END_TIMING&gt;] [-rec REPEATEDLY] [-num REPEATED_TIMES]</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="acknowledges-a-appointment-code-ackappt-code"><a class="link" href="#acknowledges-a-appointment-code-ackappt-code">3.4.2. Acknowledges a appointment: <code>ackappt</code></a></h4>
 <div class="paragraph">
 <p>Acknowledges an existing appointment once the patient has arrived<br>
-Format: <code>ackappt [i/REFERENCE_ID]</code></p>
+Format: <code>ackappt -id &lt;REFERENCE_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="displays-all-appointments-code-appointments-code"><a class="link" href="#displays-all-appointments-code-appointments-code">3.4.3. Displays all appointments: <code>appointments</code></a></h4>
 <div class="paragraph">
-<p>Displays a sorted list of upcoming appointments for the patient that is associated to the given <code>i/REFERENCE_ID</code><br>
+<p>Displays a sorted list of upcoming appointments for the patient that is associated to the given <code>-id REFERENCE_ID</code><br>
 If no keywords are given, all upcoming appointments will be displayed.<br>
-Format: <code>appointments [i/REFERENCE_ID]</code></p>
+Format: <code>appointments [-id &lt;REFERENCE_ID&gt;]</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -297,7 +291,8 @@ Format: <code>cancelappt &lt;ENTRY_ID&gt;</code></p>
 <h4 id="changes-the-appointment-date-code-changeappt-code"><a class="link" href="#changes-the-appointment-date-code-changeappt-code">3.4.5. Changes the appointment date: <code>changeappt</code></a></h4>
 <div class="paragraph">
 <p>Changes the timing for an existing appointment.<br>
-Format: <code>changeappt &lt;ENTRY_ID&gt; [str/&lt;START_TIMING&gt;]</code></p>
+If no optional fields <code>[-end &lt;END_TIMING&gt;]</code> is present, default endTiming is 30 mins after startTiming. Otherwise new endTiming will be <code>[-end &lt;END_TIMING&gt;]</code>.<br>
+Format: <code>changeappt &lt;ENTRY_ID&gt; -start &lt;START_TIMING&gt; [-end &lt;END_TIMING&gt;]</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -325,7 +320,7 @@ Format: <code>maxconcurrentappt &lt;TOTAL_NUMBER_OF_CONCURRENT_APPOINTMENTS&gt;<
 <h4 id="shows-the-empty-slots-code-slot-code-v2-0"><a class="link" href="#shows-the-empty-slots-code-slot-code-v2-0">3.4.9. Shows the empty slots: <code>slot</code> (v2.0)</a></h4>
 <div class="paragraph">
 <p>List all the available empty slots for patients to make appointments<br>
-Format: <code>slot str/&lt;START_DATE&gt;</code></p>
+Format: <code>slot -start &lt;START_DATE&gt;</code></p>
 </div>
 </div>
 </div>
@@ -335,7 +330,7 @@ Format: <code>slot str/&lt;START_DATE&gt;</code></p>
 <h4 id="adds-a-duty-shift-for-a-doctor-code-addshift-code"><a class="link" href="#adds-a-duty-shift-for-a-doctor-code-addshift-code">3.5.1. Adds a duty shift for a doctor: <code>addshift</code></a></h4>
 <div class="paragraph">
 <p>Adds a new duty shift for a doctor.<br>
-Format: <code>addshift [i/STAFF_REFERENCE_ID] str/&lt;START_TIMING&gt; [rec/REPEATEDLY] [num/REPEATED_TIMES]</code></p>
+Format: <code>addshift [-id STAFF_REFERENCE_ID] -start &lt;START_TIMING&gt; -end &lt;END_TIMING&gt; [-rec REPEATEDLY] [-num REPEATED_TIMES]</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -348,8 +343,13 @@ Format: <code>cancelshift &lt;ENTRY_ID&gt;</code></p>
 <div class="sect3">
 <h4 id="changes-the-duty-shift-for-a-doctor-code-changeshift-code"><a class="link" href="#changes-the-duty-shift-for-a-doctor-code-changeshift-code">3.5.3. Changes the duty shift for a doctor: <code>changeshift</code></a></h4>
 <div class="paragraph">
-<p>Changes the timing of an existing duty shift based on the given entry index. <br>
-Format: <code>changeshift &lt;ENTRY_ID&gt; [str/&lt;START_TIMING&gt;]</code></p>
+<p>Changes the timing of an existing duty shift based on the given entry index. <br></p>
+</div>
+<div class="paragraph">
+<p>If no optional fields <code>[-rec REPEATEDLY]</code> and <code>[-num RECURSIVE_TIMES]</code> are present, only one event will be added. Otherwise repeated appointments will be added.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>changeshift &lt;ENTRY_ID&gt; -start &lt;START_TIMING&gt; -end &lt;END_TIMING&gt;</code></p>
 </div>
 </div>
 </div>
@@ -455,15 +455,15 @@ Format: <code>redo</code></p>
 <p>patient: <code>patient [&lt;PATIENT_REFERENCE_ID | PATIENT_NAME | PHONE_NUM&gt;]</code></p>
 </li>
 <li>
-<p>register: <code>register  i/&lt;PATIENT_REFERENCE_ID&gt; n/&lt;PATIENT_NAME&gt; [p/&lt;PHONE_NUM&gt;]
-[e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;] [t/Allergies]&#8230;&#8203;</code></p>
+<p>register: <code>register -id &lt;PATIENT_REFERENCE_ID&gt; -name &lt;PATIENT_NAME&gt; [-phone &lt;PHONE_NUM&gt;]
+[-email &lt;EMAIL&gt;] [-address &lt;ADDRESS&gt;] -num [-tag Allergies]&#8230;&#8203;</code></p>
 </li>
 <li>
 <p>unregister: <code>unregister &lt;ENTRY_ID&gt;</code></p>
 </li>
 <li>
-<p>update: <code>update &lt;ENTRY_ID&gt; [n/&lt;PATIENT_NAME&gt;] [i/&lt;PATIENT_REFERENCE_ID&gt;] [p/&lt;PHONE_NUM&gt;]
-[e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;] [t/Allergies]&#8230;&#8203;</code></p>
+<p>update: <code>update &lt;ENTRY_ID&gt; [-name &lt;PATIENT_NAME&gt;] [-id &lt;PATIENT_REFERENCE_ID&gt;] [-phone &lt;PHONE_NUM&gt;]
+[-email &lt;EMAIL&gt;] [-address &lt;ADDRESS&gt;] -num [-tag Allergies]&#8230;&#8203;</code></p>
 </li>
 </ul>
 </div>
@@ -476,11 +476,11 @@ Format: <code>redo</code></p>
 <p>doctors: <code>doctors [&lt;DOCTOR_NAME&gt;]</code></p>
 </li>
 <li>
-<p>newdoctor: <code>newdoctor n/&lt;STAFF_NAME&gt; [i/&lt;STAFF_REFERENCE_ID&gt;] [p/&lt;PHONE_NUM&gt;] [e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;]</code></p>
+<p>newdoctor: `newdoctor -name &lt;STAFF_NAME&gt; [-id &lt;STAFF_REFERENCE_ID&gt;] [-phone &lt;PHONE_NUM&gt;] [-email &lt;EMAIL&gt;] [-address &lt;ADDRESS&gt;]-num `</p>
 </li>
 <li>
-<p>updatedoctor: <code>updatedoctor &lt;ENTRY_ID&gt; [n/&lt;STAFF_NAME&gt;]
-[i/&lt;STAFF_REFERENCE_ID&gt;] [p/&lt;PHONE_NUM&gt;] [e/&lt;EMAIL&gt;] [a/&lt;ADDRESS&gt;] [r/&lt;REMARK&gt;]</code></p>
+<p>updatedoctor: `updatedoctor &lt;ENTRY_ID&gt; [-name &lt;STAFF_NAME&gt;]
+[-id &lt;STAFF_REFERENCE_ID&gt;] [-phone &lt;PHONE_NUM&gt;] [-email &lt;EMAIL&gt;] [-address &lt;ADDRESS&gt;]-num `</p>
 </li>
 <li>
 <p>resigndoctor: <code>resigndoctor &lt;ENTRY_ID&gt;</code></p>
@@ -499,19 +499,19 @@ Format: <code>redo</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>addappt: <code>appointments [p/&lt;PATIENT_NAME | PATIENT_IC&gt;] [rec/REPEATEDLY] [num/TIMES]</code></p>
+<p>addappt: <code>appointments [-phone &lt;PATIENT_NAME | PATIENT_IC&gt;] [-rec REPEATEDLY] [-num TIMES]</code></p>
 </li>
 <li>
-<p>ackappt: <code>appointments [p/&lt;PATIENT_NAME | PATIENT_IC&gt;]</code></p>
+<p>ackappt: <code>appointments [-phone &lt;PATIENT_NAME | PATIENT_IC&gt;]</code></p>
 </li>
 <li>
-<p>appointments: <code>appointments [p/&lt;PATIENT_NAME | PATIENT_IC&gt;]</code></p>
+<p>appointments: <code>appointments [-phone &lt;PATIENT_NAME | PATIENT_IC&gt;]</code></p>
 </li>
 <li>
 <p>cancelappt: <code>cancelappt &lt;ENTRY_ID&gt;</code></p>
 </li>
 <li>
-<p>changeappt: <code>changeappt &lt;ENTRY_ID&gt; [str/&lt;START_TIMING&gt;]</code></p>
+<p>changeappt: <code>changeappt &lt;ENTRY_ID&gt; [-start &lt;START_TIMING&gt;]</code></p>
 </li>
 <li>
 <p>missappt: <code>missappt</code></p>
@@ -527,13 +527,13 @@ Format: <code>redo</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>addshift: <code>addshift [i/STAFF_REFERENCE_ID] str/&lt;START_TIMING&gt; [rec/REPEATEDLY] [num/REPEATED_TIMES]</code></p>
+<p>addshift: <code>addshift [-id STAFF_REFERENCE_ID] -start &lt;START_TIMING&gt; [-rec REPEATEDLY] [-num REPEATED_TIMES]</code></p>
 </li>
 <li>
 <p>cancelshift: <code>cancelshift &lt;ENTRY_ID&gt;</code></p>
 </li>
 <li>
-<p>changeshift: <code>changeshift &lt;ENTRY_ID&gt; [str/&lt;START_TIMING&gt;]</code></p>
+<p>changeshift: <code>changeshift &lt;ENTRY_ID&gt; [-start &lt;START_TIMING&gt;]</code></p>
 </li>
 </ul>
 </div>
@@ -586,4 +586,4 @@ Format: <code>redo</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 13:11:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 14:22:56 UTC</div></div></div></body></html>
