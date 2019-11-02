@@ -300,7 +300,7 @@ Editing tags will overwrite all existing tags.<br>
 <div class="sect3">
 <h4 id="marks-the-doctor-as-on-duty-code-onduty-code"><a class="link" href="#marks-the-doctor-as-on-duty-code-onduty-code">3.2.4. Marks the doctor as on-duty: <code>onduty</code></a></h4>
 <div class="paragraph">
-<p>Marks the doctor, based on the index given, as on-duty and assigns him/her to an consultation room list.<br></p>
+<p>Marks the doctor, based on the index given, as on-duty and adds him/her to a list of on-duty doctors.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>onduty &lt;ENTRY_ID&gt;</code></p>
@@ -309,7 +309,7 @@ Editing tags will overwrite all existing tags.<br>
 <div class="sect3">
 <h4 id="marks-the-doctor-as-off-duty-code-offduty-code"><a class="link" href="#marks-the-doctor-as-off-duty-code-offduty-code">3.2.5. Marks the doctor as off-duty: <code>offduty</code></a></h4>
 <div class="paragraph">
-<p>Marks the doctor, based on the index given, as off-duty and removes him/her from the list based on the index given.<br></p>
+<p>Marks the doctor, based on the index given, as off-duty and removes him/her from the list.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>offduty &lt;ENTRY_ID&gt;</code></p>
@@ -339,28 +339,28 @@ Editing tags will overwrite all existing tags.<br>
 <div class="sect3">
 <h4 id="assigns-next-patient-to-an-available-doctor-code-next-code"><a class="link" href="#assigns-next-patient-to-an-available-doctor-code-next-code">3.3.3. Assigns next patient to an available doctor : <code>next</code></a></h4>
 <div class="paragraph">
-<p>Assigns the next patient in the queue to a doctor based on the consultation room number.<br></p>
+<p>Assigns the next patient in the queue to a doctor..<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>next &lt;ROOM_NUMBER&gt;</code></p>
+<p>Format: <code>next &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="doctor-takes-a-break-code-break-code"><a class="link" href="#doctor-takes-a-break-code-break-code">3.3.4. Doctor takes a break: <code>break</code></a></h4>
 <div class="paragraph">
-<p>Avoids directing patients to a doctor based on the room number. e.g. Doctor is on a lunch break<br></p>
+<p>Avoids directing patients to a doctor. e.g. Doctor is on a lunch break<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>break &lt;ROOM_NUMBER&gt;</code></p>
+<p>Format: <code>break &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="doctor-resumes-his-her-duty-code-resume-code"><a class="link" href="#doctor-resumes-his-her-duty-code-resume-code">3.3.5. Doctor resumes his/her duty: <code>resume</code></a></h4>
 <div class="paragraph">
-<p>Allows patients to be directed to a doctor based on the room number.<br></p>
+<p>Allows patients to be directed to a doctor. e.g. Doctor is back from his/her break.<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>resume &lt;ROOM_NUMBER&gt;</code></p>
+<p>Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 </div>
@@ -702,13 +702,13 @@ The operation is rejected if it results in there being more appointments than st
 <p>dequeue: <code>dequeue &lt;QUEUE_NUMBER&gt;</code></p>
 </li>
 <li>
-<p>next: <code>next &lt;ROOM_NUMBER&gt;</code></p>
+<p>next: <code>next &lt;ENTRY_ID&gt;</code></p>
 </li>
 <li>
-<p>break: <code>break &lt;ROOM_NUMBER&gt;</code></p>
+<p>break: <code>break &lt;ENTRY_ID&gt;</code></p>
 </li>
 <li>
-<p>resume: <code>resume &lt;ROOM_NUMBER&gt;</code></p>
+<p>resume: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </li>
 </ul>
 </div>
@@ -752,7 +752,7 @@ The operation is rejected if it results in there being more appointments than st
 <p>resigndoctor: <code>resigndoctor &lt;ENTRY_ID&gt;</code></p>
 </li>
 <li>
-<p>onduty: <code>onduty &lt;ROOM_NUMBER&gt;</code></p>
+<p>onduty: <code>onduty &lt;ENTRY_ID&gt;</code></p>
 </li>
 <li>
 <p>offduty: <code>offduty &lt;ENTRY_ID&gt;</code></p>
@@ -852,4 +852,4 @@ The operation is rejected if it results in there being more appointments than st
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-02 15:43:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-02 16:38:08 UTC</div></div></div></body></html>
