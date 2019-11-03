@@ -168,7 +168,7 @@ If no search keyword is provided, all registered patients will be displayed.<br>
 </div>
 </div>
 <div class="sect3">
-<h4 id="registers-a-new-patient-code-register-code"><a class="link" href="#registers-a-new-patient-code-register-code">3.1.2. Registers a new patient: <code>register</code></a></h4>
+<h4 id="registers-a-new-patient-code-newpatient-code"><a class="link" href="#registers-a-new-patient-code-newpatient-code">3.1.2. Registers a new patient: <code>newpatient</code></a></h4>
 <div class="paragraph">
 <p>Registers a new patient. Only patient&#8217;s reference id and name are compulsory fields<br></p>
 </div>
@@ -192,7 +192,7 @@ Hence, the user <strong>should not have administrative privilege to unregister a
 </div>
 </div>
 <div class="sect3">
-<h4 id="updates-patients-profiles-code-edit-code"><a class="link" href="#updates-patients-profiles-code-edit-code">3.1.3. Updates patients’ profiles: <code>edit</code></a></h4>
+<h4 id="updates-patients-profiles-code-editpatient-code"><a class="link" href="#updates-patients-profiles-code-editpatient-code">3.1.3. Updates patients’ profiles: <code>editpatient</code></a></h4>
 <div class="paragraph">
 <p>Updates the particulars of a patients<br></p>
 </div>
@@ -263,7 +263,7 @@ Hence, the user <strong>should not have administrative privilege to unregister a
 </div>
 </div>
 <div class="sect3">
-<h4 id="updates-a-doctor-s-profile-code-updatedoctor-code"><a class="link" href="#updates-a-doctor-s-profile-code-updatedoctor-code">3.2.3. Updates a doctor&#8217;s profile: <code>updatedoctor</code></a></h4>
+<h4 id="updates-a-doctor-s-profile-code-editdoctor-code"><a class="link" href="#updates-a-doctor-s-profile-code-editdoctor-code">3.2.3. Updates a doctor&#8217;s profile: <code>editdoctor</code></a></h4>
 <div class="paragraph">
 <p>If user is in the doctors listing screen, updates any change for doctor’s profiles.<br></p>
 </div>
@@ -374,7 +374,7 @@ Format: <code>appointments [&lt;REFERENCE_ID&gt;]</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="schedules-an-appointment-code-addappt-code"><a class="link" href="#schedules-an-appointment-code-addappt-code">3.4.2. Schedules an appointment: <code>addappt</code></a></h4>
+<h4 id="schedules-an-appointment-code-newappt-code"><a class="link" href="#schedules-an-appointment-code-newappt-code">3.4.2. Schedules an appointment: <code>newappt</code></a></h4>
 <div class="paragraph">
 <p>Schedules a new appointments for a patient.<br>
 NOTE: The appointment will be rejected by the system, if there are insufficient staff doctors on duty at the time of the appointment.<br>
@@ -423,7 +423,7 @@ To avoid accidental cancellation of another patient&#8217;s appointments, the us
 </div>
 </div>
 <div class="sect3">
-<h4 id="changes-the-appointment-date-code-changeappt-code"><a class="link" href="#changes-the-appointment-date-code-changeappt-code">3.4.5. Changes the appointment date: <code>changeappt</code></a></h4>
+<h4 id="changes-the-appointment-date-code-editappt-code"><a class="link" href="#changes-the-appointment-date-code-editappt-code">3.4.5. Changes the appointment date: <code>editappt</code></a></h4>
 <div class="paragraph">
 <p>Changes the timing for an existing appointment.<br>
 If no optional fields <code>[-end &lt;END_TIMING&gt;]</code> is present, default endTiming is 30 mins after startTiming. Otherwise new endTiming will be <code>[-end &lt;END_TIMING&gt;]</code>.<br></p>
@@ -478,7 +478,7 @@ An appointment is considered missed if the appointment was not acknowledged and 
 </div>
 </div>
 <div class="sect3">
-<h4 id="sets-missed-appointments-as-settled-notified-code-settle-code"><a class="link" href="#sets-missed-appointments-as-settled-notified-code-settle-code">3.4.7. Sets missed appointments as settled/notified: <code>settle</code></a></h4>
+<h4 id="sets-missed-appointments-as-settled-notified-code-settleappt-code"><a class="link" href="#sets-missed-appointments-as-settled-notified-code-settleappt-code">3.4.7. Sets missed appointments as settled/notified: <code>settleappt</code></a></h4>
 <div class="paragraph">
 <p>Settles and removes the missed appointment based on the given index.<br>
 Settling refers to the user following up on contacting the patient who has missed his/her appointment.<br></p>
@@ -496,7 +496,7 @@ Only missed appointments can be settled. The user must first display the missed 
 </table>
 </div>
 <div class="paragraph">
-<p>Format: <code>settle &lt;ENTRY_ID&gt;</code></p>
+<p>Format: <code>settleappt &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -522,7 +522,7 @@ If no keyword is given, all upcoming appointments will be displayed.<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adds-a-duty-shift-for-a-doctor-code-addshift-code"><a class="link" href="#adds-a-duty-shift-for-a-doctor-code-addshift-code">3.5.2. Adds a duty shift for a doctor: <code>addshift</code></a></h4>
+<h4 id="adds-a-duty-shift-for-a-doctor-code-newshift-code"><a class="link" href="#adds-a-duty-shift-for-a-doctor-code-newshift-code">3.5.2. Adds a duty shift for a doctor: <code>newshift</code></a></h4>
 <div class="paragraph">
 <p>Adds a new duty shift for a doctor.<br>
 If both -rec &lt;INTERVALS&gt; and -num &lt;NUMBER_OF_TIMES&gt; fields are present, duty shifts of these &lt;NUMBER_OF_TIMES&gt; will be added to the doctor duty roster in &lt;INTERVALS&gt;.
@@ -566,7 +566,7 @@ The operation is rejected if it results in there being more appointments than st
 </div>
 </div>
 <div class="sect3">
-<h4 id="changes-the-duty-shift-for-a-doctor-code-changeshift-code"><a class="link" href="#changes-the-duty-shift-for-a-doctor-code-changeshift-code">3.5.4. Changes the duty shift for a doctor: <code>changeshift</code></a></h4>
+<h4 id="changes-the-duty-shift-for-a-doctor-code-editshift-code"><a class="link" href="#changes-the-duty-shift-for-a-doctor-code-editshift-code">3.5.4. Changes the duty shift for a doctor: <code>editshift</code></a></h4>
 <div class="paragraph">
 <p>Changes the timing of an existing duty shift based on the given entry index. <br></p>
 </div>
@@ -781,7 +781,7 @@ All except search actions can be re-done.</p>
 <p>List all missed appointments: <code>missappt</code></p>
 </li>
 <li>
-<p>Mark missed appointment as settled: <code>settle &lt;ENTRY_ID&gt;</code></p>
+<p>Mark missed appointment as settled: <code>settleappt &lt;ENTRY_ID&gt;</code></p>
 </li>
 </ul>
 </div>
@@ -853,4 +853,4 @@ All except search actions can be re-done.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-03 04:10:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-03 08:49:31 UTC</div></div></div></body></html>
