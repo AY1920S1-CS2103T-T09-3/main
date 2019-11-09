@@ -524,80 +524,11 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
 </div>
 <div class="sect2">
 <h3 id="autocomplete"><a class="link" href="#autocomplete">3.2. AutoComplete</a></h3>
 <div class="paragraph">
-<p>We are using Prefix Tree which is known as a Trie for AutoComplete. This gives us a worst case time complexity of O(m), where m is length of the search string. While the space complexity is O(bm), where b is number of unique alphabets used, m is length of longest word stored.</p>
+<p>We are using Prefix Tree which is known as a Trie for AutoComplete. This gives us a worst case time complexity of O(m), where m is length of the search string. While the space complexity is O(bm), where b is number of unique characters used, m is length of longest word stored.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -794,69 +725,140 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.4.9. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.4.9. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-to-store-timing-fields"><a class="link" href="#aspect-how-to-store-timing-fields">Aspect:  How to store Timing fields</a></h5>
+<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Create DateTime and Timing class to store</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Makes it easier to calculate timings and clashes between multiple appointments with different timing field.</p>
+<p><strong>Alternative 1 (current choice):</strong> Save the entire address book.</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 90.9091%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Implementation is easy.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. May have performance issues in terms of memory usage.</p></td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
-<p>Cons: Requires additional code to implement Timing class and interact with other common methods that rely on DateTime.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Store as Strings</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Makes it easier to implement.</p>
-</li>
-<li>
-<p>Cons: Requires additional code to convert into DateTIme class when carrying out calculating methods.</p>
-</li>
-</ul>
-</div>
+<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 90.9091%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Must ensure that the implementation of each individual command are correct.</p></td>
+</tr>
+</tbody>
+</table>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-display-appointments"><a class="link" href="#aspect-display-appointments">Aspect: display appointments</a></h5>
+<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Display appointments in a tab</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Creates an intuitive and easily navigable screen to display appointments.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 90.9091%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p></td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
-<p>Cons: Decreases the efficiency of CLI by having to use GUI inputs.</p>
+<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 90.9091%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. We do not need to maintain a separate list, and just reuse what is already in the codebase.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p></td>
+</tr>
+</tbody>
+</table>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Keeps the onscreen clutter at a minimum and stays in line with the CLI concept.</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-implement-autocomplete"><a class="link" href="#aspect-data-structure-to-implement-autocomplete">Aspect: Data structure to implement AutoComplete</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Makes it easier to implement.</p>
+<p><strong>Alternative 1 (current choice):</strong> Using Trie (as known as Prefix Tree).</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 90.9091%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Time Complexity Efficient<br>
+2. One of the most natural data structure for text prediction.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Requires initialisation.<br>
+2. Requires rebuilding of strings.</p></td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
-<p>Cons: Increases difficulty in freely accessing appointments.</p>
-</li>
-</ul>
-</div>
+<p><strong>Alternative 2:</strong> Using ArrayList.</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 90.9091%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Extremely simple to implement.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Time Complexity Inefficient.</p></td>
+</tr>
+</tbody>
+</table>
 </li>
 </ul>
 </div>
@@ -1170,9 +1172,6 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1766,9 +1765,6 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 </div>
@@ -1781,7 +1777,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 100000 persons and 100000 events without noticeable lag in User Interface for typical usage.</p>
+<p>Should be able to hold up to 1,000,000 persons and 1,000,000 events without noticeable lag in User Interface within typical usage.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
@@ -1796,9 +1792,6 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>App can be downloaded and run via a jar file</p>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -1965,4 +1958,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 06:12:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 07:53:49 UTC</div></div></div></body></html>

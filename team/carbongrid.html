@@ -10,7 +10,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ClerkPro is a desktop application designed for ease of managing clinic&#8217;s appointments, queue and scheduling. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>ClerkPro is a desktop application designed for ease of managing clinic&#8217;s appointments, queue and scheduling. The user interacts with it using a CLI, and it has a graphical user interface (GUI) created with JavaFX. It is written in Java, and has about 17 kLoC (cross verified at <a href="https://codetabs.com/count-loc/count-loc-online.html" class="bare">https://codetabs.com/count-loc/count-loc-online.html</a> &amp; <a href="http://line-count.herokuapp.com/AY1920S1-CS2103T-T09-3/main" class="bare">http://line-count.herokuapp.com/AY1920S1-CS2103T-T09-3/main</a>).</p>
 </div>
 </div>
 </div>
@@ -20,20 +20,39 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: <strong>Major Rework on User Interface (UI) to be capable of full traversal with just keyboard while supporting AutoComplete for the Command Line Interface (CLI), and OmniPanel.</strong></p>
+<p><strong>Major enhancement</strong>: <strong>Major Rework on User Interface (UI) with AutoComplete with flags.</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: reduces the mental workload &amp; visual fatigue of user from having to carefully type commands and double checking the typed command or the user guide for supported commands and parameters.</p>
+<p>What it does: Reduces the mental workload &amp; visual fatigue of user from having to carefully type commands and double checking the typed command or the user guide for supported commands and parameters.</p>
 </li>
 <li>
-<p>Justification: This feature enhances the user experience significantly because it provides optimal focus on primary tasks at hand to reduce visual and cognitive expenditure.</p>
+<p>Justification: Enhances the user experience (UX) design significantly because it provides optimal focus on primary tasks at hand to reduce visual and cognitive expenditure.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects interaction against existing UI components as the traversal have to be critically handled from component to component.</p>
+<p>Highlights: Affects interaction against existing UI components as the traversal have to be critically handled from component to component.</p>
 </li>
 <li>
 <p>Credits: None</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement</strong>: <strong>Eager Evaluation (Proposal &amp; UX Concept)</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Prevents un-necessary waiting by the user.</p>
+</li>
+<li>
+<p>Justification: Enhances the UX significantly as user no longer waits to preview the number of possible results.</p>
+</li>
+<li>
+<p>Highlights: Eager Evaluation should not block the main UI from user upon processing large data-sets.</p>
+</li>
+<li>
+<p>Credits: SakuraBlossom (Threading and Commands), Chrome DevTools Console (Inspiration)</p>
 </li>
 </ul>
 </div>
@@ -53,10 +72,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Gradle updating &amp; Config for Headed UI Test</p>
+<p>Updating Gradle wrapper &amp; Configuration for Headed UI Test (Pull Request <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/89">#89</a>)</p>
 </li>
 <li>
-<p>Dependencies management and version bumping after compatibility checks.</p>
+<p>Dependencies management and version bumping for dependencies bug fixes &amp; optimisations after compatibility checks. (Pull requests <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/80">#80</a>, <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/100">#100</a>, <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/200">#200</a>)</p>
 </li>
 <li>
 <p>Setting up Netlify for team repository.</p>
@@ -69,7 +88,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Implemented TestFX for minimalistic GUI testing to increase coverage from 56.193% to 73.193% (Pull requests <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/71">#71</a>)</p>
+<p>Implemented TestFX for minimalistic UI testing to increase coverage from 56.193% to 73.193% (Pull request <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/71">#71</a>)</p>
+</li>
+<li>
+<p>Implemented more UI testing increasing coverage from 67.652% to 73.091% (Pull request <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/217">#217</a>)</p>
 </li>
 </ul>
 </div>
@@ -97,9 +119,6 @@
 <li>
 <p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CarbonGrid/ped/issues/1">1</a>, <a href="https://github.com/CarbonGrid/ped/issues/3">2</a>, <a href="https://github.com/CarbonGrid/ped/issues/6">3</a>)</p>
 </li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
 </ul>
 </div>
 </li>
@@ -118,9 +137,6 @@
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -136,6 +152,71 @@
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quick-start"><a class="link" href="#quick-start">Quick Start</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
+</li>
+<li>
+<p>Download the latest <code>ClerkPro.jar</code> <a href="{repoURL}/releases">here</a>.</p>
+</li>
+<li>
+<p>Copy the file to the folder you want to use as the home folder for ClerkPro.</p>
+</li>
+<li>
+<p>Double-click the file to start the app. The User Interface (UI) should appear in a few seconds.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui.png" alt="Ui">
+</div>
+</div>
+</li>
+<li>
+<p>You may navigate through the entire UI with <kbd>UP</kbd>, <kbd>DOWN</kbd>, <kbd>LEFT</kbd>, <kbd>RIGHT</kbd> and <kbd>TAB</kbd>.</p>
+</li>
+<li>
+<p>The figure below shows the layout.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Layout.png" alt="Layout">
+</div>
+</div>
+</li>
+<li>
+<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
+e.g. typing <code>help</code> and pressing <kbd>Enter</kbd> will open the help window. Alternatively, just press <kbd>F1</kbd>.</p>
+</li>
+<li>
+<p>Some example commands you can try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>register -id E0000001A -name John Doe -phone 98765432 -email <a href="mailto:johnd@example.com">johnd@example.com</a> -address John street, block 123, #01-01</code> : registers a patient named <code>John Doe</code>.</p>
+</li>
+<li>
+<p><code>enqueue 001A</code> : enqueues patient with reference id <code>001A</code> into the queue. The patient <code>001A</code> must be registered.</p>
+</li>
+<li>
+<p><code>exit</code> : exits the application.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Refer to <a href="#Features">Features</a> for details of each command.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Features"><a class="link" href="#Features">Features</a></h2>
+<div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
@@ -184,13 +265,60 @@
 <div class="sect2">
 <h3 id="autocomplete"><a class="link" href="#autocomplete">AutoComplete</a></h3>
 <div class="paragraph">
-<p>We are using Prefix Tree which is known as a Trie for AutoComplete. This gives us a worst case time complexity of O(m), where m is length of the search string. While the space complexity is O(bm), where b is number of unique alphabets used, m is length of longest word stored.</p>
+<p>We are using Prefix Tree which is known as a Trie for AutoComplete. This gives us a worst case time complexity of O(m), where m is length of the search string. While the space complexity is O(bm), where b is number of unique characters used, m is length of longest word stored.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/AutoCompleteSequenceDiagram.png" alt="AutoCompleteSequenceDiagram">
 </div>
 </div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-implement-autocomplete"><a class="link" href="#aspect-data-structure-to-implement-autocomplete">Aspect: Data structure to implement AutoComplete</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Using Trie (as known as Prefix Tree).</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 90.9091%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Time Complexity Efficient<br>
+2. One of the most natural data structure for text prediction.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Requires initialisation.<br>
+2. Requires rebuilding of strings.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Using ArrayList.</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 90.9091%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Extremely simple to implement.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Time Complexity Inefficient.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 06:12:47 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 07:53:49 UTC</div></div></div></body></html>
