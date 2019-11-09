@@ -26,8 +26,9 @@
 <li><a href="#autocomplete">3.2. AutoComplete</a></li>
 <li><a href="#queue-feature">3.3. Queue feature</a></li>
 <li><a href="#appointment-feature">3.4. Appointment feature</a></li>
-<li><a href="#logging">3.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
+<li><a href="#duty-shift-scheduling">3.5. Duty Shift Scheduling</a></li>
+<li><a href="#logging">3.6. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -594,20 +595,20 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. <code>addappt i/E0000001A str/01/11/19 1800 rec/m num/2</code> - allows the user to create two monthly appointments to patient whose referenceId is 001A.</p>
+<p>e.g. <code>newappt -id 001A -start 01/11/19 1800 rec/m num/2</code> - allows the user to create two monthly appointments to patient whose referenceId is 001A.</p>
 </li>
 <li>
-<p>e.g. <code>changeappt 1 str/02/11/19 1800</code> - allows the user to change a patient&#8217;s first appointment timing to be the input timing if there is no conflict.</p>
+<p>e.g. <code>editappt -entry 1 -end 02/11/19 1800</code> - allows the user to change a patient&#8217;s first appointment timing to be the input timing if there is no conflict.</p>
 </li>
 </ul>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The Appointment feature contains multiple operations to indirectly manipulate the UniqueAppointmentList. The implemented operations include:</p>
+<p>The Appointment feature contains multiple operations to indirectly manipulate the <code>UniqueEventList</code>. The implemented operations include:</p>
 </div>
 <div class="paragraph">
-<p><code>addappt</code> Command - Adds a appointment or recursive appointments to a patient.</p>
+<p><code>newappt</code> Command - Adds a appointment or reoccurring appointments to a patient.</p>
 </div>
 <div class="paragraph">
 <p><code>ackappt</code> Command - Acknowledges a appointment once the patient reaches.</p>
@@ -616,7 +617,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p><code>appointments</code> Command - Lists all upcoming appointment schedule or lists a specific patient&#8217;s upcoming appointments.</p>
 </div>
 <div class="paragraph">
-<p><code>changeappt</code> Command - Change a current appointment&#8217;s timing to a different timing.</p>
+<p><code>editappt</code> Command - Change a current appointment&#8217;s timing to a different timing.</p>
 </div>
 <div class="paragraph">
 <p><code>cancelappt</code> Command - Cancels appointments found within the appointment schedule.</p>
@@ -637,14 +638,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="title">Figure 10. Appointment class diagram</div>
 </div>
 <div class="paragraph">
-<p>Each Appointment object consists of a PatientId, Timing, Status. Timing class has 2 DateTime object as they indicates the starting and ending time of the appointment. The UniqueAppointmentList contains 0 or more Appointments.</p>
+<p>Each Appointment object consists of a PersonReferenceId, Timing, Status. Timing class has 2 DateTime object as they indicates the starting and ending time of the appointment. The <code>UniqueEventList</code> contains 0 or more Appointments.</p>
 </div>
 <div class="paragraph">
-<p>The current implementation of Appointment will do check with patient object by the unique referenceId and it will also check timing with doctors' dutyRoster. If the referenceId exists within the Model#UniquePatientList and the timing is valid, then constructing the Appointment object. This ensures that the patient is registered and the appointment&#8217;s timing is valid before making an appointment.</p>
+<p>The current implementation of Appointment will do check with patient object by the unique referenceId and it will also check timing with doctors' dutyRoster. If the referenceId exists within the Model#UniquePersonList  and the timing is valid, then constructing the Appointment object. This ensures that the patient is registered and the appointment&#8217;s timing is valid before making an appointment.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-addappt-code-command"><a class="link" href="#code-addappt-code-command">3.4.2. <code>addappt</code> Command</a></h4>
+<h4 id="code-newappt-code-command"><a class="link" href="#code-newappt-code-command">3.4.2. <code>newappt</code> Command</a></h4>
 <div class="paragraph">
 <p>The addAppointment command behaves similarly to the add command used for Patient and Doctor. The command takes in the parameters required to construct ReferenceId, DateTime and Status. The image below shows how the Appointment object is constructed.</p>
 </div>
@@ -655,7 +656,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="content">
 <img src="images/AddAppointmentActivityDiagram.png" alt="AddAppointmentActivityDiagram">
 </div>
-<div class="title">Figure 11. Interactions Inside the Logic Component when a user executes a <code>addappt</code> command</div>
+<div class="title">Figure 11. Interactions Inside the Logic Component when a user executes a <code>newappt</code> command</div>
 </div>
 </div>
 <div class="sect3">
@@ -673,17 +674,17 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>Case 1: <code>appointments patientId</code></p>
 </div>
 <div class="paragraph">
-<p>The appointments command searches for appointments that were belong to the patient that was entered by the user. The filtered appointments are found in ModelManager. The list is instantiated by filtering the UniqueAppointmentList using EventContainsKeywordPredicate which is created from the patientId argument supplied by the user.</p>
+<p>The appointments command searches for appointments that were belong to the patient that was entered by the user. The filtered appointments are found in ModelManager. The list is instantiated by filtering the <code>UniqueEventList</code> using EventContainsKeywordPredicate which is created from the patientId argument supplied by the user.</p>
 </div>
 <div class="paragraph">
 <p>Case 2: <code>appointments</code></p>
 </div>
 <div class="paragraph">
-<p>The appointments behaves similarly to appointments with the exception that it does not take in any arguments. Instead, it automatically executes with the predicate EventContainsApprovedStatusPredicate. updateFilteredAppointmentList() is called and the entire list of upcoming appointments is shown to the user.</p>
+<p>The appointments with referce id behaves similarly to appointments with the exception that it does not take in any arguments. Instead, it automatically executes with the predicate EventContainsApprovedStatusPredicate. updateFilteredAppointmentList() is called and the entire list of upcoming appointments is shown to the user.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-changeappt-code-command"><a class="link" href="#code-changeappt-code-command">3.4.5. <code>changeappt</code> Command</a></h4>
+<h4 id="code-editappt-code-command"><a class="link" href="#code-editappt-code-command">3.4.5. <code>editappt</code> Command</a></h4>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a ChangeAppointment command:</p>
 </div>
@@ -691,7 +692,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="content">
 <img src="images/ChangeAppointmentActivityDiagram.png" alt="ChangeAppointmentActivityDiagram">
 </div>
-<div class="title">Figure 12. Interactions Inside the Logic Component when a user executes a <code>changeappt</code> command</div>
+<div class="title">Figure 12. Interactions Inside the Logic Component when a user executes a <code>editappt</code> command</div>
 </div>
 </div>
 <div class="sect3">
@@ -712,7 +713,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="sect3">
 <h4 id="code-missappt-code-command"><a class="link" href="#code-missappt-code-command">3.4.7. <code>missappt</code> Command</a></h4>
 <div class="paragraph">
-<p>The missAppointment command searches for appointments that patients did not come. The filtered appointments are found in ModelManager. The list is instantiated by filtering the UniqueAppointmentList using EventsMissedPredicate which checks all APPROVED-Status appointments' ending times with current time.</p>
+<p>The missAppointment command searches for appointments that patients did not come. The filtered appointments are found in ModelManager. The list is instantiated by filtering the <code>UniqueEventList</code> using EventsMissedPredicate which checks all APPROVED-Status appointments' ending times with current time.</p>
 </div>
 </div>
 <div class="sect3">
@@ -721,11 +722,100 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>The settleAppointment command helps users to record if they settled missing appointments. It allows users make any missing appointment to be SETTLE once users have settled it. it will updateUniqueAppointmentList to display the rest missing appointments.</p>
 </div>
 <div class="paragraph">
-<p>In future implementations, i.e. v2.0, the valid timing slot will be given after checking with doctor&#8217;s dutyRoster and Model#UniqueAppointmentList. This ensures users can easily make appointments for patients.</p>
+<p>In future implementations, i.e. v2.0, the valid timing slot will be given after checking with doctor&#8217;s dutyRoster and Model#<code>UniqueEventList</code>. This ensures users can easily make appointments for patients.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="duty-shift-scheduling"><a class="link" href="#duty-shift-scheduling">3.5. Duty Shift Scheduling</a></h3>
+<div class="paragraph">
+<p>The duty shift scheduling provides users the ability to schedule duty shift for doctors. It can help doctors to check, add, edit duty shift efficiently.</p>
+</div>
+<div class="paragraph">
+<p>editshift -entry 1 -start 02/12/19 0900 -end 02/12/19 2100
+* e.g. <code>newshift -id STAFF001 -start 01/11/19 0900 -end 01/12/19 2100 reoccur m -num 2</code> - allows the user to create two monthly duty shifts to doctor whose referenceId is STAFF001.
+* e.g. <code>editshift -entry 1 -start 02/12/19 0900 -end 02/12/19 2100</code> - allows the user to change a doctor&#8217;s first duty shift to be the input timing if there is no conflict.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.5.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The Duty shift scheduling contains multiple operations to indirectly manipulate the <code>UniqueEventList</code>. The implemented operations include:</p>
+</div>
+<div class="paragraph">
+<p><code>newshift</code> Command - Adds a duty shift or reoccurring duty shifts to a doctor.</p>
+</div>
+<div class="paragraph">
+<p><code>shifts</code> Command - Lists all duty shifts or lists a specific doctor&#8217;s duty shifts.</p>
+</div>
+<div class="paragraph">
+<p><code>editshift</code> Command - Change a current duty shift&#8217;s timing to a different timing.</p>
+</div>
+<div class="paragraph">
+<p><code>cancelshift</code> Command - Cancels duty shift found within the duty shift sechedule.</p>
+</div>
+<div class="paragraph">
+<p>The class diagram below illustrates the interactions between the Appointment class and associated classes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DutyShiftClassDiagram.png" alt="DutyShiftClassDiagram">
+</div>
+<div class="title">Figure 14. Duty Shift class diagram</div>
+</div>
+<div class="paragraph">
+<p>Each Duty Shift object consists of a PersonReferenceId, Timing, Status. Timing class has 2 DateTime object as they indicates the starting and ending time of the duty shift. The <code>UniqueEventList</code> contains 0 or more duty shifts.</p>
+</div>
+<div class="paragraph">
+<p>The current implementation of duty shift will do check with doctor object by the unique referenceId and it will also check timing with appointments. If the referenceId exists within the Model#UniquePersonList and the timing is valid, then constructing the Duty shift object. This ensures that the doctor is registered and the duty shift&#8217;s timing is valid before making an duty shift.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.4.9. Design Considerations</a></h4>
+<h4 id="code-newshift-code-command"><a class="link" href="#code-newshift-code-command">3.5.2. <code>newshift</code> Command</a></h4>
+<div class="paragraph">
+<p>The newshift command behaves similarly to the add command used for Patient and Doctor. The command takes in the parameters required to construct ReferenceId, DateTime and Status.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-shifts-code-command"><a class="link" href="#code-shifts-code-command">3.5.3. <code>shifts</code> Command</a></h4>
+<div class="paragraph">
+<p>The shifts command works in two different cases for different purpose.</p>
+</div>
+<div class="paragraph">
+<p>Case 1: <code>shifts Reference Id</code></p>
+</div>
+<div class="paragraph">
+<p>The shifts command searches for duty shifts that were belong to the doctor that was entered by the user. The filtered shifts are found in ModelManager. The list is instantiated by filtering the <code>UniqueEventList</code> using EventContainsKeywordPredicate which is created from the reference Id argument supplied by the user.</p>
+</div>
+<div class="paragraph">
+<p>Case 2: <code>shifts</code></p>
+</div>
+<div class="paragraph">
+<p>The shifts behaves similarly to shifts with the exception that it does not take in any arguments. Instead, it automatically executes with the predicate EventContainsApprovedStatusPredicate. updateFilteredEventList() is called and the entire list of upcoming duty shifts is shown to the user.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-editshift-code-command"><a class="link" href="#code-editshift-code-command">3.5.4. <code>editshift</code> Command</a></h4>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a ChangeAppointment command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ChangeShiftActivityDiagram.png" alt="ChangeShiftActivityDiagram">
+</div>
+<div class="title">Figure 15. Interactions Inside the Logic Component when a user executes a <code>editappt</code> command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-cancelshift-code-command"><a class="link" href="#code-cancelshift-code-command">3.5.5. <code>cancelshift</code> Command</a></h4>
+<div class="paragraph">
+<p><code>cancelshift</code> simply takes in the index of the target duty shift to cancel according to the displayed shift list.</p>
+</div>
+<div class="paragraph">
+<p>In future implementations, i.e. v2.0, the valid timing slot will be given after checking with doctor&#8217;s dutyRoster and Model#<code>UniqueEventList</code>. This ensures users can easily add duty shift for any doctor.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.5.6. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -866,14 +956,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -904,7 +994,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1077,8 +1167,8 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add recursive appointments</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">schedule new appointments recursively for my patients</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add reoccurring appointments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schedule new reoccurring appointments for my patients</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -1958,4 +2048,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 07:53:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 07:55:54 UTC</div></div></div></body></html>
