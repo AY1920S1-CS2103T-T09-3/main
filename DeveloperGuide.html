@@ -472,6 +472,7 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial a
 <div class="content">
 <img src="images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
 </div>
+<div class="title">Figure 10. Undo Sequence Diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -523,6 +524,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="content">
 <img src="images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
 </div>
+<div class="title">Figure 11. Commit Activity Diagram</div>
 </div>
 </div>
 </div>
@@ -535,6 +537,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="content">
 <img src="images/AutoCompleteSequenceDiagram.png" alt="AutoCompleteSequenceDiagram">
 </div>
+<div class="title">Figure 12. AutoComplete Sequence Diagram</div>
 </div>
 </div>
 <div class="sect2">
@@ -564,6 +567,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="content">
 <img src="images/EnqueueActivityDiagram.png" alt="EnqueueActivityDiagram">
 </div>
+<div class="title">Figure 13. Enqueue Activity Diagram</div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes an next command:</p>
@@ -572,6 +576,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="content">
 <img src="images/NextActivityDiagram.png" alt="NextActivityDiagram">
 </div>
+<div class="title">Figure 14. Next Activity Diagram</div>
 </div>
 <div class="paragraph">
 <p>Below is an example usage of the queue feature.</p>
@@ -583,22 +588,22 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>Step 2: The command then calls Model#enqueuePatient to enqueue the patient into the queue.</p>
 </div>
 <div class="paragraph">
-<p>Step 3: Patient will then be showed in the queue.</p>
+<p>Step 3: Patient will then displayed in the queue.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="appointment-feature"><a class="link" href="#appointment-feature">3.4. Appointment feature</a></h3>
 <div class="paragraph">
-<p>The Appointment feature provides users the ability to manage appointments for patients. It can help patients to add, change, delete appointments. It also helps user to find the missed appointments and settles each missing appointment efficiently.</p>
+<p>The Appointment feature enables users to manage appointments for patients by providing basic Create, Read, Update, Delete (CRUD) of appointments. User also able to find missed appointments and settles each missed appointment efficiently.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g. <code>newappt -id 001A -start 01/11/19 1800 rec/m num/2</code> - allows the user to create two monthly appointments to patient whose referenceId is 001A.</p>
+<p>e.g. <code>newappt -id E0000001A -start 01/11/19 1800 -rec m -num 2</code> - creates two monthly appointments to patient whose referenceId is 001A.</p>
 </li>
 <li>
-<p>e.g. <code>editappt -entry 1 -end 02/11/19 1800</code> - allows the user to change a patient&#8217;s first appointment timing to be the input timing if there is no conflict.</p>
+<p>e.g. <code>editappt 1 -start 02/11/19 1800</code> - edits a patient&#8217;s first appointment timing to be the input timing if there is no conflict.</p>
 </li>
 </ul>
 </div>
@@ -608,34 +613,31 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>The Appointment feature contains multiple operations to indirectly manipulate the <code>UniqueEventList</code>. The implemented operations include:</p>
 </div>
 <div class="paragraph">
-<p><code>newappt</code> Command - Adds a appointment or reoccurring appointments to a patient.</p>
+<p><code>newappt</code> Command - Creates an new appointment or recurring appointments for a patient.</p>
 </div>
 <div class="paragraph">
-<p><code>ackappt</code> Command - Acknowledges a appointment once the patient reaches.</p>
+<p><code>ackappt</code> Command - Acknowledges an appointment whenever the patient checks in with the clerk.</p>
 </div>
 <div class="paragraph">
-<p><code>appointments</code> Command - Lists all upcoming appointment schedule or lists a specific patient&#8217;s upcoming appointments.</p>
+<p><code>appointments</code> Command - Lists all upcoming appointments or appointments containing a certain keyword.</p>
 </div>
 <div class="paragraph">
-<p><code>editappt</code> Command - Change a current appointment&#8217;s timing to a different timing.</p>
+<p><code>editappt</code> Command - Edits an appointment timing.</p>
 </div>
 <div class="paragraph">
-<p><code>cancelappt</code> Command - Cancels appointments found within the appointment schedule.</p>
+<p><code>cancelappt</code> Command - Cancels an appointment.</p>
 </div>
 <div class="paragraph">
-<p><code>missappt</code> Command - Lists all missing appointment.</p>
+<p><code>missappt</code> Command - Lists all missed appointments.</p>
 </div>
 <div class="paragraph">
-<p><code>settleappt</code> Command - Settles a missing appointment when user contact with patient.</p>
-</div>
-<div class="paragraph">
-<p>The class diagram below illustrates the interactions between the Appointment class and associated classes.</p>
+<p><code>settleappt</code> Command - Marks a missed appointment as settled. Allowing the clerk to track which patient have yet to reschedule an appointment.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/AppointmentClassDiagram.png" alt="AppointmentClassDiagram">
 </div>
-<div class="title">Figure 10. Appointment class diagram</div>
+<div class="title">Figure 15. Appointment class diagram illustrating interactions between the Appointment class and associated classes.</div>
 </div>
 <div class="paragraph">
 <p>Each Appointment object consists of a PersonReferenceId, Timing, Status. Timing class has 2 DateTime object as they indicates the starting and ending time of the appointment. The <code>UniqueEventList</code> contains 0 or more Appointments.</p>
@@ -647,7 +649,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="sect3">
 <h4 id="code-newappt-code-command"><a class="link" href="#code-newappt-code-command">3.4.2. <code>newappt</code> Command</a></h4>
 <div class="paragraph">
-<p>The addAppointment command behaves similarly to the add command used for Patient and Doctor. The command takes in the parameters required to construct ReferenceId, DateTime and Status. The image below shows how the Appointment object is constructed.</p>
+<p>The <code>newappt</code> command is similar to the <code>new</code> command of Patient and Doctor. The command takes in the parameters required to construct ReferenceId, DateTime and Status. The image below shows how the Appointment object is constructed.</p>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a AddAppointment command:</p>
@@ -656,19 +658,19 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="content">
 <img src="images/AddAppointmentActivityDiagram.png" alt="AddAppointmentActivityDiagram">
 </div>
-<div class="title">Figure 11. Interactions Inside the Logic Component when a user executes a <code>newappt</code> command</div>
+<div class="title">Figure 16. Interactions Inside the Logic Component when a user executes a <code>newappt</code> command</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="code-ackappt-code-command"><a class="link" href="#code-ackappt-code-command">3.4.3. <code>ackappt</code> command</a></h4>
 <div class="paragraph">
-<p>The ackAppointment command will mark the patient&#8217;s the most upcoming appointment as Acknowledge when the patient is reaching and it will updateUniqueAppointmentList to display the rest appointments that are belong to the patient.</p>
+<p>The <code>ackappt</code> command marks the patient&#8217;s the most upcoming appointment as Acknowledged when the patient checks in and also updates UniqueEventList to display appointments belonging to the patient.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="code-appointments-code-command"><a class="link" href="#code-appointments-code-command">3.4.4. <code>appointments</code> Command</a></h4>
 <div class="paragraph">
-<p>The appointments command works in two different cases for different purpose.</p>
+<p>The <code>appointments</code> command works in two different cases for different purpose.</p>
 </div>
 <div class="paragraph">
 <p>Case 1: <code>appointments patientId</code></p>
@@ -680,19 +682,19 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>Case 2: <code>appointments</code></p>
 </div>
 <div class="paragraph">
-<p>The appointments with referce id behaves similarly to appointments with the exception that it does not take in any arguments. Instead, it automatically executes with the predicate EventContainsApprovedStatusPredicate. updateFilteredAppointmentList() is called and the entire list of upcoming appointments is shown to the user.</p>
+<p>If appointments is executed without arguments, it executes with the predicate EventContainsApprovedStatusPredicate. updateFilteredAppointmentList() is called and the entire list of upcoming appointments is shown to the user.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="code-editappt-code-command"><a class="link" href="#code-editappt-code-command">3.4.5. <code>editappt</code> Command</a></h4>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a ChangeAppointment command:</p>
+<p>The following activity diagram summarizes what happens when a user executes a <code>editappt</code> command:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ChangeAppointmentActivityDiagram.png" alt="ChangeAppointmentActivityDiagram">
 </div>
-<div class="title">Figure 12. Interactions Inside the Logic Component when a user executes a <code>editappt</code> command</div>
+<div class="title">Figure 17. Interactions Inside the Logic Component when a user executes a <code>editappt</code> command</div>
 </div>
 </div>
 <div class="sect3">
@@ -707,19 +709,19 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="content">
 <img src="images/CancelAppointmentSequenceDiagram.png" alt="CancelAppointmentSequenceDiagram">
 </div>
-<div class="title">Figure 13. Interactions Inside the Logic Component for the <code>cancelappt 1</code> Command</div>
+<div class="title">Figure 18. Interactions Inside the Logic Component for the <code>cancelappt 1</code> Command</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="code-missappt-code-command"><a class="link" href="#code-missappt-code-command">3.4.7. <code>missappt</code> Command</a></h4>
 <div class="paragraph">
-<p>The missAppointment command searches for appointments that patients did not come. The filtered appointments are found in ModelManager. The list is instantiated by filtering the <code>UniqueEventList</code> using EventsMissedPredicate which checks all APPROVED-Status appointments' ending times with current time.</p>
+<p>The <code>missappt</code> command searches for appointments that the patient did not attend. The filtered appointments are found in ModelManager. The list is instantiated by filtering the <code>UniqueEventList</code> using EventsMissedPredicate which checks all APPROVED-Status appointments' ending times with current time.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="code-settleappt-code-command"><a class="link" href="#code-settleappt-code-command">3.4.8. <code>settleappt</code> Command</a></h4>
 <div class="paragraph">
-<p>The settleAppointment command helps users to record if they settled missing appointments. It allows users make any missing appointment to be SETTLE once users have settled it. it will updateUniqueAppointmentList to display the rest missing appointments.</p>
+<p>The <code>settleappt</code> command helps users to record if they settled missed appointments. It allows users make any missed appointment to be SETTLE once users have settled it. It will also update UniqueEventList to display the other missed appointments.</p>
 </div>
 <div class="paragraph">
 <p>In future implementations, i.e. v2.0, the valid timing slot will be given after checking with doctor&#8217;s dutyRoster and Model#<code>UniqueEventList</code>. This ensures users can easily make appointments for patients.</p>
@@ -733,7 +735,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 <div class="paragraph">
 <p>editshift -entry 1 -start 02/12/19 0900 -end 02/12/19 2100
-* e.g. <code>newshift -id STAFF001 -start 01/11/19 0900 -end 01/12/19 2100 reoccur m -num 2</code> - allows the user to create two monthly duty shifts to doctor whose referenceId is STAFF001.
+* e.g. <code>newshift -id STAFF001 -start 01/11/19 0900 -end 01/12/19 2100 -reoccur m -num 2</code> - allows the user to create two monthly duty shifts to doctor whose referenceId is STAFF001.
 * e.g. <code>editshift -entry 1 -start 02/12/19 0900 -end 02/12/19 2100</code> - allows the user to change a doctor&#8217;s first duty shift to be the input timing if there is no conflict.</p>
 </div>
 <div class="sect3">
@@ -760,7 +762,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="content">
 <img src="images/DutyShiftClassDiagram.png" alt="DutyShiftClassDiagram">
 </div>
-<div class="title">Figure 14. Duty Shift class diagram</div>
+<div class="title">Figure 19. Duty Shift class diagram</div>
 </div>
 <div class="paragraph">
 <p>Each Duty Shift object consists of a PersonReferenceId, Timing, Status. Timing class has 2 DateTime object as they indicates the starting and ending time of the duty shift. The <code>UniqueEventList</code> contains 0 or more duty shifts.</p>
@@ -802,7 +804,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="content">
 <img src="images/ChangeShiftActivityDiagram.png" alt="ChangeShiftActivityDiagram">
 </div>
-<div class="title">Figure 15. Interactions Inside the Logic Component when a user executes a <code>editappt</code> command</div>
+<div class="title">Figure 20. Interactions Inside the Logic Component when a user executes a <code>editappt</code> command</div>
 </div>
 </div>
 <div class="sect3">
@@ -2048,4 +2050,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 09:56:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 10:18:43 UTC</div></div></div></body></html>
