@@ -555,6 +555,33 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>Queue supports a few basic commands:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Enqueue&#8201;&#8212;&#8201;Enqueues a patient into the queue.<br>
+Format: <code>enqueue &lt;PATIENT_REFERENCE_ID&gt;</code></p>
+</li>
+<li>
+<p>Dequeue&#8201;&#8212;&#8201;Dequeues a patient from the queue.<br>
+Format: <code>dequeue &lt;QUEUE_INDEX&gt;</code></p>
+</li>
+<li>
+<p>Next&#8201;&#8212;&#8201;Assigns the next patient in the queue to a doctor.<br>
+Format: <code>next &lt;ENTRY_ID&gt;</code></p>
+</li>
+<li>
+<p>Break&#8201;&#8212;&#8201;Avoids directing patients to a doctor. e.g. Doctor is on a lunch break<br>
+Format: <code>break &lt;ENTRY_ID&gt;</code></p>
+</li>
+<li>
+<p>Resume&#8201;&#8212;&#8201;Allows patients to be directed to a doctor. e.g. Doctor is back from his/her break.<br>
+Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
+</li>
+</ul>
+</div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -619,7 +646,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p><code>ackappt</code> Command - Acknowledges an appointment whenever the patient checks in with the clerk.</p>
 </div>
 <div class="paragraph">
-<p><code>appointments</code> Command - Lists all upcoming appointments or appointments containing a certain keyword.</p>
+<p><code>appointments</code> Command - Lists all upcoming appointments or appointments which involves the patient whose referenceId contains a certain keyword.</p>
 </div>
 <div class="paragraph">
 <p><code>editappt</code> Command - Edits an appointment timing.</p>
@@ -640,7 +667,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="title">Figure 15. Appointment class diagram illustrating interactions between the Appointment class and associated classes.</div>
 </div>
 <div class="paragraph">
-<p>Each Appointment object consists of a PersonReferenceId, Timing, Status. Timing class has 2 DateTime object as they indicates the starting and ending time of the appointment. The <code>UniqueEventList</code> contains 0 or more Appointments.</p>
+<p>Each Appointment object consists of a PersonReferenceId, Timing, Status. Timing class has 2 DateTime objects which indicates the start and end time of the appointment. The UniqueEventList contains 0 or more Appointments.</p>
 </div>
 <div class="paragraph">
 <p>The current implementation of Appointment will do check with patient object by the unique referenceId and it will also check timing with doctors' dutyRoster. If the referenceId exists within the Model#UniquePersonList  and the timing is valid, then constructing the Appointment object. This ensures that the patient is registered and the appointment&#8217;s timing is valid before making an appointment.</p>
@@ -652,7 +679,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>The <code>newappt</code> command is similar to the <code>new</code> command of Patient and Doctor. The command takes in the parameters required to construct ReferenceId, DateTime and Status. The image below shows how the Appointment object is constructed.</p>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a AddAppointment command:</p>
+<p>The following activity diagram summarizes what happens when a user executes a <code>AddAppointment</code> command:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -676,7 +703,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>Case 1: <code>appointments patientId</code></p>
 </div>
 <div class="paragraph">
-<p>The appointments command searches for appointments that were belong to the patient that was entered by the user. The filtered appointments are found in ModelManager. The list is instantiated by filtering the <code>UniqueEventList</code> using EventContainsKeywordPredicate which is created from the patientId argument supplied by the user.</p>
+<p>The <code>appointments</code> command searches for appointments that were belong to the patient that was entered by the user. The filtered appointments are found in <code>ModelManager</code>. The list is instantiated by filtering the <code>UniqueEventList</code> using <code>EventContainsKeywordPredicate</code> which is created from the <code>patientId</code> argument supplied by the user.</p>
 </div>
 <div class="paragraph">
 <p>Case 2: <code>appointments</code></p>
@@ -724,7 +751,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>The <code>settleappt</code> command helps users to record if they settled missed appointments. It allows users make any missed appointment to be SETTLE once users have settled it. It will also update UniqueEventList to display the other missed appointments.</p>
 </div>
 <div class="paragraph">
-<p>In future implementations, i.e. v2.0, the valid timing slot will be given after checking with doctor&#8217;s dutyRoster and Model#<code>UniqueEventList</code>. This ensures users can easily make appointments for patients.</p>
+<p>In future implementations, i.e. v2.0, the valid timing slot will be given after checking with doctor&#8217;s <code>dutyRoster</code> and <code>Model#UniqueEventList</code>. This ensures users can easily make appointments for patients.</p>
 </div>
 </div>
 </div>
@@ -747,7 +774,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p><code>newshift</code> Command - Adds a duty shift or reoccurring duty shifts to a doctor.</p>
 </div>
 <div class="paragraph">
-<p><code>shifts</code> Command - Lists all duty shifts or lists a specific doctor&#8217;s duty shifts.</p>
+<p><code>shifts</code> Command - Lists all duty shifts involving the doctor&#8217;s referenceId which contains the keyword.</p>
 </div>
 <div class="paragraph">
 <p><code>editshift</code> Command - Change a current duty shift&#8217;s timing to a different timing.</p>
@@ -2050,4 +2077,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 10:18:43 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 11:04:42 UTC</div></div></div></body></html>
