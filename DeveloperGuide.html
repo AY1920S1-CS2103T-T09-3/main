@@ -9,31 +9,33 @@
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#setting-up">1. Setting up</a></li>
-<li><a href="#design">2. Design</a>
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#setting-up">2. Setting up</a></li>
+<li><a href="#design">3. Design</a>
 <ul class="sectlevel2">
-<li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Ui">2.2. UI component</a></li>
-<li><a href="#Design-Logic">2.3. Logic component</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Commons">2.6. Common classes</a></li>
+<li><a href="#Design-Architecture">3.1. Architecture</a></li>
+<li><a href="#Design-Ui">3.2. UI component</a></li>
+<li><a href="#Design-Logic">3.3. Logic component</a></li>
+<li><a href="#Design-Model">3.4. Model component</a></li>
+<li><a href="#Design-Storage">3.5. Storage component</a></li>
+<li><a href="#Design-Commons">3.6. Common classes</a></li>
 </ul>
 </li>
-<li><a href="#implementation">3. Implementation</a>
+<li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
-<li><a href="#autocomplete">3.2. AutoComplete</a></li>
-<li><a href="#queue-feature">3.3. Queue feature</a></li>
-<li><a href="#appointment-feature">3.4. Appointment feature</a></li>
-<li><a href="#duty-shift-scheduling">3.5. Duty Shift Scheduling</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
+<li><a href="#unique-reference-identification">4.1. Unique Reference Identification</a></li>
+<li><a href="#proposed-undo-redo-feature">4.2. [Proposed] Undo/Redo feature</a></li>
+<li><a href="#autocomplete">4.3. AutoComplete</a></li>
+<li><a href="#queue-feature">4.4. Queue feature</a></li>
+<li><a href="#appointment-feature">4.5. Appointment feature</a></li>
+<li><a href="#duty-shift-scheduling">4.6. Duty Shift Scheduling</a></li>
+<li><a href="#logging">4.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
 </ul>
 </li>
-<li><a href="#documentation">4. Documentation</a></li>
-<li><a href="#testing">5. Testing</a></li>
-<li><a href="#dev-ops">6. Dev Ops</a></li>
+<li><a href="#documentation">5. Documentation</a></li>
+<li><a href="#testing">6. Testing</a></li>
+<li><a href="#dev-ops">7. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a>
@@ -55,7 +57,17 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ClerkPro is an appointment and queue management system targeted at clerks working in small clinics.
+This developer guide is organised in a top-down approach, beginning with the Architecture Design.
+You may jump to any section by clicking on the heading in the contents page.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setting-up"><a class="link" href="#setting-up">2. Setting up</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="SettingUp.html">here</a>.</p>
@@ -63,10 +75,10 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="design"><a class="link" href="#design">2. Design</a></h2>
+<h2 id="design"><a class="link" href="#design">3. Design</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
+<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ArchitectureDiagram.png" alt="ArchitectureDiagram">
@@ -74,23 +86,10 @@
 <div class="title">Figure 1. Architecture Diagram</div>
 </div>
 <div class="paragraph">
-<p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/">diagrams</a> folder.
-Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how to create and edit diagrams.
-</td>
-</tr>
-</table>
+<p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of ClerkPro. Given below is a quick overview of each component.</p>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/tree/master/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -169,7 +168,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">3.2. UI component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram">
@@ -177,13 +176,13 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 4. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -200,7 +199,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">3.3. Logic component</a></h3>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
@@ -209,40 +208,41 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S1-CS2103T-T09-3/main/tree/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>SystemCommandParser</code> class to parse the user command.</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>A <code>Command</code> object can be classified as one of two types, a reversible command and a Non-Actionable command.</p>
+<p>A <code>Command</code> object can be classified as one of two types, a <code>ReversibleCommand</code> and a <code>NonActionableCommand</code>.</p>
 </li>
 <li>
-<p>Reversible command refers to any action which modifies the data in the system&#8217;s model.</p>
+<p>A <code>ReversibleCommand</code> refers to any command which modifies the data in the system&#8217;s model.
+To enable the user to revert their changes, the actions of such commands needs to be reversible.</p>
 </li>
 <li>
-<p>Conversely, a Non-Actionable command only reads data from the system&#8217;s model without modifying it.</p>
+<p>Conversely, a <code>NonActionableCommand</code> only reads data from the system&#8217;s model without modifying it.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a person).</p>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a patient).</p>
 <div class="ulist">
 <ul>
 <li>
-<p>If the user intends to execute a reversible command, an ActionPair command is created and pushed into an undo stack.
-The ActionPair command contains a pairing of of the action itself and its inverse.
+<p>If the user intends to execute a reversible command, a <code>ReversibleActionPairCommand</code> is created and pushed into an undo stack.
+This action pair command contains a pairing of of the action itself and its inverse.
 (e.g. Pairing 'add person A' and 'delete person A' command).</p>
 </li>
 <li>
-<p>If the user intends to execute a Non-Actionable command, the command will be directly executed.</p>
+<p>If the user intends to execute a <code>NonActionableCommand</code>, the command will be directly executed.</p>
 </li>
 </ul>
 </div>
@@ -252,6 +252,28 @@ The ActionPair command contains a pairing of of the action itself and its invers
 </li>
 <li>
 <p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to perform certain actions, such as displaying help to the user.</p>
+</li>
+<li>
+<p>Handles the mutli-threading of reactive search requests by the user.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>When the user is searching for an existing entry, the system will attempt to filter through the results as the user types.</p>
+</li>
+<li>
+<p>Each key stroke will trigger a new reactive search request which is processed on a separate thread.
+This is done to avoid lagging the UI.</p>
+</li>
+<li>
+<p>If a new reactive search request is triggered before the previous request has been completed.
+The previous request thread will be interrupted before the new request thread is allowed to be executed.</p>
+</li>
+<li>
+<p>The execution of a reactive search differs from the normal command, in the way that it only allows the execution of <code>NonActionableCommand</code> types.
+Hence, there is no modification of any data in the system&#8217;s model when executing a reactive search.</p>
+</li>
+</ul>
+</div>
 </li>
 </ol>
 </div>
@@ -272,7 +294,7 @@ The ActionPair command contains a pairing of of the action itself and its invers
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">3.4. Model component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelOverviewClassDiagramV3.png" alt="ModelOverviewClassDiagramV3">
@@ -280,10 +302,10 @@ The ActionPair command contains a pairing of of the action itself and its invers
 <div class="title">Figure 8. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="sect3">
-<h4 id="overall-model-component"><a class="link" href="#overall-model-component">2.4.1. Overall Model component</a></h4>
+<h4 id="overall-model-component"><a class="link" href="#overall-model-component">3.4.1. Overall Model component</a></h4>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
 </div>
@@ -293,28 +315,22 @@ The ActionPair command contains a pairing of of the action itself and its invers
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>consists of 3 sub-components: Queue Manager, Address Book and Appointment Book.</p>
+<p>does not depend on any of the other three components: <code>Logic</code>, <code>Ui</code>, and <code>Storage</code>.</p>
 </li>
 <li>
-<p>stores the details of patients and staff in an Address Book.</p>
+<p>consists of 3 sub-components: <code>QueueManager</code>, <code>AddressBook</code> and <code>AppointmentBook</code>.</p>
 </li>
 <li>
-<p>stores the Appointment details of patients and staff in an Appointment Book.</p>
+<p>stores the details of patients and staff in 2 separate instances of <code>AddressBook</code>.</p>
 </li>
 <li>
-<p>improves code reusability, we can reuse the <code>Person</code> class to derive classes which can represent patients or staff doctors.</p>
-</li>
-<li>
-<p>likewise, we can reuse the <code>Event</code> class to derive classes which can represent patient&#8217;s appointments and staff duty shifts.</p>
+<p>stores the patients' appointments and duty shifts of staff doctors in 2 separate instances of `Appointment Book.</p>
 </li>
 <li>
 <p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> and <code>ObservableList&lt;Event&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
-<p>does not depend on any of the other three components.</p>
-</li>
-<li>
-<p>stores a unique list of <code>Tags</code> in the <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object.</p>
+<p>stores a unique list of <code>Tags</code> and <code>ReferenceId</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object.</p>
 </li>
 </ul>
 </div>
@@ -331,10 +347,36 @@ The ActionPair command contains a pairing of of the action itself and its invers
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The <code>AddressBook</code>,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>stores a <code>Person</code> object that, depending on its usage, can represent either a staff doctor or patients.</p>
+</li>
+<li>
+<p>stores a <code>UniquePersonList</code> which represents a list of all registered doctors or patients.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>AppointmentBook</code>,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>stores a <code>Event</code> object that, depending on its usage, can represent either a patient&#8217;s appointment and staff duty shift.</p>
+</li>
+<li>
+<p>stores a <code>UniquePersonList</code> which represents a list of all registered appointments or shifts.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagramV2.png" alt="StorageClassDiagramV2">
@@ -342,7 +384,7 @@ The ActionPair command contains a pairing of of the action itself and its invers
 <div class="title">Figure 9. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -353,10 +395,10 @@ The ActionPair command contains a pairing of of the action itself and its invers
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save and read data of the Address Book in json format.</p>
+<p>can save and read data of the particulars of patients and doctors in json format.</p>
 </li>
 <li>
-<p>can save and read data of the Appointment Book data in json format.</p>
+<p>can save and read data of the Appointments and duty shifts data in json format.</p>
 </li>
 <li>
 <p>able to reuse <code>JsonAddressBookStorage</code> to store the details of doctors and patients.</p>
@@ -368,7 +410,7 @@ The ActionPair command contains a pairing of of the action itself and its invers
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
+<h3 id="Design-Commons"><a class="link" href="#Design-Commons">3.6. Common classes</a></h3>
 <div class="paragraph">
 <p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
 </div>
@@ -376,41 +418,98 @@ The ActionPair command contains a pairing of of the action itself and its invers
 </div>
 </div>
 <div class="sect1">
-<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<h2 id="implementation"><a class="link" href="#implementation">4. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></h3>
-<div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.1.1. Proposed Implementation</a></h4>
+<h3 id="unique-reference-identification"><a class="link" href="#unique-reference-identification">4.1. Unique Reference Identification</a></h3>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
+<p>In ClerkPro, each person is assigned a unique <code>ReferenceId</code>.
+    Appointments and duty shifts are tagged to the respective patients and doctors through the use of <code>ReferenceId</code>.</p>
+</div>
+<div class="paragraph">
+<p>This unique reference identifier consist of two parts:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>a unique case-insensitive string, which consist of 9 alphanumeric characters, referring to its unique ID</p>
+</li>
+<li>
+<p>a boolean referring to whether the reference identifier belonged to a person who is registered as a patient or a staff doctor.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">4.2. [Proposed] Undo/Redo feature</a></h3>
+<div class="paragraph">
+<p>The undo/redo feature allows users to revert the action of a command or redo a command action that has been undone.</p>
+</div>
+<div class="sect3">
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.2.1. Proposed Implementation</a></h4>
+<div class="paragraph">
+<p>The undo/redo mechanism is facilitated by the <code>CommandHistory</code> class, which is found in the <code>logic</code> component.
+The history class stores undoable commands as a <code>ReversibleActionPairCommand</code>,
+which pairs two <code>ReversibleActionCommand</code>, the first command being the action to be executed and its inverse. (e.g. Pairing 'add event A' and 'delete event A' command).</p>
+</div>
+<div class="paragraph">
+<p>A <code>ReversibleCommand</code> refers to any command which modifies the data in the system&#8217;s model.
+Commands that only reads data from the model without modifying it, will not be added to the undo history stack.</p>
+</div>
+<div class="paragraph">
+<p>Considering that the undo functionality of an 'add event' command, is similar to the action of the 'delete event' command,
+execution of the 'delete event' command could be done in place of the undo functionality of the 'add event' command.
+Hence, with such an implementation, we can avoid unnecessary duplication of code.</p>
+</div>
+<div class="paragraph">
+<p>The design of <code>ReversibleActionCommand</code> uses the Command pattern, a common design pattern often used in software engineering.
+It implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
+<p><code>ReversibleActionPairCommand#execute()</code>&#8201;&#8212;&#8201;Executes the primary action.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
+<p><code>ReversibleActionPairCommand#undo()</code>&#8201;&#8212;&#8201;Undoes the primary action by executing its inverse operation.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
+<p><code>ReversibleActionPairCommand#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone primary action by executing the same operation again.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
+<p>Additionally, after the action pair has been executed,
+it is then added to the undo stack of the <code>CommandHistory</code> via the following implemented operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CommandHistory#addToCommandHistory()</code>&#8201;&#8212;&#8201;Saves the most recent command that modifies the system&#8217;s model in its undo history.</p>
+</li>
+<li>
+<p><code>CommandHistory#performUndo()</code>&#8201;&#8212;&#8201;Performs the inverse operation to restore the system to its previous state.</p>
+</li>
+<li>
+<p><code>CommandHistory#performRedo()</code>&#8201;&#8212;&#8201;Restores a previously undone state by re-executing the respective undone command.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
+<p>These operations are all contained within the <code>Logic</code> component.
+Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>CommandHistory</code> will be initialised with an empty undo stack.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>newpatient -id S9729970A -name Mark</code> command which registers a new patient named <code>Mark</code> with the unique id of <code>S9729970A</code>.
+The <code>newpatient</code> command creates a <code>ReversibleActionPairCommand</code>, which pairs of a <code>RegisterPatientCommand</code> and <code>UnregisterPatientCommand</code>.
+After the invoking execution of the <code>RegisterPatientCommand</code>, the whole <code>ReversibleActionPairCommand</code> is pushed to the undo history stack
+via the <code>CommandHistory#addToCommandHistory()</code></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -418,7 +517,8 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
+<p>Step 3. The user executes <code>enqueue S9729970A</code> command to add a patient whose reference id matches <code>S9729970A</code>.
+    The <code>enqueue</code> command also calls the <code>CommandHistory#addToCommandHistory()</code>, which pushes the enqueue action pair into the command history stack.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -426,7 +526,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
+<p>Step 3. The user executes <code>newpatient &#8230;&#8203;</code> to register a new patient. The command also invokes <code>CommandHistory#addToCommandHistory()</code>, causing another action pair to be saved into the command history undo stack.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -440,13 +540,17 @@ Additionally, it implements the following operations:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
+If a command fails its execution, it will not call <code>CommandHistory#addToCommandHistory()</code>. Hence, the command will not be saved into the command history.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
+<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>CommandHistory#performUndo()</code>,
+which pops the top of the command history stack and</p>
+</div>
+<div class="paragraph">
+<p>which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -528,7 +632,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.2.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -622,7 +726,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="autocomplete"><a class="link" href="#autocomplete">3.2. AutoComplete</a></h3>
+<h3 id="autocomplete"><a class="link" href="#autocomplete">4.3. AutoComplete</a></h3>
 <div class="paragraph">
 <p>We are using Prefix Tree which is known as a Trie for AutoComplete. This gives us a worst case time complexity of O(m), where m is length of the search string. While the space complexity is O(bm), where b is number of unique characters used, m is length of longest word stored.</p>
 </div>
@@ -681,7 +785,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="queue-feature"><a class="link" href="#queue-feature">3.3. Queue feature</a></h3>
+<h3 id="queue-feature"><a class="link" href="#queue-feature">4.4. Queue feature</a></h3>
 <div class="paragraph">
 <p>The queue feature allows the user to enqueue and dequeue a patient from the queue.</p>
 </div>
@@ -723,7 +827,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">4.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The queue will be displayed in a list.</p>
 </div>
@@ -737,7 +841,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 <div class="title">Figure 13. Enqueue Activity Diagram</div>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes an next command:</p>
+<p>The following activity diagram summarizes what happens when a user executes a next command:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -760,7 +864,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="appointment-feature"><a class="link" href="#appointment-feature">3.4. Appointment feature</a></h3>
+<h3 id="appointment-feature"><a class="link" href="#appointment-feature">4.5. Appointment feature</a></h3>
 <div class="paragraph">
 <p>The Appointment feature enables users to manage appointments for patients by providing basic Create, Read, Update, Delete (CRUD) of appointments. User is also able to find missed appointments and settle each missed appointment efficiently.</p>
 </div>
@@ -775,7 +879,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The Appointment feature contains multiple operations to indirectly manipulate the <code>UniqueEventList</code>. The implemented operations include:</p>
 </div>
@@ -814,7 +918,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-newappt-code-command"><a class="link" href="#code-newappt-code-command">3.4.2. <code>newappt</code> Command</a></h4>
+<h4 id="code-newappt-code-command"><a class="link" href="#code-newappt-code-command">4.5.2. <code>newappt</code> Command</a></h4>
 <div class="paragraph">
 <p>The <code>newappt</code> command is similar to the <code>new</code> command of patient and doctor. The command takes in the parameters required to construct <code>ReferenceId</code>, <code>DateTime</code> and <code>Status</code>. The image below shows how the <code>Appointment</code> object is constructed.</p>
 </div>
@@ -829,13 +933,13 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-ackappt-code-command"><a class="link" href="#code-ackappt-code-command">3.4.3. <code>ackappt</code> command</a></h4>
+<h4 id="code-ackappt-code-command"><a class="link" href="#code-ackappt-code-command">4.5.3. <code>ackappt</code> command</a></h4>
 <div class="paragraph">
 <p>The <code>ackappt</code> command marks the patient&#8217;s the most upcoming appointment as acknowledged only if it is on the same day and it is before the appointment&#8217;s end time and also updates <code>UniqueEventList</code> to display the rest appointments belonging to the patient.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-appointments-code-command"><a class="link" href="#code-appointments-code-command">3.4.4. <code>appointments</code> Command</a></h4>
+<h4 id="code-appointments-code-command"><a class="link" href="#code-appointments-code-command">4.5.4. <code>appointments</code> Command</a></h4>
 <div class="paragraph">
 <p>The <code>appointments</code> command works in two different ways.</p>
 </div>
@@ -853,7 +957,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-editappt-code-command"><a class="link" href="#code-editappt-code-command">3.4.5. <code>editappt</code> Command</a></h4>
+<h4 id="code-editappt-code-command"><a class="link" href="#code-editappt-code-command">4.5.5. <code>editappt</code> Command</a></h4>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a <code>editappt</code> command:</p>
 </div>
@@ -865,7 +969,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-cancelappt-code-command"><a class="link" href="#code-cancelappt-code-command">3.4.6. <code>cancelappt</code> Command</a></h4>
+<h4 id="code-cancelappt-code-command"><a class="link" href="#code-cancelappt-code-command">4.5.6. <code>cancelappt</code> Command</a></h4>
 <div class="paragraph">
 <p><code>cancelappt</code> simply takes in the index of the target appointment to cancel according to the displayed appointment list.</p>
 </div>
@@ -880,13 +984,13 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-missappt-code-command"><a class="link" href="#code-missappt-code-command">3.4.7. <code>missappt</code> Command</a></h4>
+<h4 id="code-missappt-code-command"><a class="link" href="#code-missappt-code-command">4.5.7. <code>missappt</code> Command</a></h4>
 <div class="paragraph">
 <p>The <code>missappt</code> command displays appointments that patients did not attend. The filtered appointments are found in <code>ModelManager</code>. The list is instantiated by filtering the <code>UniqueEventList</code> using <code>EventsMissedPredicate</code> which checks all APPROVED-Status appointments' end times with current time.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-settleappt-code-command"><a class="link" href="#code-settleappt-code-command">3.4.8. <code>settleappt</code> Command</a></h4>
+<h4 id="code-settleappt-code-command"><a class="link" href="#code-settleappt-code-command">4.5.8. <code>settleappt</code> Command</a></h4>
 <div class="paragraph">
 <p>The <code>settleappt</code> command helps users to remove any missed appointments once users have settled it. It will also update <code>UniqueEventList</code> to display the rest of the missed appointments.</p>
 </div>
@@ -895,7 +999,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.4.9. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.5.9. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-store-timing-fields"><a class="link" href="#aspect-how-to-store-timing-fields">Aspect:  How to store Timing fields</a></h5>
 <div class="ulist">
@@ -965,7 +1069,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="duty-shift-scheduling"><a class="link" href="#duty-shift-scheduling">3.5. Duty Shift Scheduling</a></h3>
+<h3 id="duty-shift-scheduling"><a class="link" href="#duty-shift-scheduling">4.6. Duty Shift Scheduling</a></h3>
 <div class="paragraph">
 <p>The duty shift scheduling provides users the ability to schedule duty shifts for doctors. It can help doctors to check, add, edit duty shifts efficiently.</p>
 </div>
@@ -980,7 +1084,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The duty shift scheduling contains multiple operations to indirectly manipulate the <code>UniqueEventList</code>. The implemented operations include:</p>
 </div>
@@ -1004,13 +1108,13 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-newshift-code-command"><a class="link" href="#code-newshift-code-command">3.5.2. <code>newshift</code> Command</a></h4>
+<h4 id="code-newshift-code-command"><a class="link" href="#code-newshift-code-command">4.6.2. <code>newshift</code> Command</a></h4>
 <div class="paragraph">
 <p>The <code>newshift</code> command behaves similarly to the <code>new</code> command used for patient and doctor. The command takes in the parameters required to construct <code>ReferenceId</code>, <code>DateTime</code> and <code>Status</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-shifts-code-command"><a class="link" href="#code-shifts-code-command">3.5.3. <code>shifts</code> Command</a></h4>
+<h4 id="code-shifts-code-command"><a class="link" href="#code-shifts-code-command">4.6.3. <code>shifts</code> Command</a></h4>
 <div class="paragraph">
 <p>The <code>shifts</code> command works in two different ways.</p>
 </div>
@@ -1028,7 +1132,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-editshift-code-command"><a class="link" href="#code-editshift-code-command">3.5.4. <code>editshift</code> Command</a></h4>
+<h4 id="code-editshift-code-command"><a class="link" href="#code-editshift-code-command">4.6.4. <code>editshift</code> Command</a></h4>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a <code>editshift</code> command:</p>
 </div>
@@ -1040,21 +1144,21 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-cancelshift-code-command"><a class="link" href="#code-cancelshift-code-command">3.5.5. <code>cancelshift</code> Command</a></h4>
+<h4 id="code-cancelshift-code-command"><a class="link" href="#code-cancelshift-code-command">4.6.5. <code>cancelshift</code> Command</a></h4>
 <div class="paragraph">
 <p><code>cancelshift</code> simply takes in the index of the target duty shift to cancel according to the displayed shift list.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1085,7 +1189,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1093,7 +1197,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">5. Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Documentation.html">here</a>.</p>
@@ -1101,7 +1205,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="testing"><a class="link" href="#testing">5. Testing</a></h2>
+<h2 id="testing"><a class="link" href="#testing">6. Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Testing.html">here</a>.</p>
@@ -1109,7 +1213,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
+<h2 id="dev-ops"><a class="link" href="#dev-ops">7. Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="DevOps.html">here</a>.</p>
@@ -2139,4 +2243,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 06:36:52 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 06:45:00 UTC</div></div></div></body></html>

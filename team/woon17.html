@@ -153,34 +153,71 @@
 </table>
 <div class="sect2">
 <h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">[Proposed] Undo/Redo feature</a></h3>
+<div class="paragraph">
+<p>The undo/redo feature allows users to revert the action of a command or redo a command action that has been undone.</p>
+</div>
 <div class="sect3">
 <h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">Proposed Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
+<p>The undo/redo mechanism is facilitated by the <code>CommandHistory</code> class, which is found in the <code>logic</code> component.
+The history class stores undoable commands as a <code>ReversibleActionPairCommand</code>,
+which pairs two <code>ReversibleActionCommand</code>, the first command being the action to be executed and its inverse. (e.g. Pairing 'add event A' and 'delete event A' command).</p>
+</div>
+<div class="paragraph">
+<p>A <code>ReversibleCommand</code> refers to any command which modifies the data in the system&#8217;s model.
+Commands that only reads data from the model without modifying it, will not be added to the undo history stack.</p>
+</div>
+<div class="paragraph">
+<p>Considering that the undo functionality of an 'add event' command, is similar to the action of the 'delete event' command,
+execution of the 'delete event' command could be done in place of the undo functionality of the 'add event' command.
+Hence, with such an implementation, we can avoid unnecessary duplication of code.</p>
+</div>
+<div class="paragraph">
+<p>The design of <code>ReversibleActionCommand</code> uses the Command pattern, a common design pattern often used in software engineering.
+It implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
+<p><code>ReversibleActionPairCommand#execute()</code>&#8201;&#8212;&#8201;Executes the primary action.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
+<p><code>ReversibleActionPairCommand#undo()</code>&#8201;&#8212;&#8201;Undoes the primary action by executing its inverse operation.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
+<p><code>ReversibleActionPairCommand#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone primary action by executing the same operation again.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
+<p>Additionally, after the action pair has been executed,
+it is then added to the undo stack of the <code>CommandHistory</code> via the following implemented operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CommandHistory#addToCommandHistory()</code>&#8201;&#8212;&#8201;Saves the most recent command that modifies the system&#8217;s model in its undo history.</p>
+</li>
+<li>
+<p><code>CommandHistory#performUndo()</code>&#8201;&#8212;&#8201;Performs the inverse operation to restore the system to its previous state.</p>
+</li>
+<li>
+<p><code>CommandHistory#performRedo()</code>&#8201;&#8212;&#8201;Restores a previously undone state by re-executing the respective undone command.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
+<p>These operations are all contained within the <code>Logic</code> component.
+Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>CommandHistory</code> will be initialised with an empty undo stack.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>newpatient -id S9729970A -name Mark</code> command which registers a new patient named <code>Mark</code> with the unique id of <code>S9729970A</code>.
+The <code>newpatient</code> command creates a <code>ReversibleActionPairCommand</code>, which pairs of a <code>RegisterPatientCommand</code> and <code>UnregisterPatientCommand</code>.
+After the invoking execution of the <code>RegisterPatientCommand</code>, the whole <code>ReversibleActionPairCommand</code> is pushed to the undo history stack
+via the <code>CommandHistory#addToCommandHistory()</code></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -188,7 +225,8 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
+<p>Step 3. The user executes <code>enqueue S9729970A</code> command to add a patient whose reference id matches <code>S9729970A</code>.
+    The <code>enqueue</code> command also calls the <code>CommandHistory#addToCommandHistory()</code>, which pushes the enqueue action pair into the command history stack.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -196,7 +234,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
+<p>Step 3. The user executes <code>newpatient &#8230;&#8203;</code> to register a new patient. The command also invokes <code>CommandHistory#addToCommandHistory()</code>, causing another action pair to be saved into the command history undo stack.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -210,13 +248,17 @@ Additionally, it implements the following operations:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
+If a command fails its execution, it will not call <code>CommandHistory#addToCommandHistory()</code>. Hence, the command will not be saved into the command history.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
+<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>CommandHistory#performUndo()</code>,
+which pops the top of the command history stack and</p>
+</div>
+<div class="paragraph">
+<p>which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -392,4 +434,4 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 06:36:52 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 06:45:00 UTC</div></div></div></body></html>

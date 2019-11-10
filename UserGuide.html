@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>ClerkPro - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>ClerkPro v2.0 - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">ClerkPro</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-T09-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>ClerkPro - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">ClerkPro</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-T09-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>ClerkPro v2.0 - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>T09-3</code>      Since: <code>Sep 2019</code>      Licence: <code>MIT</code></p>
@@ -31,7 +31,16 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This desktop application is targeted at clerks working in small clinics. It is designed for those who prefer to work with a Command Line Interface (CLI). It enables clerks to rapidly manage appointments, staff&#8217;s duty roster, inventories and queues. Typing fast allows you to complete your tasks much faster than Graphical User Interface (GUI) apps.</p>
+<p>ClerkPro is an appointment and queue management system targeted at clerks working in small clinics.
+This desktop application is optimised for individuals who <strong>prefer to work with a Command Line Interface (CLI).</strong>
+while still having the benefits of a Graphical User Interface (GUI).</p>
+</div>
+<div class="paragraph">
+<p>ClerkPro enables clerks to rapidly manage patient&#8217;s details, appointments, queues and the staff&#8217;s duty roster.
+Typing fast allows you to complete your tasks much faster than GUI apps.</p>
+</div>
+<div class="paragraph">
+<p>Interested? Refer to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
 </div>
@@ -77,13 +86,16 @@ e.g. typing <code>help</code> and pressing <kbd>Enter</kbd> will open the help w
 <div class="ulist">
 <ul>
 <li>
-<p><code>register -id E0000001A -name John Doe -phone 98765432 -email <a href="mailto:johnd@example.com">johnd@example.com</a> -address John street, block 123, #01-01</code> : registers a patient named <code>John Doe</code>.</p>
+<p><code>newpatient -id E0000001A -name John Doe -phone 98765432 -email <a href="mailto:johnd@example.com">johnd@example.com</a> -address John street, block 123, #01-01</code> : registers a patient named <code>John Doe</code>.</p>
 </li>
 <li>
-<p><code>enqueue 001A</code> : enqueues patient with reference id <code>001A</code> into the queue. The patient <code>001A</code> must be registered.</p>
+<p><code>patient John Doe</code> : searches for a patient whose name contains <code>John Doe</code></p>
 </li>
 <li>
-<p><code>exit</code> : exits the application.</p>
+<p><code>enqueue E0000001A</code> : enqueues patient with reference id <code>E0000001A</code> into the queue. The patient <code>E0000001A</code> must be registered.</p>
+</li>
+<li>
+<p><strong><code>exit</code></strong> : exits the app.</p>
 </li>
 </ul>
 </div>
@@ -129,6 +141,42 @@ e.g. typing <code>help</code> and pressing <kbd>Enter</kbd> will open the help w
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p><strong>Reactive search</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The listing automatically filters to display only the most relevant results when searching for an existing entry.</p>
+</li>
+<li>
+<p>When searching for a specific patient or staff, using the <code>patient</code> or <code>doctor</code> command, the results are filtered based
+on whether the person&#8217;s reference Id, name or phone number contains the given keyword.</p>
+</li>
+<li>
+<p>When searching for a specific appointment or duty shift, using the <code>appointments</code> or <code>shifts</code> command, the results are filtered based
+on whether the events involves a person whose reference Id contains the given keyword.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Validity of Appointment&#8217;s timings</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensures that appointments can only be scheduled at timings when there are sufficient staffing.</p>
+</li>
+<li>
+<p>The scheduling of a patient&#8217;s appointment will be rejected by the system, if the doctors on-duty at that timing are already
+pre-occupied by other appointments.</p>
+</li>
+<li>
+<p>The cancellation or changing of a doctor&#8217;s duty shift will be rejected by the system, if the action results in there being
+insufficient staffing to accommodate already scheduled appointments.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="exampleblock">
@@ -151,9 +199,13 @@ e.g. typing <code>help</code> and pressing <kbd>Enter</kbd> will open the help w
 <p>Parameters can be in any order e.g. if the command specifies <code>-name &lt;NAME&gt; -phone &lt;PHONE_NUMBER&gt;</code>, <code>-phone &lt;PHONE_NUMBER&gt; -name &lt;NAME&gt;</code> is also acceptable.</p>
 </li>
 <li>
-<p>A Reference Id refers to a case-insensitive string, of 3 to 10 (inclusive) alphanumeric characters, that can be used to uniquely identify a person, such as a membership number or NRIC.
-A <code>&lt;PATIENT_REFERENCE_ID&gt;</code> refers to the reference id which belongs to a patient. Whereas, a <code>&lt;STAFF_REFERENCE_ID&gt;</code> refers to the reference id of a staff doctor.
-Words in <code>&lt;UPPER_CASE&gt;</code> are the parameters to be supplied by the user e.g. in <code>register -name &lt;NAME&gt;</code>, <code>NAME</code> is a parameter which can be used as <code>register -name John Doe</code>.</p>
+<p>A Reference Id refers to a 9 case-insensitive alphanumeric characters, that can be used to uniquely identify a person, such as a membership number or NRIC.</p>
+</li>
+<li>
+<p>A <code>&lt;PATIENT_REFERENCE_ID&gt;</code> refers to the reference id which belongs to a patient. Whereas, a <code>&lt;STAFF_REFERENCE_ID&gt;</code> refers to the reference id of a staff doctor.</p>
+</li>
+<li>
+<p>Words in triangle brackets(<code>&lt;</code> and <code>&gt;</code>) are the parameters to be supplied by the user e.g. in <code>register -name &lt;NAME&gt;</code>, <code>NAME</code> is a parameter which can be used as <code>register -name John Doe</code>.</p>
 </li>
 </ul>
 </div>
@@ -869,4 +921,4 @@ All except search actions can be re-done.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 06:36:52 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 06:45:00 UTC</div></div></div></body></html>
