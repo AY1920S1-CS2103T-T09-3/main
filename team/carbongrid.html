@@ -52,7 +52,7 @@
 <p>Highlights: Reactive Search should not block the main UI from user upon processing large data-sets.</p>
 </li>
 <li>
-<p>Credits: SakuraBlossom (Threading and Commands), Chrome DevTools Console (Inspiration)</p>
+<p>Credits: SakuraBlossom (Threading and Logic), Google &amp; Chrome DevTools Console (Inspiration)</p>
 </li>
 </ul>
 </div>
@@ -72,10 +72,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updating Gradle wrapper &amp; Configuration for Headed UI Test (Pull Request <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/89">#89</a>)</p>
+<p>Updating Gradle wrapper &amp; Configuration for Headed UI Test (Pull Request <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/71">#71</a>, <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/89">#89</a>)</p>
 </li>
 <li>
-<p>Dependencies management and version bumping for dependencies bug fixes &amp; optimisations after compatibility checks. (Pull requests <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/80">#80</a>, <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/100">#100</a>, <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/200">#200</a>)</p>
+<p>Gradle Plugin &amp; Dependencies management, version bumping for dependencies bug fixes &amp; optimisations after compatibility checks. (Pull requests <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/80">#80</a>, <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/100">#100</a>, <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/200">#200</a>)</p>
 </li>
 <li>
 <p>Setting up Netlify for team repository.</p>
@@ -92,16 +92,6 @@
 </li>
 <li>
 <p>Implemented more UI testing increasing coverage from 67.652% to 73.091% (Pull request <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/217">#217</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>[TODO] Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
 </li>
 </ul>
 </div>
@@ -225,53 +215,46 @@
 </ul>
 </div>
 </div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-implement-autocomplete-2"><a class="link" href="#aspect-data-structure-to-implement-autocomplete-2">Aspect: Data structure to implement AutoComplete</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Using Trie (as known as Prefix Tree).</p>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 9.0909%;">
-<col style="width: 90.9091%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Time Complexity Efficient<br>
-2. One of the most natural data structure for text prediction.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Requires initialisation.<br>
-2. Requires rebuilding of strings.</p></td>
-</tr>
-</tbody>
-</table>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Using ArrayList.</p>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 9.0909%;">
-<col style="width: 90.9091%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Extremely simple to implement.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Time Complexity Inefficient.</p></td>
-</tr>
-</tbody>
-</table>
-</li>
-</ul>
+</div>
+<div class="sect2">
+<h3 id="reactive-search"><a class="link" href="#reactive-search">Reactive Search</a></h3>
+<div class="paragraph">
+<p>The main concept behind reactive searching is that we would like time-consuming searching to be UI non-blocking and executed as rapidly as possible so that user is instantly provided with results for a given keyword.</p>
+</div>
+<div class="paragraph">
+<p>Similar to eager evaluation, Reactive Search attempts to process commands if it does not mutate the storage. Otherwise it does a simple redirect to the tab relevant to the command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ReactiveSearchSequenceDiagram.png" alt="ReactiveSearchSequenceDiagram">
+</div>
+<div class="title">Figure 2. Reactive Search Sequence Diagram showing how a thread is created to do the expensive processing.</div>
+</div>
+<div class="paragraph">
+<p>After the newly created thread starts, it will attempt to kill any previous thread that is still processing asynchronously before starting its own processing.</p>
+</div>
+<div class="paragraph">
+<p>After which, changes to the ObservableList will trigger the updateItem listener in UI. And since each graphical update is fast and can only be executed from the JavaFX main application thread, we defer each of them via Platform.run() so that the FX main application thread can execute them in order whenever it is free.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">EventListViewCell</span> <span class="directive">extends</span> ListCell&lt;<span class="predefined-type">Event</span>&gt; {
+    <span class="annotation">@Override</span>
+    <span class="directive">protected</span> <span class="type">void</span> updateItem(<span class="predefined-type">Event</span> event, <span class="type">boolean</span> empty) {
+        <span class="local-variable">super</span>.updateItem(event, empty);
+
+        <span class="keyword">if</span> (empty || event == <span class="predefined-constant">null</span>) {
+            Platform.runLater(() -&gt; setGraphic(<span class="predefined-constant">null</span>));
+        } <span class="keyword">else</span> {
+            Platform.runLater(() -&gt; setGraphic(<span class="keyword">new</span> EventCard(event, getIndex() + <span class="integer">1</span>, displayStatus).getRoot()));
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Hence, this ensures the main FX application thread is always polling for user inputs or graphical updates and handles them rapidly as they are lightweight tasks.</p>
 </div>
 </div>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:25:54 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:27:16 UTC</div></div></div></body></html>
