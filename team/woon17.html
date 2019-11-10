@@ -152,46 +152,31 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">[Proposed] Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
 <div class="paragraph">
 <p>The undo/redo feature allows users to revert the action of a command or redo a command action that has been undone.</p>
 </div>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">Proposed Implementation</a></h4>
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by the <code>CommandHistory</code> class, which is found in the <code>logic</code> component.
 The history class stores undoable commands as a <code>ReversibleActionPairCommand</code>,
 which pairs two <code>ReversibleActionCommand</code>, the first command being the action to be executed and its inverse. (e.g. Pairing 'add event A' and 'delete event A' command).</p>
 </div>
 <div class="paragraph">
-<p>A <code>ReversibleCommand</code> refers to any command which modifies the data in the system&#8217;s model.
-Commands that only reads data from the model without modifying it, will not be added to the undo history stack.</p>
+<p>A <code>Command</code> object can be classified as one of two types, a <code>ReversibleCommand</code> and a <code>NonActionableCommand</code>.
+A <code>ReversibleCommand</code> refers to any command which modifies the data in the system&#8217;s model.
+Commands that only reads data from the model without modifying it, will not be added to the undo history stack.
+Conversely, a <code>NonActionableCommand</code> only reads data from the system&#8217;s model without modifying it.</p>
 </div>
 <div class="paragraph">
-<p>Considering that the undo functionality of an 'add event' command, is similar to the action of the 'delete event' command,
-execution of the 'delete event' command could be done in place of the undo functionality of the 'add event' command.
+<p>Consider that the undo functionality of an 'add event' command is similar to the action of the 'delete event' command.
+The execution of the 'delete event' command could be done in place of the undo functionality of the 'add event' command.
 Hence, with such an implementation, we can avoid unnecessary duplication of code.</p>
 </div>
 <div class="paragraph">
-<p>The design of <code>ReversibleActionCommand</code> uses the Command pattern, a common design pattern often used in software engineering.
+<p>The design of <code>CommandHistory</code> uses the Command pattern, a common design pattern often used in software engineering.
 It implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>ReversibleActionPairCommand#execute()</code>&#8201;&#8212;&#8201;Executes the primary action.</p>
-</li>
-<li>
-<p><code>ReversibleActionPairCommand#undo()</code>&#8201;&#8212;&#8201;Undoes the primary action by executing its inverse operation.</p>
-</li>
-<li>
-<p><code>ReversibleActionPairCommand#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone primary action by executing the same operation again.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Additionally, after the action pair has been executed,
-it is then added to the undo stack of the <code>CommandHistory</code> via the following implemented operations:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -204,17 +189,23 @@ it is then added to the undo stack of the <code>CommandHistory</code> via the fo
 <li>
 <p><code>CommandHistory#performRedo()</code>&#8201;&#8212;&#8201;Restores a previously undone state by re-executing the respective undone command.</p>
 </li>
+<li>
+<p><code>CommandHistory#canUndo()</code>&#8201;&#8212;&#8201;Checks if there are previous states to be restored</p>
+</li>
+<li>
+<p><code>CommandHistory#canRedo()</code>&#8201;&#8212;&#8201;Checks if the a previously undone state can be restored</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are all contained within the <code>Logic</code> component.
+<p>These operations are all contained within the <code>Logic</code> component and do not depend on any other components.
 Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>CommandHistory</code> will be initialised with an empty undo stack.</p>
+<p>Step 1. The user launches the application for the first time. The <code>CommandHistory</code> will be initialised with an empty undo and redo stack.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>newpatient -id S9729970A -name Mark</code> command which registers a new patient named <code>Mark</code> with the unique id of <code>S9729970A</code>.
+<p>Step 2. The user executes <code>newpatient &#8230;&#8203; -name Mark</code> command which registers a new patient named <code>Mark</code> with the unique id of <code>S9729970A</code>.
 The <code>newpatient</code> command creates a <code>ReversibleActionPairCommand</code>, which pairs of a <code>RegisterPatientCommand</code> and <code>UnregisterPatientCommand</code>.
 After the invoking execution of the <code>RegisterPatientCommand</code>, the whole <code>ReversibleActionPairCommand</code> is pushed to the undo history stack
 via the <code>CommandHistory#addToCommandHistory()</code></p>
@@ -234,7 +225,7 @@ via the <code>CommandHistory#addToCommandHistory()</code></p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>newpatient &#8230;&#8203;</code> to register a new patient. The command also invokes <code>CommandHistory#addToCommandHistory()</code>, causing another action pair to be saved into the command history undo stack.</p>
+<p>Step 4. The user executes <code>newpatient &#8230;&#8203; -name John Doe</code> to register a new patient. Similar to the previous command, also causes another action pair to be added into the command history undo stack.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -248,17 +239,16 @@ via the <code>CommandHistory#addToCommandHistory()</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>CommandHistory#addToCommandHistory()</code>. Hence, the command will not be saved into the command history.
+If a command fails its execution, it will not call <code>CommandHistory#performRedo()</code>. Hence, the command will not be saved into the command history.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>CommandHistory#performUndo()</code>,
-which pops the top of the command history stack and</p>
-</div>
-<div class="paragraph">
-<p>which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
+<p>Step 5. The user now decides that adding the patient was a mistake, and decides to undo that action by executing the <code>undo</code> command.
+The <code>undo</code> command will call <code>CommandHistory#performUndo()</code>.
+This invokes the <code>UnregisterPatientCommand</code> which reverts the system to its previous state,
+and moves the action from the top undo stack to the top of the redo history stack.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -272,7 +262,7 @@ which pops the top of the command history stack and</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
+If the undo stack is empty then there are no previous states to be restored. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
 </td>
 </tr>
 </table>
@@ -299,7 +289,7 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 </table>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>CommandHistory#performRedo()</code> which restores the address book to that state by invoking the original command again.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -308,13 +298,20 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+If the <code>commandRedoHistory</code> is empty, then there are no undone states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
+<p>Step 5. The user then decides to execute the command <code>patient S9482963D</code>.
+A command that searches for a patient whose id matches <code>S9482963D</code>,
+only reads and does not modify any data from the model.
+Such commands will not call <code>CommandHistory#addToCommandHistory()</code>,
+<code>CommandHistory#performUndo()</code>, <code>CommandHistory#performRedo()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Thus, the undo and redo stacks remain unchanged.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -322,7 +319,12 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+<p>Step 6. The user executes <code>newappt &#8230;&#8203;</code> to schedule a new appointment for a patient.
+This action invokes <code>CommandHistory#addToCommandHistory()</code>, pushing the new action pair command in the undo stack.
+However, the commands in the <code>commandRedoHistory</code> stack will be purged.</p>
+</div>
+<div class="paragraph">
+<p>We designed it this way because it no longer makes sense to redo the <code>newpatient &#8230;&#8203; -name John Doe</code>​ command. This is the behavior that most modern desktop applications follow.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -346,26 +348,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Save the entire address book.</p>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 9.0909%;">
-<col style="width: 90.9091%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Implementation is easy.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. May have performance issues in terms of memory usage.</p></td>
-</tr>
-</tbody>
-</table>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<p><strong>Alternative 1 (current choice):</strong> Pair Individual commands with their inverse action.</p>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 9.0909%;">
@@ -379,6 +362,44 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1. Must ensure that the implementation of each individual command are correct.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Alternative 3:</strong> Individual command knows how to undo/redo by itself.</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 90.9091%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Must ensure that the implementation of each individual command are correct.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Save the entire address book.</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 90.9091%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Implementation is easy.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. May have performance issues in terms of memory usage.</p></td>
 </tr>
 </tbody>
 </table>
@@ -434,4 +455,4 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:27:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:27:54 UTC</div></div></div></body></html>
