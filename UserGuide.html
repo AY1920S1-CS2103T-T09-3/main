@@ -285,19 +285,7 @@ Hence, the user <strong>should not have administrative privilege to unregister a
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Must be in the patient listing screen for this command to be accepted.<br>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Editing tags will overwrite all existing tags.<br>
+Editing tags will overwrite all existing tags. Must not edit when patient is in queue or being served.<br>
 </td>
 </tr>
 </table>
@@ -377,19 +365,7 @@ Hence, the user <strong>should not have administrative privilege to unregister a
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Must be in the staff listing screen for this command to be accepted.<br>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Editing tags will overwrite all existing tags.<br>
+Editing tags will overwrite all existing tags. Must not edit when the doctor is on duty.<br>
 </td>
 </tr>
 </table>
@@ -468,7 +444,7 @@ Editing tags will overwrite all existing tags.<br>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g.</p>
+<p>e.g. <code>dequeue E0000001A</code></p>
 </li>
 </ul>
 </div>
@@ -484,7 +460,7 @@ Editing tags will overwrite all existing tags.<br>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g.</p>
+<p>e.g. <code>next 1</code></p>
 </li>
 </ul>
 </div>
@@ -500,7 +476,7 @@ Editing tags will overwrite all existing tags.<br>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g.</p>
+<p>e.g. <code>break 1</code></p>
 </li>
 </ul>
 </div>
@@ -516,7 +492,7 @@ Editing tags will overwrite all existing tags.<br>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g.</p>
+<p>e.g. <code>resume 1</code></p>
 </li>
 </ul>
 </div>
@@ -536,7 +512,7 @@ If no keyword is given, all upcoming appointments will be displayed.<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g.</p>
+<p>e.g. <code>appointments E0000001A</code></p>
 </li>
 </ul>
 </div>
@@ -564,7 +540,7 @@ appointment schedule in <code>&lt;INTERVALS&gt;</code>. Otherwise, only one even
 <div class="ulist">
 <ul>
 <li>
-<p>e.g.</p>
+<p>e.g. <code>newappt -id E0000001A -start 12/12/19 0900 -end 12/12/19 1000 -reoccur m -num 2</code></p>
 </li>
 </ul>
 </div>
@@ -578,7 +554,7 @@ Format: <code>ackappt &lt;REFERENCE_ID&gt;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g.</p>
+<p>e.g. <code>ackappt E0000001A</code></p>
 </li>
 </ul>
 </div>
@@ -606,7 +582,7 @@ To avoid accidental cancellation of another patient&#8217;s appointments, the us
 <div class="ulist">
 <ul>
 <li>
-<p>e.g.</p>
+<p>e.g. <code>cancelappt 1</code></p>
 </li>
 </ul>
 </div>
@@ -647,7 +623,7 @@ The operation is rejected if there are insufficient staff doctors on duty at the
 <div class="ulist">
 <ul>
 <li>
-<p>e.g.</p>
+<p>e.g. <code>editappt -entry 1 -start 12/12/19 1300 -end 12/12/19 1400</code></p>
 </li>
 </ul>
 </div>
@@ -675,7 +651,7 @@ An appointment is considered missed if the appointment was not acknowledged and 
 <div class="ulist">
 <ul>
 <li>
-<p>e.g.</p>
+<p>e.g. <code>missappt</code></p>
 </li>
 </ul>
 </div>
@@ -704,7 +680,7 @@ Only missed appointments can be settled. The user must first display the missed 
 <div class="ulist">
 <ul>
 <li>
-<p>e.g.</p>
+<p>e.g. <code>settleappt 1</code></p>
 </li>
 </ul>
 </div>
@@ -733,7 +709,7 @@ If no keyword is given, all upcoming appointments will be displayed.<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g.</p>
+<p>e.g. <code>shifts S0111111A</code></p>
 </li>
 </ul>
 </div>
@@ -751,7 +727,7 @@ Otherwise, only one shift will be added.<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p>e.g.</p>
+<p>e.g. <code>newshift -id W0000001A -start 12/12/19 0900 -end 12/12/19 2100 -reoccur m -num 2</code></p>
 </li>
 </ul>
 </div>
@@ -791,7 +767,7 @@ The operation is rejected if it results in there being more appointments than st
 <div class="ulist">
 <ul>
 <li>
-<p>e.g.</p>
+<p>e.g. <code>cancelshift 1</code></p>
 </li>
 </ul>
 </div>
@@ -834,7 +810,7 @@ The operation is rejected if it results in there being more appointments than st
 <div class="ulist">
 <ul>
 <li>
-<p>e.g.</p>
+<p>e.g. <code>editshift -entry 1 -start 12/12/19 1200 -end 12/12/19 2100</code></p>
 </li>
 </ul>
 </div>
@@ -1091,4 +1067,4 @@ All except search actions can be re-done.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 03:26:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 05:58:32 UTC</div></div></div></body></html>

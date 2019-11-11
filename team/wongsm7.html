@@ -99,7 +99,7 @@
 <p>Did cosmetic tweaks to existing contents of the User Guide.</p>
 </li>
 <li>
-<p>Created various UML diagrams for for Developer Guide. <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/87">#87</a></p>
+<p>Created various UML diagrams for Developer Guide. <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/87">#87</a></p>
 </li>
 </ul>
 </div>
@@ -109,7 +109,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Reported bugs and suggestions for other teams in the class</p>
+<p>Reported bugs and suggestions for other teams</p>
 </li>
 </ul>
 </div>
@@ -134,56 +134,6 @@
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="queue-management"><a class="link" href="#queue-management">Queue Management</a></h3>
-<div class="sect3">
-<h4 id="adds-a-patient-to-the-queue-code-enqueue-code"><a class="link" href="#adds-a-patient-to-the-queue-code-enqueue-code">Adds a patient to the queue: <code>enqueue</code></a></h4>
-<div class="paragraph">
-<p>Adds a patient to the queue based based on the patient&#8217;s Id. The enqueued patient must be a registered. Staff members cannot be enqueued.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>enqueue &lt;PATIENT_REFERENCE_ID&gt;</code><br></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="removes-a-patient-from-the-queue-code-dequeue-code"><a class="link" href="#removes-a-patient-from-the-queue-code-dequeue-code">Removes a patient from the queue: <code>dequeue</code></a></h4>
-<div class="paragraph">
-<p>Removes a patient from the queue based on their queue position.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>dequeue &lt;QUEUE_INDEX&gt;</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="assigns-next-patient-to-an-available-doctor-code-next-code"><a class="link" href="#assigns-next-patient-to-an-available-doctor-code-next-code">Assigns next patient to an available doctor : <code>next</code></a></h4>
-<div class="paragraph">
-<p>Assigns the next patient in the queue to a doctor.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>next &lt;ENTRY_ID&gt;</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="doctor-takes-a-break-code-break-code"><a class="link" href="#doctor-takes-a-break-code-break-code">Doctor takes a break: <code>break</code></a></h4>
-<div class="paragraph">
-<p>Avoids directing patients to a doctor. e.g. Doctor is on a lunch break<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>break &lt;ENTRY_ID&gt;</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="doctor-resumes-his-her-duty-code-resume-code"><a class="link" href="#doctor-resumes-his-her-duty-code-resume-code">Doctor resumes his/her duty: <code>resume</code></a></h4>
-<div class="paragraph">
-<p>Allows patients to be directed to a doctor. e.g. Doctor is back from his/her break.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="staff-personal-management"><a class="link" href="#staff-personal-management">Staff Personal Management</a></h3>
 <div class="sect3">
 <h4 id="marks-the-doctor-as-on-duty-code-onduty-code"><a class="link" href="#marks-the-doctor-as-on-duty-code-onduty-code">Marks the doctor as on-duty: <code>onduty</code></a></h4>
 <div class="paragraph">
@@ -191,6 +141,13 @@
 </div>
 <div class="paragraph">
 <p>Format: <code>onduty &lt;ON_DUTY_DOCTOR_ENTRY_ID&gt;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>onduty 1</code></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -201,7 +158,260 @@
 <div class="paragraph">
 <p>Format: <code>offduty &lt;ON_DUTY_DOCTOR_ENTRY_ID&gt;</code></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>offduty 1</code></p>
+</li>
+</ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="queue-management"><a class="link" href="#queue-management">Queue Management</a></h3>
+<div class="sect3">
+<h4 id="adds-a-patient-to-the-queue-code-enqueue-code"><a class="link" href="#adds-a-patient-to-the-queue-code-enqueue-code">Adds a patient to the queue: <code>enqueue</code></a></h4>
+<div class="paragraph">
+<p>Adds a patient to the queue based based on the patient&#8217;s Id. The enqueued patient must be a registered. Staff members cannot be enqueued.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>enqueue &lt;PATIENT_REFERENCE_ID&gt;</code><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>enqueue E0000001A</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="removes-a-patient-from-the-queue-code-dequeue-code"><a class="link" href="#removes-a-patient-from-the-queue-code-dequeue-code">Removes a patient from the queue: <code>dequeue</code></a></h4>
+<div class="paragraph">
+<p>Removes a patient from the queue based on their queue position.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>dequeue &lt;QUEUE_INDEX&gt;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>dequeue E0000001A</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="assigns-next-patient-to-an-available-doctor-code-next-code"><a class="link" href="#assigns-next-patient-to-an-available-doctor-code-next-code">Assigns next patient to an available doctor : <code>next</code></a></h4>
+<div class="paragraph">
+<p>Assigns the next patient in the queue to a doctor.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>next &lt;ENTRY_ID&gt;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>next 1</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="doctor-takes-a-break-code-break-code"><a class="link" href="#doctor-takes-a-break-code-break-code">Doctor takes a break: <code>break</code></a></h4>
+<div class="paragraph">
+<p>Avoids directing patients to a doctor. e.g. Doctor is on a lunch break<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>break &lt;ENTRY_ID&gt;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>break 1</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="doctor-resumes-his-her-duty-code-resume-code"><a class="link" href="#doctor-resumes-his-her-duty-code-resume-code">Doctor resumes his/her duty: <code>resume</code></a></h4>
+<div class="paragraph">
+<p>Allows patients to be directed to a doctor. e.g. Doctor is back from his/her break.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>resume 1</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="commands-summary"><a class="link" href="#commands-summary">Commands Summary</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Patient Management</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Search for patient using reference Id, name or phone number: <code>patient [&lt;SEARCH_KEYWORD&gt;]</code></p>
+</li>
+<li>
+<p>Register new patient: <code>newpatient -id &lt;PATIENT_REFERENCE_ID&gt; -name &lt;PATIENT_NAME&gt; [-phone &lt;PHONE_NUM&gt;]
+[-email &lt;EMAIL&gt;] [-address &lt;ADDRESS&gt;] -num [-tag &lt;Tags&gt;]&#8230;&#8203;</code></p>
+</li>
+<li>
+<p>Edits patient details: <code>editpatient -entry &lt;ENTRY_ID&gt;[-id &lt;PATIENT_REFERENCE_ID&gt;]  [-name &lt;NAME&gt;] [-phone &lt;PHONE_NUM&gt;]
+[-email &lt;EMAIL&gt;] [-address &lt;ADDRESS&gt;] -num [-tag &lt;Tags&gt;]&#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>On-Duty Doctors Management</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Search for doctors using reference Id, name or phone number: <code>doctor [&lt;SEARCH_KEYWORD&gt;]</code></p>
+</li>
+<li>
+<p>Register new doctor: <code>newdoctor -id &lt;STAFF_REFERENCE_ID&gt; -name &lt;NAME&gt; [-phone &lt;PHONE_NUM&gt;] [-email &lt;EMAIL&gt;] [-address &lt;ADDRESS&gt;] [-tag &lt;TAGS&gt;]…</code></p>
+</li>
+<li>
+<p>Edit doctor details: <code>editdoctor -entry &lt;ENTRY_ID&gt; [-id &lt;STAFF_REFERENCE_ID&gt;] [-name &lt;NAME&gt;]
+[-phone &lt;PHONE_NUM&gt;] [-email &lt;EMAIL&gt;] [-address &lt;ADDRESS&gt;]-num</code></p>
+</li>
+<li>
+<p>Mark doctor as on-duty: <code>onduty &lt;ENTRY_ID&gt;</code></p>
+</li>
+<li>
+<p>Mark doctor as off-duty: <code>offduty &lt;ENTRY_ID&gt;</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Queue Management</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>enqueue: <code>enqueue &lt;PATIENT_REFERENCE_ID&gt;</code></p>
+</li>
+<li>
+<p>dequeue: <code>dequeue &lt;QUEUE_INDEX&gt;</code></p>
+</li>
+<li>
+<p>Assigns next Patient in queue to doctor: <code>next &lt;DOCTOR_ENTRY_ID&gt;</code></p>
+</li>
+<li>
+<p>Marks doctor on break: <code>break &lt;DOCTOR_ENTRY_ID&gt;</code></p>
+</li>
+<li>
+<p>Marks doctor on resuming work: <code>resume &lt;DOCTOR_ENTRY_ID&gt;</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Appointment Management</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Search for appointments: <code>appointments [&lt;REFERENCE_ID&gt;]</code></p>
+</li>
+<li>
+<p>Add new appointment: <code>newappt -id &lt;REFERENCE_ID&gt; -start &lt;START_TIMING&gt; [-end &lt;END_TIMING&gt;] [-reoccur &lt;INTERVALS&gt; -num &lt;NUMBER_OF_TIMES&gt;]</code></p>
+</li>
+<li>
+<p>Edit appointment: <code>editappt -entry &lt;ENTRY_ID&gt; -start &lt;START_TIMING&gt; [-end &lt;END_TIMING&gt;]</code></p>
+</li>
+<li>
+<p>Cancel appointment: <code>cancelappt &lt;ENTRY_ID&gt;</code></p>
+</li>
+<li>
+<p>Acknowledge arrival of patient for appointment: <code>ackappt &lt;REFERENCE_ID&gt;</code></p>
+</li>
+<li>
+<p>List all missed appointments: <code>missappt</code></p>
+</li>
+<li>
+<p>Mark missed appointment as settled: <code>settleappt &lt;ENTRY_ID&gt;</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Duty-shift Management</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Search for shift: <code>shifts [&lt;REFERENCE_ID&gt;]</code></p>
+</li>
+<li>
+<p>Add new shift: <code>newshift -id STAFF_REFERENCE_ID -start &lt;START_TIMING&gt; -end &lt;END_TIMING&gt; [-reoccur &lt;INTERVALS&gt; -num &lt;NUMBER_OF_TIMES&gt;]</code></p>
+</li>
+<li>
+<p>Change shift: <code>editshift -entry &lt;ENTRY_ID&gt; -start &lt;START_TIMING&gt; -end &lt;END_TIMING&gt;</code></p>
+</li>
+<li>
+<p>Cancel shift: <code>cancelshift &lt;ENTRY_ID&gt;</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Inventory commands (v2.0)</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>inventory: <code>inventory</code></p>
+</li>
+<li>
+<p>prescription: <code>prescription &lt;PRESCRIPTION_ID | PRESCRIPTION_NAME&gt;</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>User Accounts (v2.0)</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>login: <code>login &lt;USER_NAME&gt;</code></p>
+</li>
+<li>
+<p>logout: <code>logout</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>General Commands</strong><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>help: <code>help</code></p>
+</li>
+<li>
+<p>exit: <code>exit</code></p>
+</li>
+<li>
+<p>undo: <code>undo</code></p>
+</li>
+<li>
+<p>redo: <code>redo</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -275,7 +485,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 <div class="title">Figure 1. Enqueue Activity Diagram</div>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes an next command:</p>
+<p>The following activity diagram summarizes what happens when a user executes a next command:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -298,4 +508,453 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 03:26:06 UTC</div></div></div></body></html>
+</div>
+<div class="sect1">
+<h2 id="user-stories"><a class="link" href="#user-stories">Appendix A: User Stories</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 59%;">
+<colgroup>
+<col style="width: 22%;">
+<col style="width: 23%;">
+<col style="width: 25%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">refer to instructions when I forget how to use the App</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find out the upcoming appointments for given patients</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update the doctors' details by typing commands and user details</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add new doctors into system</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit patients' details</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep their particulars up to date</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">register new patients with optional fields</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add ad-hoc patients to the queue</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">search for patients using their name or phone number</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">look up how many patients are in the queue, on a side panel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">recommend estimated time that the patient will be attended to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">look up patient using a reference id</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reschedule appointments of patients</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">search for appointment slots easily</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schedule appointments for patients easily</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">assign a queue number to each patient in the queue</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use the appointment scheduler</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schedule appointments for my patients</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add reoccurring appointments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schedule new reoccurring appointments for my patients</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save time managing the queue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have more time to do my own work</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">take note of the doctors that are on-shift</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">effectively direct patients to available doctors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove a patient from the queue if they leave.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view the number of patients who visited the clinic today</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schedule patient&#8217;s follow up appointments</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find all patients who have missed their appointments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of the list of patients whom I need to inform</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see relevant information only</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">so that my focus is not lost</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use auto-complete to predict my commands</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save time on verifying its existence and correctness</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quick-fill the command box with the suggestions of Auto-Complete</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">so that it reduces typing of the entire command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">refer to command history</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">review entered commands that maybe incorrect</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quick-fill the command box with history commands</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inputting last few commands is easier</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">receptionist</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use the undo and redo feature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">to remedy any mistakes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">acknowledge appointments if patients are present for their appointments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of patients who came for their appointments</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tag patient with known allergies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of their allegies</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clerk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cancel appointments for patients</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">free up appointment time slots</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="link" href="#use-cases">Appendix B: Use Cases</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>(For all use cases below, the <strong>System</strong> is the <code>ClerkPro</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+</div>
+<h3 id="use-case-add-patient-into-queue-uc1" class="discrete">Use case: Add patient into queue (UC1)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>New patient arrives at the clinic</p>
+</li>
+<li>
+<p>User wants to add new patient into the queue</p>
+</li>
+<li>
+<p>System adds the patient into the queue</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. User inputs invalid format</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. System requests for correct input format.<br></p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-remove-person-from-queue-uc2" class="discrete">Use case: Remove person from queue (UC2)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Patient wants to leave</p>
+</li>
+<li>
+<p>User requests to remove patient from the queue</p>
+</li>
+<li>
+<p>System removes the patient from queue</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Person is not in queue</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-serve-next-patient-uc3" class="discrete">Use case: Serve next patient (UC3)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Patient exits from room 1</p>
+</li>
+<li>
+<p>User requests to allocate patient into room 1</p>
+</li>
+<li>
+<p>System removes the patient from queue and allocates him/her to room 1</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Doctor is resting</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-doctor-takes-a-break-uc4" class="discrete">Use case: Doctor takes a break (UC4)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to avoid directing patients to the doctor in room 1</p>
+</li>
+<li>
+<p>System sets the doctor to be on break</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Doctor is already on break</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-doctor-resumes-his-her-duty-uc5" class="discrete">Use case: Doctor resumes his/her duty (UC5)</h3>
+<div class="paragraph">
+<p>Pre-condition: Doctor is on break</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to start directing patients to the doctor in room 1</p>
+</li>
+<li>
+<p>System sets the doctor to be on duty</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Doctor is already on duty</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 05:58:32 UTC</div></div></div></body></html>
