@@ -529,54 +529,44 @@ If no keyword is given, all upcoming appointments will be displayed.<br></p>
 <div class="paragraph">
 <p>Format: <code>appointments [&lt;REFERENCE_ID&gt;]</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. <code>appointments E0000001A</code></p>
-</li>
-</ul>
-</div>
 </div>
 <div class="sect3">
 <h4 id="schedules-an-appointment-code-newappt-code"><a class="link" href="#schedules-an-appointment-code-newappt-code">3.4.2. Schedules an appointment: <code>newappt</code></a></h4>
 <div class="paragraph">
-<p>Schedules a new appointments for a patient.<br>
-NOTE: The appointment will be rejected by the system, if there are insufficient staff doctors on duty at the time of the appointment.<br>
-e.g. Cannot schedule more appointments than available doctors on duty.</p>
+<p>Schedules a new appointments for a patient.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The appointment(s) will be rejected by the system, if there are insufficient staff doctors on duty at the time of the appointment.<br>
+e.g. Cannot schedule more appointments than available doctors on duty.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>If both <code>-reoccur &lt;INTERVALS&gt;</code> and <code>-num &lt;NUMBER_OF_TIMES&gt;</code> fields are present, appointments of these <code>&lt;NUMBER_OF_TIMES&gt;</code> will be added to the patient
+<p>If both <code>-reoccur &lt;INTERVALS&gt;</code> and <code>-num &lt;REOCCURRING_TIMES&gt;</code> fields are present, appointments of these <code>&lt;REOCCURRING_TIMES&gt;</code> will be added to the patient
 appointment schedule in <code>&lt;INTERVALS&gt;</code>. Otherwise, only one event will be added.<br></p>
 </div>
 <div class="paragraph">
-<p>If the optional field <code>[-end &lt;END_TIMING&gt;]</code> is absent, default end timing is 30 mins after start timing of the appointment. Otherwise, end Timing will be <code>[-end &lt;END_TIMING&gt;]</code>.<br></p>
+<p>If the optional field <code>[-end &lt;END_TIMING&gt;]</code> is absent, default end time is 30 mins after start time of the appointment. Otherwise, end time will be <code>[-end &lt;END_TIMING&gt;]</code>.<br></p>
 </div>
 <div class="paragraph">
 <p>The optional field <code>[-reoccur &lt;INTERVALS&gt;]</code> can be <code>-reoccur w</code>, <code>-reoccur m</code>, or <code>-reoccur y</code>.They represent to add weekly, monthly, yearly repeat appointment respectively.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>newappt -id &lt;PATIENT_REFERENCE_ID&gt; -start &lt;START_TIMING&gt; [-end &lt;END_TIMING&gt;] [-reoccur &lt;INTERVALS&gt; -num &lt;NUMBER_OF_TIMES&gt;]</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. <code>newappt -id E0000001A -start 12/12/19 0900 -end 12/12/19 1000 -reoccur m -num 2</code></p>
-</li>
-</ul>
+<p>Format: <code>newappt -id &lt;PATIENT_REFERENCE_ID&gt; -start &lt;START_TIMING&gt; [-end &lt;END_TIMING&gt;] [-reoccur &lt;INTERVALS&gt; -num &lt;REOCCURRING_TIMES&gt;]</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="acknowledges-a-appointment-code-ackappt-code"><a class="link" href="#acknowledges-a-appointment-code-ackappt-code">3.4.3. Acknowledges a appointment: <code>ackappt</code></a></h4>
 <div class="paragraph">
-<p>Acknowledges the most upcoming appointment only if patient arrives on the same day and the arriving time is before the appointment&#8217;s end time<br>
+<p>Acknowledges the most upcoming appointment only if patient arrives on the same day and the arriving time is before the appointment&#8217;s end time.<br>
 Format: <code>ackappt &lt;REFERENCE_ID&gt;</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. <code>ackappt E0000001A</code></p>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect3">
@@ -591,7 +581,7 @@ Format: <code>ackappt &lt;REFERENCE_ID&gt;</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-To avoid accidental cancellation of another patient&#8217;s appointments, the user must first narrow down the search to a single patient using the <code>appointments [&lt;REFERENCE_ID&gt;]</code> command.<br>
+To avoid accidental cancellation of another patient&#8217;s appointments, the user must first narrow down the search to a single patient by using the <code>appointments [&lt;REFERENCE_ID&gt;]</code> command.<br>
 </td>
 </tr>
 </table>
@@ -599,19 +589,12 @@ To avoid accidental cancellation of another patient&#8217;s appointments, the us
 <div class="paragraph">
 <p>Format: <code>cancelappt &lt;ENTRY_ID&gt;</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. <code>cancelappt 1</code></p>
-</li>
-</ul>
-</div>
 </div>
 <div class="sect3">
 <h4 id="changes-the-appointment-date-code-editappt-code"><a class="link" href="#changes-the-appointment-date-code-editappt-code">3.4.5. Changes the appointment date: <code>editappt</code></a></h4>
 <div class="paragraph">
 <p>Changes the timing for an existing appointment.<br>
-If no optional fields <code>[-end &lt;END_TIMING&gt;]</code> is present, default endTiming is 30 mins after startTiming. Otherwise new endTiming will be <code>[-end &lt;END_TIMING&gt;]</code>.<br></p>
+If optional field <code>[-end &lt;END_TIMING&gt;]</code> is not present, default endTiming is 30 mins after startTiming. Otherwise new endTiming will be <code>[-end &lt;END_TIMING&gt;]</code>.<br></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -640,13 +623,6 @@ The operation is rejected if there are insufficient staff doctors on duty at the
 <div class="paragraph">
 <p>Format: <code>editappt -entry &lt;ENTRY_ID&gt; -start &lt;START_TIMING&gt; [-end &lt;END_TIMING&gt;]</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. <code>editappt -entry 1 -start 12/12/19 1300 -end 12/12/19 1400</code></p>
-</li>
-</ul>
-</div>
 </div>
 <div class="sect3">
 <h4 id="lists-patients-who-have-missed-their-appointments-code-missappt-code"><a class="link" href="#lists-patients-who-have-missed-their-appointments-code-missappt-code">3.4.6. Lists patients who have missed their appointments: <code>missappt</code></a></h4>
@@ -668,13 +644,6 @@ An appointment is considered missed if the appointment was not acknowledged and 
 <div class="paragraph">
 <p>Format: <code>missappt</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. <code>missappt</code></p>
-</li>
-</ul>
-</div>
 </div>
 <div class="sect3">
 <h4 id="sets-missed-appointments-as-settled-notified-code-settleappt-code"><a class="link" href="#sets-missed-appointments-as-settled-notified-code-settleappt-code">3.4.7. Sets missed appointments as settled/notified: <code>settleappt</code></a></h4>
@@ -689,20 +658,13 @@ Settling refers to the user following up on contacting the patient who has misse
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Only missed appointments can be settled. The user must first display the missed appointment listing, using <code>missappt</code>, before using this command.<br>
+Only missed appointments can be settled. The user must first display the missed appointment listing by using <code>missappt</code>, before using this command.<br>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
 <p>Format: <code>settleappt &lt;ENTRY_ID&gt;</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. <code>settleappt 1</code></p>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect3">
@@ -717,39 +679,37 @@ Only missed appointments can be settled. The user must first display the missed 
 </div>
 <div class="sect2">
 <h3 id="duty-shift-management"><a class="link" href="#duty-shift-management">3.5. Duty-shift Management</a></h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Before you process any commands in Duty-shift Management, please ensure you have a doctor with referenceId of W0000001A by using <code>doctor W0000001A</code>.<br>
+You can refer to <code>newdoctor</code> command to register this doctor if the doctor is not registered.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect3">
-<h4 id="displays-duty-shifts-code-shift-code"><a class="link" href="#displays-duty-shifts-code-shift-code">3.5.1. Displays duty shifts: <code>shift</code></a></h4>
+<h4 id="displays-duty-shifts-code-shifts-code"><a class="link" href="#displays-duty-shifts-code-shifts-code">3.5.1. Displays duty shifts: <code>shifts</code></a></h4>
 <div class="paragraph">
 <p>Displays a sorted list of upcoming duty shifts for the staff doctors that is associated to the given <code>REFERENCE_ID</code>.
-If no keyword is given, all upcoming appointments will be displayed.<br></p>
+If no keyword is given, all upcoming shifts will be displayed.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>shifts [&lt;REFERENCE_ID&gt;]</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. <code>shifts S0111111A</code></p>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect3">
 <h4 id="adds-a-duty-shift-for-a-doctor-code-newshift-code"><a class="link" href="#adds-a-duty-shift-for-a-doctor-code-newshift-code">3.5.2. Adds a duty shift for a doctor: <code>newshift</code></a></h4>
 <div class="paragraph">
-<p>Adds a new duty shift for a doctor.<br>
-If both -reoccur &lt;INTERVALS&gt; and -num &lt;NUMBER_OF_TIMES&gt; fields are present, duty shifts of these &lt;NUMBER_OF_TIMES&gt; will be added to the doctor duty roster in &lt;INTERVALS&gt;.
+<p>If both <code>-reoccur &lt;INTERVALS&gt;</code> and <code>-num &lt;REOCCURRING_TIMES&gt;</code> fields are present, duty shifts of these <code>&lt;REOCCURRING_TIMES&gt;</code> will be added to the doctor duty roster in <code>&lt;INTERVALS&gt;</code>.
 Otherwise, only one shift will be added.<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>newshift -id &lt;STAFF_REFERENCE_ID&gt; -start &lt;START_TIMING&gt; -end &lt;END_TIMING&gt; [-reoccur REOCCURRING -num REOCCURRING_TIMES]</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. <code>newshift -id W0000001A -start 12/12/19 0900 -end 12/12/19 2100 -reoccur m -num 2</code></p>
-</li>
-</ul>
+<p>Format: <code>newshift -id &lt;STAFF_REFERENCE_ID&gt; -start &lt;START_TIMING&gt; -end &lt;END_TIMING&gt; [-reoccur INTERVALS -num REOCCURRING_TIMES]</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -784,13 +744,6 @@ The operation is rejected if it results in there being more appointments than st
 <div class="paragraph">
 <p>Format: <code>cancelshift &lt;ENTRY_ID&gt;</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. <code>cancelshift 1</code></p>
-</li>
-</ul>
-</div>
 </div>
 <div class="sect3">
 <h4 id="changes-the-duty-shift-for-a-doctor-code-editshift-code"><a class="link" href="#changes-the-duty-shift-for-a-doctor-code-editshift-code">3.5.4. Changes the duty shift for a doctor: <code>editshift</code></a></h4>
@@ -822,17 +775,10 @@ The operation is rejected if it results in there being more appointments than st
 </table>
 </div>
 <div class="paragraph">
-<p>The patient&#8217;s appointment affected by the deletion of the duty shift must be resolved first.<br></p>
+<p>The patient&#8217;s appointment affected by the editing of the duty shift must be resolved first.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>editshift -entry &lt;ENTRY_ID&gt; -start &lt;START_TIMING&gt; -end &lt;END_TIMING&gt;</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. <code>editshift -entry 1 -start 12/12/19 1200 -end 12/12/19 2100</code></p>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -1000,7 +946,7 @@ All except search actions can be re-done.</p>
 <p>Search for appointments: <code>appointments [&lt;REFERENCE_ID&gt;]</code></p>
 </li>
 <li>
-<p>Add new appointment: <code>newappt -id &lt;REFERENCE_ID&gt; -start &lt;START_TIMING&gt; [-end &lt;END_TIMING&gt;] [-reoccur &lt;INTERVALS&gt; -num &lt;NUMBER_OF_TIMES&gt;]</code></p>
+<p>Add new appointment: <code>newappt -id &lt;REFERENCE_ID&gt; -start &lt;START_TIMING&gt; [-end &lt;END_TIMING&gt;] [-reoccur &lt;INTERVALS&gt; -num &lt;REOCCURRING_TIMES&gt;]</code></p>
 </li>
 <li>
 <p>Edit appointment: <code>editappt -entry &lt;ENTRY_ID&gt; -start &lt;START_TIMING&gt; [-end &lt;END_TIMING&gt;]</code></p>
@@ -1028,7 +974,7 @@ All except search actions can be re-done.</p>
 <p>Search for shift: <code>shifts [&lt;REFERENCE_ID&gt;]</code></p>
 </li>
 <li>
-<p>Add new shift: <code>newshift -id STAFF_REFERENCE_ID -start &lt;START_TIMING&gt; -end &lt;END_TIMING&gt; [-reoccur &lt;INTERVALS&gt; -num &lt;NUMBER_OF_TIMES&gt;]</code></p>
+<p>Add new shift: <code>newshift -id STAFF_REFERENCE_ID -start &lt;START_TIMING&gt; -end &lt;END_TIMING&gt; [-reoccur &lt;INTERVALS&gt; -num &lt;REOCCURRING_TIMES&gt;]</code></p>
 </li>
 <li>
 <p>Change shift: <code>editshift -entry &lt;ENTRY_ID&gt; -start &lt;START_TIMING&gt; -end &lt;END_TIMING&gt;</code></p>
@@ -1087,4 +1033,4 @@ All except search actions can be re-done.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:58:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:06:08 UTC</div></div></div></body></html>
