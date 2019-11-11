@@ -1,51 +1,163 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Shawn Lum - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">ClerkPro</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-T09-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Shawn Lum - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-clerkpro"><a class="link" href="#project-clerkpro">PROJECT: ClerkPro</a></h2>
-<div class="sectionbody">
-<hr>
-</div>
-</div>
-<div class="sect1">
-<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ClerkPro is a desktop application used for managing clinic&#8217;s appointments, queue and scheduling. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>This project portfolio briefly introduces the project, ClerkPro and outlines my contributions to the project&#8217;s key features.</p>
+</div>
+<div class="sect2">
+<h3 id="about-the-team"><a class="link" href="#about-the-team">1.1. About the Team</a></h3>
+<div class="paragraph">
+<p>My team consists of 4 year 2 Computer Science Undergraduate students, including myself.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="about-the-project-clerkpro"><a class="link" href="#about-the-project-clerkpro">1.2. About the Project: ClerkPro</a></h3>
+<div class="paragraph">
+<p>ClerkPro is a desktop application used for appointments scheduling and queue management system targeted at clerks working in small clinics.
+Our application is optimised for individuals who <strong>prefer to work with a Command Line Interface (CLI)</strong>
+while still having the benefits of a Graphical User Interface (GUI).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="key-to-the-icons-and-formatting-used-in-the-document"><a class="link" href="#key-to-the-icons-and-formatting-used-in-the-document">1.3. Key to the Icons and Formatting Used in the Document</a></h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This symbol indicates extra information or definition.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>Model</code> :
+Text with this font and grey highlight indicates a component, class or object in the architecture of
+the application. It also indicates a generic command format for the command box in the User Guide.</p>
+</div>
+<div class="paragraph">
+<p><code class="blue">command</code> :
+Text with this blue font and grey highlight indicates a command that can be inputted by the user.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="introduction-to-clerkpro"><a class="link" href="#introduction-to-clerkpro">1.4. Introduction to ClerkPro</a></h3>
+<div class="paragraph">
+<p>This desktop application consists of 4 tabs, a right side panel to display the patients currently being served,
+a command box for users to input their commands and a response box.
+Each tab serves a different purpose, but are designed to facilitate an effortless experience in managing the
+scheduling of appointments for patients.</p>
+</div>
+<div class="paragraph">
+<p>The following shows the various tabs and their respective purposes (from top to bottom):</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Patient tab: Keeps track of patient particulars.</p>
+</li>
+<li>
+<p>Appointments tab: Handles the scheduling of patients' appointments</p>
+</li>
+<li>
+<p>Staff tab: Keeps track of particulars of staff doctors.</p>
+</li>
+<li>
+<p>Duty Shift tab: Records the shift timings of which doctor is on duty.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui.png" alt="Ui" width="300">
+</div>
+<div class="title">Figure 1. A quick glance at ClerkPro in action.</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">2. Summary of contributions</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>My responsibilities includes management of patient particulars and morphing the backend of the application
+to support the its appointment management features. This section will describe my contributions in greater detail.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: Implementation of <strong>Reactive Search (Multi-Threading and Logic)</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: As the user types, an instant preview of search results is provided.
+This feature is used to search for registered patients, appointments, doctors and duty shifts.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: Enhances user experience (UX) significantly as the system is able to narrow down search
+search results as the user is giving new inputs.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>Highlights: Requires understanding the process of JavaFX main application thread and plan to defer updates in a way that is not disruptive to UX of other components.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Credits: Daniel Tan Jun Xian (team member for the proposal of the UX concept)</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Justification: Provide a convenient way to rectify any mistakes made by the user.</p>
 </li>
 <li>
-<p><strong>Other contributions</strong>:</p>
+<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation was challenging as it required changes to existing commands.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement</strong>: <strong>prevents over scheduling of appointments</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Ensures that user do not mistakenly schedule more patient appointments than available on-duty doctors at any given appointment of time.</p>
+</li>
+<li>
+<p>Justification: This feature assists the user to avoid mistakenly over scheduling appointments for patients.</p>
+</li>
+<li>
+<p>Highlights: This same functionality can be used to determine the number of doctors on-duty during a given timing.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Patients and doctors can be identified using a unique reference id.</p>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Modified fields to be optional for patients and doctors. These optional fields include phone number, home address and email.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=sakurablossom&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=true&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=SakuraBlossom&amp;tabRepo=AY1920S1-CS2103T-T09-3%2Fmain%5Bmaster%5D">Functional code</a>]
+[<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=sakurablossom&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=true&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=SakuraBlossom&amp;tabRepo=AY1920S1-CS2103T-T09-3%2Fmain%5Bmaster%5D">Test code</a>]<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>{YET TO DO}
+* <strong>Other contributions</strong>:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -115,16 +227,13 @@
 </li>
 </ul>
 </div>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">3. Contributions to the User Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -132,7 +241,7 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are some sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -161,7 +270,7 @@ on whether the events involves a person whose reference Id contains the given ke
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">4. Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -169,32 +278,80 @@ on whether the events involves a person whose reference Id contains the given ke
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are some sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
+<h3 id="reactive-search"><a class="link" href="#reactive-search">4.1. Reactive Search</a></h3>
+<div class="paragraph">
+<p>The main concept behind reactive searching is to provide feedback to the user of their search results for
+a given keyword as they type. However, filtering larger data sets may be a time consuming process.
+Hence, the queries are processed on a separate thread to avoid blocking the <code>UI</code> thread.</p>
+</div>
+<div class="paragraph">
+<p>If the <code>UI</code> triggers another reactive search request before previous request is completed,
+the thread of the previous request is first interrupted and joined to the thread of the new request.
+Only after the previous thread has been successfully interrupted, the new request will be processed.
+This is done to ensure that the UI thread only displays the results of the latest request.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ReactiveSearchThreadingSequenceDiagram.png" alt="ReactiveSearchThreadingSequenceDiagram">
+</div>
+<div class="title">Figure 2. Sequence Diagram showing how the multi-threading is handled.</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.2. Undo/Redo feature</a></h3>
 <div class="paragraph">
 <p>The undo/redo feature allows users to revert the action of a command or redo a command action that has been undone.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">4.2.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by the <code>CommandHistory</code> class, which is found in the <code>logic</code> component.
-The history class stores undoable commands as a <code>ReversibleActionPairCommand</code>,
-which pairs two <code>ReversibleActionCommand</code>, the first command being the action to be executed and its inverse. (e.g. Pairing 'add event A' and 'delete event A' command).</p>
+<p>We use a pairing of two commands to describe any action that can be undone.
+This pairing is encapsulated as a <code>ReversibleActionPairCommand</code>, which consists of the command to be executed and its inverse.</p>
 </div>
 <div class="paragraph">
-<p>A <code>Command</code> object can be classified as one of two types, a <code>ReversibleCommand</code> and a <code>NonActionableCommand</code>.
-A <code>ReversibleCommand</code> refers to any command which modifies the data in the system&#8217;s model.
-Commands that only reads data from the model without modifying it, will not be added to the undo history stack.
+<p>Consider that our appointment management system provides the user the ability to
+add, delete and reschedule an appointment using the commands named
+<code>AddApptCommand</code>, <code>CancelApptCommand</code>, <code>EditApptCommand</code> respectively.</p>
+</div>
+<div class="paragraph">
+<p>The implementation of the undo feature of
+the <code>AddApptCommand</code> which schedules a new appointment for a given patient,
+would be the equivalent of cancelling the newly added appointment. By invoking its inverse
+command, <code>CancelApptCommand</code>, we can mimic the undo functionality of <code>AddApptCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Unlike implementing the undo functionality into every command that modifies the database of our system,
+we can mimic these undo functionality by pairing and executing existing commands which are available to us.</p>
+</div>
+<div class="paragraph">
+<p>With such an implementation, our design can conform to the Command pattern without violating the Single Responsibility Principle.
+Moreover, this implementation is less likely to face performance issues in terms of memory usage, compared to the Memento Pattern,
+which implements the undo capability by storing an instance of every previous state of the application in memory.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarises what happens when a user executes a new command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
+</div>
+<div class="title">Figure 3. Commit Activity Diagram</div>
+</div>
+<div class="paragraph">
+<p>A Command can be classified as one of two types, a <code>ReversibleCommand</code> or <code>NonActionableCommand</code>.
+A <code>ReversibleCommand</code> refers to any command which modifies the data stored by the system.
 Conversely, a <code>NonActionableCommand</code> only reads data from the system&#8217;s model without modifying it.</p>
 </div>
 <div class="paragraph">
-<p>Consider that the undo functionality of an 'add event' command is similar to the action of the 'delete event' command.
-The execution of the 'delete event' command could be done in place of the undo functionality of the 'add event' command.
-Hence, with such an implementation, we can avoid unnecessary duplication of code.</p>
+<p>The undo/redo mechanism is facilitated by the <code>CommandHistory</code> class, which is found in the <code>logic</code> component.
+The history class stores commands that can be undone as a <code>ReversibleActionPairCommand</code>,
+which describes a pairing of two <code>ReversibleActionCommand</code>, the first command being the action to be executed and its inverse.
+(e.g. Pairing 'add event A' and 'delete event A' command).</p>
 </div>
 <div class="paragraph">
 <p>The design of <code>CommandHistory</code> uses the Command pattern, a common design pattern often used in software engineering.
@@ -296,7 +453,7 @@ If the undo stack is empty then there are no previous states to be restored. The
 <div class="content">
 <img src="../images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
 </div>
-<div class="title">Figure 1. Undo Sequence Diagram</div>
+<div class="title">Figure 4. Undo Sequence Diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -353,18 +510,9 @@ However, the commands in the <code>commandRedoHistory</code> stack will be purge
 <img src="../images/UndoRedoState5.png" alt="UndoRedoState5">
 </div>
 </div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
-</div>
-<div class="title">Figure 2. Commit Activity Diagram</div>
-</div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.2.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -383,7 +531,8 @@ However, the commands in the <code>commandRedoHistory</code> stack will be purge
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Must ensure that the implementation of each individual command are correct.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Must ensure that the implementation of each individual command are correct.
+2. Must ensure that commands are paired</p></td>
 </tr>
 </tbody>
 </table>
@@ -476,45 +625,5 @@ However, the commands in the <code>commandRedoHistory</code> stack will be purge
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="reactive-search"><a class="link" href="#reactive-search">Reactive Search</a></h3>
-<div class="paragraph">
-<p>The main concept behind reactive searching is that we would like time-consuming searching to be UI non-blocking and executed as rapidly as possible so that user is instantly provided with results for a given keyword.</p>
 </div>
-<div class="paragraph">
-<p>Similar to eager evaluation, Reactive Search attempts to process commands if it does not mutate the storage. Otherwise it does a simple redirect to the tab relevant to the command.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ReactiveSearchSequenceDiagram.png" alt="ReactiveSearchSequenceDiagram">
-</div>
-<div class="title">Figure 3. Reactive Search Sequence Diagram showing how a thread is created to do the expensive processing.</div>
-</div>
-<div class="paragraph">
-<p>After the newly created thread starts, it will attempt to kill any previous thread that is still processing asynchronously before starting its own processing.</p>
-</div>
-<div class="paragraph">
-<p>After which, changes to the ObservableList will trigger the updateItem listener in UI. And since each graphical update is fast and can only be executed from the JavaFX main application thread, we defer each of them via Platform.run() so that the FX main application thread can execute them in order whenever it is free.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">EventListViewCell</span> <span class="directive">extends</span> ListCell&lt;<span class="predefined-type">Event</span>&gt; {
-    <span class="annotation">@Override</span>
-    <span class="directive">protected</span> <span class="type">void</span> updateItem(<span class="predefined-type">Event</span> event, <span class="type">boolean</span> empty) {
-        <span class="local-variable">super</span>.updateItem(event, empty);
-
-        <span class="keyword">if</span> (empty || event == <span class="predefined-constant">null</span>) {
-            Platform.runLater(() -&gt; setGraphic(<span class="predefined-constant">null</span>));
-        } <span class="keyword">else</span> {
-            Platform.runLater(() -&gt; setGraphic(<span class="keyword">new</span> EventCard(event, getIndex() + <span class="integer">1</span>, displayStatus).getRoot()));
-        }
-    }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Hence, this ensures the main FX application thread is always polling for user inputs or graphical updates and handles them rapidly as they are lightweight tasks.</p>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 11:52:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:26:34 UTC</div></div></div></body></html>

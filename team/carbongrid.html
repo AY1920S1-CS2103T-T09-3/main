@@ -142,6 +142,72 @@
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quick-start"><a class="link" href="#quick-start">Quick Start</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
+</li>
+<li>
+<p>Download the latest <code>ClerkPro.jar</code> (<a href="https://github.com/AY1920S1-CS2103T-T09-3/main/releases)">here</a>.</p>
+</li>
+<li>
+<p>Copy the file to the folder you want to use as the home folder for ClerkPro.</p>
+</li>
+<li>
+<p>Double-click the file to start the app. The User Interface (UI) should appear in a few seconds. For testing purposes, ClerkPro is pre-loaded with sample data to allow you to explore and familiarise with the application.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui.png" alt="Ui">
+</div>
+</div>
+</li>
+<li>
+<p>You may navigate through the entire UI with <kbd>UP</kbd>, <kbd>DOWN</kbd>, <kbd>LEFT</kbd>, <kbd>RIGHT</kbd> and <kbd>TAB</kbd>.</p>
+</li>
+<li>
+<p>The figure below shows the layout.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Layout.png" alt="Layout">
+</div>
+</div>
+</li>
+<li>
+<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
+e.g. typing <code>help</code> and pressing <kbd>Enter</kbd> will open the help window. Alternatively, just press <kbd>F1</kbd>.</p>
+</li>
+<li>
+<p>Some example commands you can try:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>newpatient -id E0000001A -name John Doe -phone 98765432 -email <a href="mailto:johnd@example.com">johnd@example.com</a> -address John street, block 123, #01-01</code> : registers a patient named <code>John Doe</code>.</p>
+</li>
+<li>
+<p><code>patient John Doe</code> : searches for a patient whose name contains <code>John Doe</code></p>
+</li>
+<li>
+<p><code>enqueue E0000001A</code> : enqueues patient with reference id <code>E0000001A</code> into the queue. The patient <code>E0000001A</code> must be registered.</p>
+</li>
+<li>
+<p><strong><code>exit</code></strong> : exits the app.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Refer to <a href="#Features">[Features]</a> for details of each command.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Do not directly edit any of the following json files: e.g. <code>appointments.json</code>, <code>dutyRoster.json</code>, <code>patientDetails.json</code>, <code>staffDetails.json</code>, <code>preferences.json</code>, <code>config.json</code>.</p>
+</div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
@@ -221,7 +287,13 @@ on whether the events involves a person whose reference Id contains the given ke
 <div class="content">
 <img src="../images/AutoCompleteSequenceDiagram.png" alt="AutoCompleteSequenceDiagram">
 </div>
-<div class="title">Figure 1. AutoComplete Sequence Diagram</div>
+<div class="title">Figure 1. AutoComplete Sequence Diagram showing the sequence upon typing the character 'a' into an empty Command Box.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AutoCompleterClassDiagram.png" alt="AutoCompleterClassDiagram">
+</div>
+<div class="title">Figure 2. AutoCompleter Class Diagram</div>
 </div>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-implement-autocomplete"><a class="link" href="#aspect-data-structure-to-implement-autocomplete">Aspect: Data structure to implement AutoComplete</a></h5>
@@ -269,46 +341,6 @@ on whether the events involves a person whose reference Id contains the given ke
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="reactive-search"><a class="link" href="#reactive-search">Reactive Search</a></h3>
-<div class="paragraph">
-<p>The main concept behind reactive searching is that we would like time-consuming searching to be UI non-blocking and executed as rapidly as possible so that user is instantly provided with results for a given keyword.</p>
-</div>
-<div class="paragraph">
-<p>Similar to eager evaluation, Reactive Search attempts to process commands if it does not mutate the storage. Otherwise it does a simple redirect to the tab relevant to the command.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/ReactiveSearchSequenceDiagram.png" alt="ReactiveSearchSequenceDiagram">
-</div>
-<div class="title">Figure 2. Reactive Search Sequence Diagram showing how a thread is created to do the expensive processing.</div>
-</div>
-<div class="paragraph">
-<p>After the newly created thread starts, it will attempt to kill any previous thread that is still processing asynchronously before starting its own processing.</p>
-</div>
-<div class="paragraph">
-<p>After which, changes to the ObservableList will trigger the updateItem listener in UI. And since each graphical update is fast and can only be executed from the JavaFX main application thread, we defer each of them via Platform.run() so that the FX main application thread can execute them in order whenever it is free.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">EventListViewCell</span> <span class="directive">extends</span> ListCell&lt;<span class="predefined-type">Event</span>&gt; {
-    <span class="annotation">@Override</span>
-    <span class="directive">protected</span> <span class="type">void</span> updateItem(<span class="predefined-type">Event</span> event, <span class="type">boolean</span> empty) {
-        <span class="local-variable">super</span>.updateItem(event, empty);
-
-        <span class="keyword">if</span> (empty || event == <span class="predefined-constant">null</span>) {
-            Platform.runLater(() -&gt; setGraphic(<span class="predefined-constant">null</span>));
-        } <span class="keyword">else</span> {
-            Platform.runLater(() -&gt; setGraphic(<span class="keyword">new</span> EventCard(event, getIndex() + <span class="integer">1</span>, displayStatus).getRoot()));
-        }
-    }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Hence, this ensures the main FX application thread is always polling for user inputs or graphical updates and handles them rapidly as they are lightweight tasks.</p>
 </div>
 </div>
 </div>
@@ -496,4 +528,4 @@ Expected: Upon <kbd>UP</kbd>, current text in Command Box is replaced with previ
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 11:52:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:26:34 UTC</div></div></div></body></html>
