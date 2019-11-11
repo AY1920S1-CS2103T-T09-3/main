@@ -20,14 +20,14 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: <strong>Major Rework on User Interface (UI) with AutoComplete with flags.</strong></p>
+<p><strong>Major enhancement (Largest Contribution): Major Rework on User Interface (UI) with AutoComplete with flags.</strong></p>
 <div class="ulist">
 <ul>
 <li>
 <p>What it does: Reduces the mental workload &amp; visual fatigue of user from having to carefully type commands and double checking the typed command or the user guide for supported commands and parameters.</p>
 </li>
 <li>
-<p>Justification: Enhances the user experience (UX) design significantly because it provides optimal focus on primary tasks at hand to reduce visual and cognitive expenditure.</p>
+<p>Justification: Enhances user experience (UX) design significantly because it provides optimal focus on primary tasks at hand to reduce visual and cognitive expenditure.</p>
 </li>
 <li>
 <p>Highlights: Affects interaction against existing UI components as the traversal have to be critically handled from component to component.</p>
@@ -39,17 +39,17 @@
 </div>
 </li>
 <li>
-<p><strong>Major enhancement</strong>: <strong>Reactive Search (Proposal &amp; UX Concept)</strong></p>
+<p><strong>Major enhancement: Reactive Search (Proposal &amp; UX Concept)</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Prevents un-necessary waiting by the user.</p>
+<p>What it does: Gives the user an instant preview of the search result. Prevents UI from locking up upon time-consuming processing.</p>
 </li>
 <li>
-<p>Justification: Enhances the UX significantly as user no longer waits to preview the number of possible results.</p>
+<p>Justification: Enhances UX significantly as user no longer have to wait for application to completely finish searching before giving new inputs.</p>
 </li>
 <li>
-<p>Highlights: Reactive Search should not block the main UI from user upon processing large data-sets.</p>
+<p>Highlights: Requires understanding the process of JavaFX main application thread and plan to defer updates in a way that is not disruptive to UX of other components.</p>
 </li>
 <li>
 <p>Credits: SakuraBlossom (Threading and Logic), Google &amp; Chrome DevTools Console (Inspiration)</p>
@@ -142,6 +142,61 @@
 </tr>
 </tbody>
 </table>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>AutoComplete &amp; History</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When the command box is blank, <kbd>UP</kbd> &amp; <kbd>DOWN</kbd> will auto-fill the command box with commands previously entered. <kbd>UP</kbd> gives older commands and <kbd>DOWN</kbd> gives newer commands.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Note: History is not saved in any manner after the application has closed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>When the command box is not blank, AutoComplete will come into action and tries to suggest commands that are available for whatever that has been typed. During which, you may traverse your selection of the suggestions via <kbd>UP</kbd> &amp; <kbd>DOWN</kbd> then press <kbd>ENTER</kbd> to confirm selection.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Full keyboard navigable UI</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><kbd>LEFT</kbd> &amp; <kbd>RIGHT</kbd> changes focus between OmniPanel and TabBar when focus is not on CommandBox.</p>
+</li>
+<li>
+<p><kbd>TAB</kbd> changes focus from TabBar/OmniPanel to CommandBox and from CommandBox to TabBar.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Reactive search</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The listing automatically filters to display only the most relevant results when searching for an existing entry.</p>
+</li>
+<li>
+<p>When searching for a specific patient or staff, using the <code>patient</code> or <code>doctor</code> command, the results are filtered based
+on whether the person&#8217;s reference Id, name or phone number contains the given keyword.</p>
+</li>
+<li>
+<p>When searching for a specific appointment or duty shift, using the <code>appointments</code> or <code>shifts</code> command, the results are filtered based
+on whether the events involves a person whose reference Id contains the given keyword.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -182,7 +237,7 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Time Complexity Efficient<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Search Time Complexity Efficient: O(m), where m is length of searched word.<br>
 2. One of the most natural data structure for text prediction.</p></td>
 </tr>
 <tr>
@@ -207,7 +262,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Time Complexity Inefficient.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1. Search Time Complexity Inefficient: O(nm), where n is number of words and m is length of searched word.</p></td>
 </tr>
 </tbody>
 </table>
@@ -257,4 +312,188 @@
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:44:25 UTC</div></div></div></body></html>
+</div>
+<div class="sect1">
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Instructions for Manual Testing</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Given below are instructions to test the app manually.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These instructions only provide a starting point for testers to work on; testers are expected to do more <em>exploratory</em> testing.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">Launch and Shutdown</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initial launch</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Download the jar file and copy into an empty folder</p>
+</li>
+<li>
+<p>Double-click the jar file<br>
+Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Saving window preferences</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
+</li>
+<li>
+<p>Re-launch the app by double-clicking the jar file.<br>
+Expected: The most recent window size and location is retained. If window settings under <code>preferences.json</code> is corrupted and becomes reasonably small or large, the default size of 800x600 will be used instead.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-patient"><a class="link" href="#editing-a-patient">Editing a patient</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing a patient while certain patient(s) have been searched.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Search for an interested person via <code>patient [&lt;SEARCH_KEYWORD&gt;]</code> then press <kbd>ENTER</kbd>.</p>
+</li>
+<li>
+<p>Test case: <code>editpatient -entry 1 -name test</code><br>
+Expected: All patients will be listed again with the particular patient of index found after searching has his or her name modified to <code>test</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">Saving data</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dealing with missed/corrupted data files</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Removing or Modifying files in data folder residing in same directory as <code>ClerkPro.jar</code>.</p>
+</li>
+<li>
+<p>Test case: Deleting the entire data folder.<br>
+Expected: ClerkPro will attempt to access the folder. If it does not exists, the data folder will be automatically created with default settings. Other jsons beside <code>preferences.json</code> will be created upon modification of sample data loaded.</p>
+</li>
+<li>
+<p>Test case: Corrupting data files by modifying its entries.<br>
+Expected: ClerkPro will try its best to parse the data. If it is not valid, it must be corrupted. Therefore the application will load up with default settings and sample data.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="navigating-in-ui"><a class="link" href="#navigating-in-ui">Navigating in UI</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigating with keyboard only</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <kbd>TAB</kbd> key should change focus from the upper panels to Command Box and Command Box to Tab Bar.<br>
+Expected: When TabBar or Command Box is in focus, there should exist an indication of turquoise/blue border.</p>
+</li>
+<li>
+<p>Test case: Both <kbd>UP</kbd> and <kbd>DOWN</kbd> keys should also work even if the selected item is of the first or last index.<br>
+Expected: When UP is pressed during a selected item in the list view or Tab Bar is of first index, it should brings the selection to the last index of the list view or Tab Bar. Vice versa for the last index when selected.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="command-box"><a class="link" href="#command-box">Command Box</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>AutoComplete</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: *Any partial commands with leading spaces.<br>
+Expected: AutoComplete appears in an aligned overlay showing available commands for whatever has been typed.</p>
+</li>
+<li>
+<p>Test case: <code>newpatient -id</code> with any number of leading spaces but at least one ending space(s).<br>
+Expected: AutoComplete does not suggest any other flags because its previous word is in a flag format.</p>
+</li>
+<li>
+<p>Test case: <code>newpatient -id Mo-name</code> with any number of leading spaces but at least one ending space(s).<br>
+Expected: Since <code>Mo-name</code> is not a flag, AutoComplete should suggest all unused flags but not <code>-id</code>.</p>
+</li>
+<li>
+<p>Test case: Lengthy Command in Command Box reaching the right-most end of the Command Box.<br>
+Expected: AutoComplete will display all suggestions visibly at the right-most end but will lose the perfect alignment since its impossible to align any further while staying visible to the user.</p>
+</li>
+<li>
+<p>Test case: <kbd>UP</kbd> &amp; <kbd>DOWN</kbd> &amp; <kbd>ENTER</kbd> while focus is still on the Command Box.<br>
+Expected: The selection should change according to <kbd>UP</kbd> &amp; <kbd>DOWN</kbd>. While <kbd>ENTER</kbd> should set the selected tag into the Command Box, instead of executing the unfinished Command.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>History</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Some commands that has been entered regardless if it is invalid or valid.</p>
+</li>
+<li>
+<p>Command Box is focused.</p>
+</li>
+<li>
+<p>AutoComplete is not in action.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test case: Press <kbd>UP</kbd> then <kbd>DOWN</kbd><br>
+Expected: Upon <kbd>UP</kbd>, current text in Command Box is replaced with previously entered command. Then after, pressing <kbd>DOWN</kbd> displays an empty command box since the last text that was in the Command Box is not entered and thus not part of history.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 10:23:26 UTC</div></div></div></body></html>
