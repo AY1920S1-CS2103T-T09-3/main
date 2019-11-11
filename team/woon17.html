@@ -17,56 +17,67 @@
 <div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section’s purpose is to summarise my contributions for the duration of this project. For more details about the contributions, click the link to the corresponding pull request.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement 1</strong>: added <strong>Appointments management</strong> feature</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: The Appointment feature enables users to manage appointments for patients by providing basic Create, Read, Update, Delete (CRUD) of appointments. User is also able to find missed appointments and settle each missed appointment efficiently.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This feature greatly improves the product as it meets the necessary demands a receptionist faces on a
+day-to-day basis, i.e. Add appointments.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: Appointments, in reality, rely heavily on different components such as patients and onduty doctors to be booked.
+The challenge in implementing this feature was checking appointments time with doctors' duty shifts. It requires an in-depth understanding of clerkPro’s architecture.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Major enhancement 2</strong>: added <strong>Duty shift schedule</strong> feature</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: The duty shift scheduling provides users the ability to schedule duty shifts for doctors. It can help doctors to check, add, edit duty shifts efficiently.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Justification: This feature is important as the user would need to schedule duty shift for doctor. i.e. change duty shift.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>The following link contains all the code contributed throughout the entire project:
+<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=woon&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=false&amp;until=2019-11-10">Functional code</a>
+<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=woon&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=false&amp;until=2019-11-10">Test code</a></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
+<p>Community:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
+<p>Contributed to forum discussions (example: <a href="https://github.com/nus-cs2103-AY1920S1/forum/issues/144">1</a>]</p>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Reported bugs and suggestions. i.e. I suggest to mention that user should not edit or delete data file in UG.</p>
 </li>
 </ul>
 </div>
@@ -76,39 +87,33 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Added command information regarding the appointment feature into the User Guide:(examples: <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/221">1</a>, <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/143">2</a>)</p>
+</li>
+<li>
+<p>Added examples to different commands:(example: <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/237">1</a>)</p>
+</li>
+<li>
+<p>Added UML diagrams for appointment feature into the Development Guide:(examples: <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/92">1</a>)</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Community:</p>
+<p>Database:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>edits pre-load database(Pull request <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/139">#139</a>)</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Tools:</p>
+<p>Enhancements to existing features:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Wrote additional tests for existing features to increase coverage from 66.25% to 71.55% (Pull requests <a href="https://github.com/AY1920S1-CS2103T-T09-3/main/pull/112">#112</a>)</p>
 </li>
 </ul>
 </div>
@@ -117,9 +122,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -136,6 +138,324 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="appointment-management"><a class="link" href="#appointment-management">Appointment Management</a></h3>
+<div class="sect3">
+<h4 id="displays-appointments-code-appointments-code"><a class="link" href="#displays-appointments-code-appointments-code">Displays appointments: <code>appointments</code></a></h4>
+<div class="paragraph">
+<p>Displays a sorted list of upcoming appointments for the patient that is associated to the given <code>REFERENCE_ID</code>.
+If no keyword is given, all upcoming appointments will be displayed.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>appointments [&lt;REFERENCE_ID&gt;]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>appointments E0000001A</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="schedules-an-appointment-code-newappt-code"><a class="link" href="#schedules-an-appointment-code-newappt-code">Schedules an appointment: <code>newappt</code></a></h4>
+<div class="paragraph">
+<p>Schedules a new appointments for a patient.<br>
+NOTE: The appointment will be rejected by the system, if there are insufficient staff doctors on duty at the time of the appointment.<br>
+e.g. Cannot schedule more appointments than available doctors on duty.</p>
+</div>
+<div class="paragraph">
+<p>If both <code>-reoccur &lt;INTERVALS&gt;</code> and <code>-num &lt;NUMBER_OF_TIMES&gt;</code> fields are present, appointments of these <code>&lt;NUMBER_OF_TIMES&gt;</code> will be added to the patient
+appointment schedule in <code>&lt;INTERVALS&gt;</code>. Otherwise, only one event will be added.<br></p>
+</div>
+<div class="paragraph">
+<p>If the optional field <code>[-end &lt;END_TIMING&gt;]</code> is absent, default end timing is 30 mins after start timing of the appointment. Otherwise, end Timing will be <code>[-end &lt;END_TIMING&gt;]</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>The optional field <code>[-reoccur &lt;INTERVALS&gt;]</code> can be <code>-reoccur w</code>, <code>-reoccur m</code>, or <code>-reoccur y</code>.They represent to add weekly, monthly, yearly repeat appointment respectively.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>newappt -id &lt;PATIENT_REFERENCE_ID&gt; -start &lt;START_TIMING&gt; [-end &lt;END_TIMING&gt;] [-reoccur &lt;INTERVALS&gt; -num &lt;NUMBER_OF_TIMES&gt;]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>newappt -id E0000001A -start 12/12/19 0900 -end 12/12/19 1000 -reoccur m -num 2</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="acknowledges-a-appointment-code-ackappt-code"><a class="link" href="#acknowledges-a-appointment-code-ackappt-code">Acknowledges a appointment: <code>ackappt</code></a></h4>
+<div class="paragraph">
+<p>Acknowledges the most upcoming appointment only if patient arrives on the same day and the arriving time is before the appointment&#8217;s end time<br>
+Format: <code>ackappt &lt;REFERENCE_ID&gt;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>ackappt E0000001A</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cancels-an-appointment-code-cancelappt-code"><a class="link" href="#cancels-an-appointment-code-cancelappt-code">Cancels an appointment: <code>cancelappt</code></a></h4>
+<div class="paragraph">
+<p>Cancels the specified appointment.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To avoid accidental cancellation of another patient&#8217;s appointments, the user must first narrow down the search to a single patient using the <code>appointments [&lt;REFERENCE_ID&gt;]</code> command.<br>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>cancelappt &lt;ENTRY_ID&gt;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>cancelappt 1</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changes-the-appointment-date-code-editappt-code"><a class="link" href="#changes-the-appointment-date-code-editappt-code">Changes the appointment date: <code>editappt</code></a></h4>
+<div class="paragraph">
+<p>Changes the timing for an existing appointment.<br>
+If no optional fields <code>[-end &lt;END_TIMING&gt;]</code> is present, default endTiming is 30 mins after startTiming. Otherwise new endTiming will be <code>[-end &lt;END_TIMING&gt;]</code>.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To avoid accidental rescheduling of another patient&#8217;s appointments, the user must first narrow down the search to a single patient using the <code>appointments [&lt;REFERENCE_ID&gt;]</code> command.<br>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The operation is rejected if there are insufficient staff doctors on duty at the time of the new appointment.<br>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>editappt -entry &lt;ENTRY_ID&gt; -start &lt;START_TIMING&gt; [-end &lt;END_TIMING&gt;]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>editappt -entry 1 -start 12/12/19 1300 -end 12/12/19 1400</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="lists-patients-who-have-missed-their-appointments-code-missappt-code"><a class="link" href="#lists-patients-who-have-missed-their-appointments-code-missappt-code">Lists patients who have missed their appointments: <code>missappt</code></a></h4>
+<div class="paragraph">
+<p>Lists all appointments that are missed.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+An appointment is considered missed if the appointment was not acknowledged and the current time has passed the appointment&#8217;s end time.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>missappt</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>missappt</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sets-missed-appointments-as-settled-notified-code-settleappt-code"><a class="link" href="#sets-missed-appointments-as-settled-notified-code-settleappt-code">Sets missed appointments as settled/notified: <code>settleappt</code></a></h4>
+<div class="paragraph">
+<p>Settles and removes the missed appointment based on the given index.<br>
+Settling refers to the user following up on contacting the patient who has missed his/her appointment.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only missed appointments can be settled. The user must first display the missed appointment listing, using <code>missappt</code>, before using this command.<br>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>settleappt &lt;ENTRY_ID&gt;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>settleappt 1</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="shows-the-empty-slots-code-slot-code-v2-0"><a class="link" href="#shows-the-empty-slots-code-slot-code-v2-0">Shows the empty slots: <code>slot</code> (v2.0)</a></h4>
+<div class="paragraph">
+<p>List all the available empty slots for patients to make appointments<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>slot -start &lt;START_DATE&gt;</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="duty-shift-management"><a class="link" href="#duty-shift-management">Duty-shift Management</a></h3>
+<div class="sect3">
+<h4 id="displays-duty-shifts-code-shift-code"><a class="link" href="#displays-duty-shifts-code-shift-code">Displays duty shifts: <code>shift</code></a></h4>
+<div class="paragraph">
+<p>Displays a sorted list of upcoming duty shifts for the staff doctors that is associated to the given <code>REFERENCE_ID</code>.
+If no keyword is given, all upcoming appointments will be displayed.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>shifts [&lt;REFERENCE_ID&gt;]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>shifts S0111111A</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adds-a-duty-shift-for-a-doctor-code-newshift-code"><a class="link" href="#adds-a-duty-shift-for-a-doctor-code-newshift-code">Adds a duty shift for a doctor: <code>newshift</code></a></h4>
+<div class="paragraph">
+<p>Adds a new duty shift for a doctor.<br>
+If both -reoccur &lt;INTERVALS&gt; and -num &lt;NUMBER_OF_TIMES&gt; fields are present, duty shifts of these &lt;NUMBER_OF_TIMES&gt; will be added to the doctor duty roster in &lt;INTERVALS&gt;.
+Otherwise, only one shift will be added.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>newshift -id &lt;STAFF_REFERENCE_ID&gt; -start &lt;START_TIMING&gt; -end &lt;END_TIMING&gt; [-reoccur REOCCURRING -num REOCCURRING_TIMES]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>newshift -id W0000001A -start 12/12/19 0900 -end 12/12/19 2100 -reoccur m -num 2</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cancels-a-duty-shift-for-a-doctor-code-cancelshift-code"><a class="link" href="#cancels-a-duty-shift-for-a-doctor-code-cancelshift-code">Cancels a duty shift for a doctor: <code>cancelshift</code></a></h4>
+<div class="paragraph">
+<p>Cancels the specified duty shift for a doctor based on the given entry index.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To avoid accidental cancellation of another doctor&#8217;s shift, the user must first narrow down the search to a single doctor using the <code>shift [&lt;REFERENCE_ID&gt;]</code> command.<br>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The operation is rejected if it results in there being more appointments than staff doctors on duty at any given point in time. The appointments affected by the deletion of the duty shift must be resolved first.<br>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>cancelshift &lt;ENTRY_ID&gt;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>cancelshift 1</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changes-the-duty-shift-for-a-doctor-code-editshift-code"><a class="link" href="#changes-the-duty-shift-for-a-doctor-code-editshift-code">Changes the duty shift for a doctor: <code>editshift</code></a></h4>
+<div class="paragraph">
+<p>Changes the timing of an existing duty shift based on the given entry index. <br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To avoid accidental cancellation of another doctor&#8217;s shift, the user must first narrow down the search to a single doctor using the <code>shift [&lt;REFERENCE_ID&gt;]</code> command.<br>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The operation is rejected if it results in there being more appointments than staff doctors on duty at any given point in time.<br>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The patient&#8217;s appointment affected by the deletion of the duty shift must be resolved first.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>editshift -entry &lt;ENTRY_ID&gt; -start &lt;START_TIMING&gt; -end &lt;END_TIMING&gt;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>editshift -entry 1 -start 12/12/19 1200 -end 12/12/19 2100</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -152,307 +472,310 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
+<h3 id="appointment-feature"><a class="link" href="#appointment-feature">Appointment feature</a></h3>
 <div class="paragraph">
-<p>The undo/redo feature allows users to revert the action of a command or redo a command action that has been undone.</p>
-</div>
-<div class="sect3">
-<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
-<div class="paragraph">
-<p>The undo/redo mechanism is facilitated by the <code>CommandHistory</code> class, which is found in the <code>logic</code> component.
-The history class stores undoable commands as a <code>ReversibleActionPairCommand</code>,
-which pairs two <code>ReversibleActionCommand</code>, the first command being the action to be executed and its inverse. (e.g. Pairing 'add event A' and 'delete event A' command).</p>
-</div>
-<div class="paragraph">
-<p>A <code>Command</code> object can be classified as one of two types, a <code>ReversibleCommand</code> and a <code>NonActionableCommand</code>.
-A <code>ReversibleCommand</code> refers to any command which modifies the data in the system&#8217;s model.
-Commands that only reads data from the model without modifying it, will not be added to the undo history stack.
-Conversely, a <code>NonActionableCommand</code> only reads data from the system&#8217;s model without modifying it.</p>
-</div>
-<div class="paragraph">
-<p>Consider that the undo functionality of an 'add event' command is similar to the action of the 'delete event' command.
-The execution of the 'delete event' command could be done in place of the undo functionality of the 'add event' command.
-Hence, with such an implementation, we can avoid unnecessary duplication of code.</p>
-</div>
-<div class="paragraph">
-<p>The design of <code>CommandHistory</code> uses the Command pattern, a common design pattern often used in software engineering.
-It implements the following operations:</p>
+<p>The Appointment feature enables users to manage appointments for patients by providing basic Create, Read, Update, Delete (CRUD) of appointments. User is also able to find missed appointments and settle each missed appointment efficiently.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>CommandHistory#addToCommandHistory()</code>&#8201;&#8212;&#8201;Saves the most recent command that modifies the system&#8217;s model in its undo history.</p>
+<p>e.g. <code>newappt -id E0000001A -start 01/12/19 0900 -end 01/12/19 0940 -reoccur m -num 2</code> - creates two monthly reoccurring appointments to patient whose <code>referenceId</code> is E0000001A.</p>
 </li>
 <li>
-<p><code>CommandHistory#performUndo()</code>&#8201;&#8212;&#8201;Performs the inverse operation to restore the system to its previous state.</p>
-</li>
-<li>
-<p><code>CommandHistory#performRedo()</code>&#8201;&#8212;&#8201;Restores a previously undone state by re-executing the respective undone command.</p>
-</li>
-<li>
-<p><code>CommandHistory#canUndo()</code>&#8201;&#8212;&#8201;Checks if there are previous states to be restored</p>
-</li>
-<li>
-<p><code>CommandHistory#canRedo()</code>&#8201;&#8212;&#8201;Checks if the a previously undone state can be restored</p>
+<p>e.g. <code>editappt -entry 1 -start 01/12/19 1000 -end 01/12/19 1040</code> - edits a patient&#8217;s first appointment timing to be the input timing if there is no conflict with doctor&#8217;s duty shift.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are all contained within the <code>Logic</code> component and do not depend on any other components.
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
+<p>The number of scheduled appointments cannot be more than the number of on-duty staff doctors at any given time.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The Appointment feature contains multiple operations to indirectly manipulate the <code>UniqueEventList</code>. The implemented operations include:</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>CommandHistory</code> will be initialised with an empty undo and redo stack.</p>
+<p><code>newappt</code> Command - Creates an new appointment or reoccurring appointments for a patient.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>newpatient &#8230;&#8203; -name Mark</code> command which registers a new patient named <code>Mark</code> with the unique id of <code>S9729970A</code>.
-The <code>newpatient</code> command creates a <code>ReversibleActionPairCommand</code>, which pairs of a <code>RegisterPatientCommand</code> and <code>UnregisterPatientCommand</code>.
-After the invoking execution of the <code>RegisterPatientCommand</code>, the whole <code>ReversibleActionPairCommand</code> is pushed to the undo history stack
-via the <code>CommandHistory#addToCommandHistory()</code></p>
+<p><code>ackappt</code> Command - Acknowledges an appointment whenever the patient checks in with the clerk.</p>
+</div>
+<div class="paragraph">
+<p><code>appointments</code> Command - Lists all upcoming appointments or appointments which involves the patient whose referenceId contains a certain keyword.</p>
+</div>
+<div class="paragraph">
+<p><code>editappt</code> Command - Edits an appointment timing.</p>
+</div>
+<div class="paragraph">
+<p><code>cancelappt</code> Command - Cancels an appointment.</p>
+</div>
+<div class="paragraph">
+<p><code>missappt</code> Command - Lists all missed appointments.</p>
+</div>
+<div class="paragraph">
+<p><code>settleappt</code> Command - Removes a missed appointment.</p>
+</div>
+<div class="paragraph">
+<p>The appointment class diagram below illustrates the interactions between the Appointment class and associated classes.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoState0.png" alt="UndoRedoState0">
+<img src="../images/AppointmentClassDiagram.png" alt="AppointmentClassDiagram">
 </div>
+<div class="title">Figure 1. Appointment class diagram</div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>enqueue S9729970A</code> command to add a patient whose reference id matches <code>S9729970A</code>.
-    The <code>enqueue</code> command also calls the <code>CommandHistory#addToCommandHistory()</code>, which pushes the enqueue action pair into the command history stack.</p>
+<p>he appointment will be rejected by the system, if there are insufficient staff doctors on duty at the time of the appointment.<br>
+Each <code>Appointment</code> object consists of a <code>PersonReferenceId</code>, <code>Timing</code>, <code>Status</code>. <code>Timing</code> class has 2 <code>DateTime</code> objects which indicates the start and end time of the <code>appointment</code>. The <code>UniqueEventList</code> contains 0 or more appointments.</p>
+</div>
+<div class="paragraph">
+<p>The current implementation of <code>Appointment</code> checks with <code>patient</code> object by the unique <code>referenceId</code> and also checks the timing with doctors' dutyRoster. If the <code>referenceId</code> exists within the Model#UniquePersonList and the timing is valid, then the <code>Appointment</code> object is constructed. This ensures that the patient is registered before making any appointments and the appointment&#8217;s timing is valid.</p>
+</div>
+<div class="paragraph">
+<p>The appointment will be rejected by the system, if there are insufficient staff doctors on duty at the time of the appointment.<br></p>
+</div>
+<div class="paragraph">
+<p>Before an appointment can be scheduled, the system first checks the total number of staff doctors on duty in that timeslot. Next, the system checks the existing appointments in that timeslot. If the number of appointments in that timeslot is less than the number of doctors, the appointment will be scheduled. Otherwise, the appointment will not be scheduled.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-newappt-code-command"><a class="link" href="#code-newappt-code-command"><code>newappt</code> Command</a></h4>
+<div class="paragraph">
+<p>The <code>newappt</code> command is similar to the <code>new</code> command of patient and doctor. The command takes in the parameters required to construct <code>ReferenceId</code>, <code>DateTime</code> and <code>Status</code>. The image below shows how the <code>Appointment</code> object is constructed.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a <code>AddAppointment</code> command:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoState1.png" alt="UndoRedoState1">
+<img src="../images/AddAppointmentActivityDiagram.png" alt="AddAppointmentActivityDiagram">
 </div>
+<div class="title">Figure 2. Interactions Inside the Logic Component when a user executes a <code>newappt</code> command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-ackappt-code-command"><a class="link" href="#code-ackappt-code-command"><code>ackappt</code> command</a></h4>
+<div class="paragraph">
+<p>The <code>ackappt</code> command marks the patient&#8217;s the most upcoming appointment as acknowledged only if it is on the same day and it is before the appointment&#8217;s end time and also updates <code>UniqueEventList</code> to display the rest appointments belonging to the patient.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-appointments-code-command"><a class="link" href="#code-appointments-code-command"><code>appointments</code> Command</a></h4>
+<div class="paragraph">
+<p>The <code>appointments</code> command works in two different ways.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. The user executes <code>newpatient &#8230;&#8203; -name John Doe</code> to register a new patient. Similar to the previous command, also causes another action pair to be added into the command history undo stack.</p>
+<p>Case 1: <code>appointments referenceId</code></p>
+</div>
+<div class="paragraph">
+<p>The <code>appointments</code> command searches for appointments that belong to the patient based on the given <code>referenceId</code>. The filtered appointments are found in <code>ModelManager</code>. The list is instantiated by filtering the <code>UniqueEventList</code> using <code>EventContainsKeywordPredicate</code> which is created from the <code>ReferenceId</code> argument supplied by the user.</p>
+</div>
+<div class="paragraph">
+<p>Case 2: <code>appointments</code></p>
+</div>
+<div class="paragraph">
+<p>If the <code>appointments</code> command is executed without any other arguments, it executes with the predicate <code>EventContainsApprovedStatusPredicate</code>. updateFilteredAppointmentList() is called and the entire list of upcoming appointments is shown to the user.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-editappt-code-command"><a class="link" href="#code-editappt-code-command"><code>editappt</code> Command</a></h4>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a <code>editappt</code> command:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoState2.png" alt="UndoRedoState2">
+<img src="../images/ChangeAppointmentActivityDiagram.png" alt="ChangeAppointmentActivityDiagram">
+</div>
+<div class="title">Figure 3. Interactions Inside the Logic Component when a user executes a <code>editappt</code> command</div>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>CommandHistory#performRedo()</code>. Hence, the command will not be saved into the command history.
-</td>
-</tr>
-</table>
+<div class="sect3">
+<h4 id="code-cancelappt-code-command"><a class="link" href="#code-cancelappt-code-command"><code>cancelappt</code> Command</a></h4>
+<div class="paragraph">
+<p><code>cancelappt</code> simply takes in the index of the target appointment to cancel according to the displayed appointment list.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. The user now decides that adding the patient was a mistake, and decides to undo that action by executing the <code>undo</code> command.
-The <code>undo</code> command will call <code>CommandHistory#performUndo()</code>.
-This invokes the <code>UnregisterPatientCommand</code> which reverts the system to its previous state,
-and moves the action from the top undo stack to the top of the redo history stack.</p>
+<p>Given below is the sequence diagram for interactions within the <code>Logic</code> component for the <code>execute("cancelappt 1")</code> API call.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoState3.png" alt="UndoRedoState3">
+<img src="../images/CancelAppointmentSequenceDiagram.png" alt="CancelAppointmentSequenceDiagram">
+</div>
+<div class="title">Figure 4. Interactions Inside the Logic Component for the <code>cancelappt 1</code> Command</div>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the undo stack is empty then there are no previous states to be restored. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
+<div class="sect3">
+<h4 id="code-missappt-code-command"><a class="link" href="#code-missappt-code-command"><code>missappt</code> Command</a></h4>
+<div class="paragraph">
+<p>The <code>missappt</code> command displays appointments that patients did not attend. The filtered appointments are found in <code>ModelManager</code>. The list is instantiated by filtering the <code>UniqueEventList</code> using <code>EventsMissedPredicate</code> which checks all APPROVED-Status appointments' end times with current time.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-settleappt-code-command"><a class="link" href="#code-settleappt-code-command"><code>settleappt</code> Command</a></h4>
+<div class="paragraph">
+<p>The <code>settleappt</code> command helps users to remove any missed appointments once users have settled it. It will also update <code>UniqueEventList</code> to display the rest of the missed appointments.</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
-</div>
-<div class="title">Figure 1. Undo Sequence Diagram</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>CommandHistory#performRedo()</code> which restores the address book to that state by invoking the original command again.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>commandRedoHistory</code> is empty, then there are no undone states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>patient S9482963D</code>.
-A command that searches for a patient whose id matches <code>S9482963D</code>,
-only reads and does not modify any data from the model.
-Such commands will not call <code>CommandHistory#addToCommandHistory()</code>,
-<code>CommandHistory#performUndo()</code>, <code>CommandHistory#performRedo()</code>.</p>
-</div>
-<div class="paragraph">
-<p>Thus, the undo and redo stacks remain unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState4.png" alt="UndoRedoState4">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>newappt &#8230;&#8203;</code> to schedule a new appointment for a patient.
-This action invokes <code>CommandHistory#addToCommandHistory()</code>, pushing the new action pair command in the undo stack.
-However, the commands in the <code>commandRedoHistory</code> stack will be purged.</p>
-</div>
-<div class="paragraph">
-<p>We designed it this way because it no longer makes sense to redo the <code>newpatient &#8230;&#8203; -name John Doe</code>​ command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState5.png" alt="UndoRedoState5">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
-</div>
-<div class="title">Figure 2. Commit Activity Diagram</div>
+<p>In future implementations, i.e. v2.0, the valid timing slot will be given based on the doctor&#8217;s availability. This ensures users can easily choose a slot to arrange appointments for patients.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="aspect-how-to-store-timing-fields"><a class="link" href="#aspect-how-to-store-timing-fields">Aspect:  How to store Timing fields</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Pair Individual commands with their inverse action.</p>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 9.0909%;">
-<col style="width: 90.9091%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Must ensure that the implementation of each individual command are correct.</p></td>
-</tr>
-</tbody>
-</table>
+<p><strong>Alternative 1 (current choice):</strong> Create <code>DateTime</code> and <code>Timing</code> class to store</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Makes it easier to calculate timings and clashes between multiple appointments with different timing field.</p>
 </li>
 <li>
-<p><strong>Alternative 3:</strong> Individual command knows how to undo/redo by itself.</p>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 9.0909%;">
-<col style="width: 90.9091%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Must ensure that the implementation of each individual command are correct.</p></td>
-</tr>
-</tbody>
-</table>
+<p>Cons: Requires additional code to implement Timing class and interact with other common methods that rely on DateTime.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Save the entire address book.</p>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 9.0909%;">
-<col style="width: 90.9091%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Implementation is easy.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. May have performance issues in terms of memory usage.</p></td>
-</tr>
-</tbody>
-</table>
+<p><strong>Alternative 2:</strong> Store as Strings</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Makes it easier to implement.</p>
+</li>
+<li>
+<p>Cons: Requires additional code to convert into <code>DateTime</code> class when carrying out calculating methods.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<h5 id="aspect-display-appointments"><a class="link" href="#aspect-display-appointments">Aspect: display appointments</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 9.0909%;">
-<col style="width: 90.9091%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p></td>
-</tr>
-</tbody>
-</table>
+<p><strong>Alternative 1 (current choice):</strong> Display appointments in a tab</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Creates an intuitive and easily navigable screen to display appointments.</p>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 9.0909%;">
-<col style="width: 90.9091%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. We do not need to maintain a separate list, and just reuse what is already in the codebase.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cons</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1. Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p></td>
-</tr>
-</tbody>
-</table>
+<p>Cons: Decreases the efficiency of CLI by having to use GUI inputs.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Keeps the onscreen clutter at a minimum and stays in line with the CLI concept.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Makes it easier to implement.</p>
+</li>
+<li>
+<p>Cons: Increases difficulty in freely accessing appointments.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="duty-shift-scheduling"><a class="link" href="#duty-shift-scheduling">Duty Shift Scheduling</a></h3>
+<div class="paragraph">
+<p>The duty shift scheduling provides users the ability to schedule duty shifts for doctors. It can help doctors to check, add, edit duty shifts efficiently.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 05:58:32 UTC</div></div></div></body></html>
+<div class="ulist">
+<ul>
+<li>
+<p>e.g. <code>newshift -id W0000001A -start 01/11/19 0900 -end 01/12/19 2100 -reoccur m -num 2</code> - allows the user to create two monthly reoccurring duty shifts to doctor whose <code>referenceId</code> is W0000001A.</p>
+</li>
+<li>
+<p>e.g. <code>editshift -entry 1 -start 02/12/19 0900 -end 02/12/19 2100</code> - allows the user to change a doctor&#8217;s first duty shift to be the input timing if there is no conflict with appointments.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The duty shift scheduling contains multiple operations to indirectly manipulate the <code>UniqueEventList</code>. The implemented operations include:</p>
+</div>
+<div class="paragraph">
+<p><code>newshift</code> Command - Adds a duty shift or reoccurring duty shifts to a doctor.</p>
+</div>
+<div class="paragraph">
+<p><code>shifts</code> Command - Lists all duty shifts involving the doctor&#8217;s referenceId which contains the keyword.</p>
+</div>
+<div class="paragraph">
+<p><code>editshift</code> Command - Change a current duty shift&#8217;s timing.</p>
+</div>
+<div class="paragraph">
+<p><code>cancelshift</code> Command - Cancels duty shift.</p>
+</div>
+<div class="paragraph">
+<p>Each Duty Shift is an <code>Event</code> object consists of a <code>PersonReferenceId</code>, <code>Timing</code>, <code>Status</code>. <code>Timing</code> class has 2 <code>DateTime</code> object as they indicate the start and end times of the duty shift.</p>
+</div>
+<div class="paragraph">
+<p>The current implementation of duty shift checks with doctor object by the unique <code>referenceId</code> and also checks the timing with appointments. If the <code>referenceId</code> exists within the Model#UniquePersonList and the timing is valid, then the duty shift is constructed. This ensures that the doctor is registered and the duty shift&#8217;s timing is valid before making any duty shifts.</p>
+</div>
+<div class="paragraph">
+<p>The duty  shift will be rejected by the system, if there are insufficient staff doctors on duty at the given time.<br></p>
+</div>
+<div class="paragraph">
+<p>Before a duty shift&#8217;s time can be edited, the system first checks the total number of staff doctors on duty in that timeslot. Next, the system checks the existing appointments in that timeslot. If the number of appointments in that timeslot is less than the number of doctors, the duty shift&#8217;s time will be changed. Otherwise, the duty shift will not be allowed to edit.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-newshift-code-command"><a class="link" href="#code-newshift-code-command"><code>newshift</code> Command</a></h4>
+<div class="paragraph">
+<p>The <code>newshift</code> command behaves similarly to the <code>new</code> command used for patient and doctor. The command takes in the parameters required to construct <code>ReferenceId</code>, <code>DateTime</code> and <code>Status</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-shifts-code-command"><a class="link" href="#code-shifts-code-command"><code>shifts</code> Command</a></h4>
+<div class="paragraph">
+<p>The <code>shifts</code> command works in two different ways.</p>
+</div>
+<div class="paragraph">
+<p>Case 1: <code>shifts ReferenceId</code></p>
+</div>
+<div class="paragraph">
+<p>The shifts command searches for duty shifts that belong to the doctor based on the given <code>ReferenceId</code>. The filtered shifts are found in <code>ModelManager</code>. The list is instantiated by filtering the <code>UniqueEventList</code> using <code>EventContainsKeywordPredicate</code> which is created from the <code>referenceId</code> argument supplied by the user.</p>
+</div>
+<div class="paragraph">
+<p>Case 2: <code>shifts</code></p>
+</div>
+<div class="paragraph">
+<p>The shifts behaves similarly to <code>shifts ReferenceId</code> when it does not take in any other arguments. Instead, it automatically executes with the predicate <code>EventContainsApprovedStatusPredicate</code>. updateFilteredEventList() is called and the entire list of the upcoming duty shifts is shown to the user.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-editshift-code-command"><a class="link" href="#code-editshift-code-command"><code>editshift</code> Command</a></h4>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a <code>editshift</code> command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ChangeShiftActivityDiagram.png" alt="ChangeShiftActivityDiagram">
+</div>
+<div class="title">Figure 5. Interactions Inside the Logic Component when a user executes a <code>editshift</code> command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-cancelshift-code-command"><a class="link" href="#code-cancelshift-code-command"><code>cancelshift</code> Command</a></h4>
+<div class="paragraph">
+<p><code>cancelshift</code> simply takes in the index of the target duty shift to cancel according to the displayed shift list.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 06:22:18 UTC</div></div></div></body></html>
