@@ -28,9 +28,10 @@
 <li><a href="#reactive-search">4.3. Reactive Search</a></li>
 <li><a href="#autocomplete">4.4. AutoComplete</a></li>
 <li><a href="#queue-feature">4.5. Queue feature</a></li>
-<li><a href="#appointment-feature">4.6. Appointment feature</a></li>
+<li><a href="#appointment-feature">4.6. Appointment Feature</a></li>
 <li><a href="#duty-shift-scheduling">4.7. Duty Shift Scheduling</a></li>
-<li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
+<li><a href="#logging">4.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.9. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a></li>
@@ -927,19 +928,9 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="appointment-feature"><a class="link" href="#appointment-feature">4.6. Appointment feature</a></h3>
+<h3 id="appointment-feature"><a class="link" href="#appointment-feature">4.6. Appointment Feature</a></h3>
 <div class="paragraph">
 <p>The Appointment feature enables users to manage appointments for patients by providing basic Create, Read, Update, Delete (CRUD) of appointments. User is also able to find missed appointments and settle each missed appointment efficiently.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. <code>newappt -id E0000001A -start 01/12/19 0900 -end 01/12/19 0940 -reoccur m -num 2</code> - creates two monthly reoccurring appointments to patient whose <code>referenceId</code> is E0000001A.</p>
-</li>
-<li>
-<p>e.g. <code>editappt -entry 1 -start 01/12/19 1000 -end 01/12/19 1040</code> - edits a patient&#8217;s first appointment timing to be the input timing if there is no conflict with doctor&#8217;s duty shift.</p>
-</li>
-</ul>
 </div>
 <div class="paragraph">
 <p>The number of scheduled appointments cannot be more than the number of on-duty staff doctors at any given time.</p>
@@ -983,7 +974,7 @@ Format: <code>resume &lt;ENTRY_ID&gt;</code></p>
 <div class="title">Figure 14. Appointment class diagram</div>
 </div>
 <div class="paragraph">
-<p>he appointment will be rejected by the system, if there are insufficient staff doctors on duty at the time of the appointment.<br>
+<p>The appointment will be rejected by the system, if there are insufficient staff doctors on duty at the time of the appointment.<br>
 Each <code>Appointment</code> object consists of a <code>PersonReferenceId</code>, <code>Timing</code>, <code>Status</code>. <code>Timing</code> class has 2 <code>DateTime</code> objects which indicates the start and end time of the <code>appointment</code>. The <code>UniqueEventList</code> contains 0 or more appointments.</p>
 </div>
 <div class="paragraph">
@@ -1002,7 +993,7 @@ Each <code>Appointment</code> object consists of a <code>PersonReferenceId</code
 <p>The <code>newappt</code> command is similar to the <code>new</code> command of patient and doctor. The command takes in the parameters required to construct <code>ReferenceId</code>, <code>DateTime</code> and <code>Status</code>. The image below shows how the <code>Appointment</code> object is constructed.</p>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a <code>AddAppointment</code> command:</p>
+<p>The following activity diagram summarizes what happens when a user executes a <code>newappt</code> command:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1176,16 +1167,6 @@ Each <code>Appointment</code> object consists of a <code>PersonReferenceId</code
 <div class="paragraph">
 <p>The duty shift scheduling provides users the ability to schedule duty shifts for doctors. It can help doctors to check, add, edit duty shifts efficiently.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>e.g. <code>newshift -id W0000001A -start 01/11/19 0900 -end 01/12/19 2100 -reoccur m -num 2</code> - allows the user to create two monthly reoccurring duty shifts to doctor whose <code>referenceId</code> is W0000001A.</p>
-</li>
-<li>
-<p>e.g. <code>editshift -entry 1 -start 02/12/19 0900 -end 02/12/19 2100</code> - allows the user to change a doctor&#8217;s first duty shift to be the input timing if there is no conflict with appointments.</p>
-</li>
-</ul>
-</div>
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.7.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -1237,7 +1218,7 @@ Each <code>Appointment</code> object consists of a <code>PersonReferenceId</code
 <p>Case 2: <code>shifts</code></p>
 </div>
 <div class="paragraph">
-<p>The shifts behaves similarly to <code>shifts ReferenceId</code> when it does not take in any other arguments. Instead, it automatically executes with the predicate <code>EventContainsApprovedStatusPredicate</code>. updateFilteredEventList() is called and the entire list of the upcoming duty shifts is shown to the user.</p>
+<p>The shifts command behaves similarly to <code>shifts ReferenceId</code> when it does not take in any other arguments. Instead, it automatically executes with the predicate <code>EventContainsApprovedStatusPredicate</code>. updateFilteredEventList() is called and the entire list of the upcoming duty shifts is shown to the user.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1255,16 +1236,19 @@ Each <code>Appointment</code> object consists of a <code>PersonReferenceId</code
 <div class="sect3">
 <h4 id="code-cancelshift-code-command"><a class="link" href="#code-cancelshift-code-command">4.7.5. <code>cancelshift</code> Command</a></h4>
 <div class="paragraph">
-<p><code>cancelshift</code> simply takes in the index of the target duty shift to cancel according to the displayed shift list.
-=== Logging</p>
+<p><code>cancelshift</code> simply takes in the index of the target duty shift to cancel according to the displayed shift list.</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">4.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1294,9 +1278,8 @@ Each <code>Appointment</code> object consists of a <code>PersonReferenceId</code
 </ul>
 </div>
 </div>
-</div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2422,4 +2405,4 @@ Expected: Upon <kbd>UP</kbd>, current text in Command Box is replaced with previ
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:46:48 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:13:11 UTC</div></div></div></body></html>
